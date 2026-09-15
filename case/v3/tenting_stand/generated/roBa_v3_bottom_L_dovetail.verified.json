@@ -1,0 +1,49 @@
+{
+  "part": "roBa_v3_bottom_L_dovetail",
+  "verified_at": "2026-09-16T08:13:35+09:00",
+  "spec": {
+    "expected_solids": 1,
+    "volume_range": [
+      18769.049731796174,
+      19148.222453650644
+    ],
+    "bbox": null,
+    "bbox_tolerance": 0.05,
+    "material_points": [
+      [
+        -30.010629276042838,
+        -3.0,
+        -6.798569543993159
+      ],
+      [
+        29.843213738402437,
+        -3.0,
+        -10.98395798500327
+      ]
+    ],
+    "void_points": [
+      [
+        -0.08370776882020224,
+        -3.0,
+        -8.891263764498214
+      ]
+    ],
+    "point_tolerance": 1e-06
+  },
+  "result": {
+    "is_valid": true,
+    "solid_count": 1,
+    "volume": 18958.693690052267,
+    "bbox": [
+      126.568628005,
+      96.986423506,
+      12.529817315376352
+    ],
+    "material_points_checked": 2,
+    "void_points_checked": 1
+  },
+  "files": [
+    "generated\\roBa_v3_bottom_L_dovetail.step",
+    "generated\\roBa_v3_bottom_L_dovetail.stl"
+  ]
+}

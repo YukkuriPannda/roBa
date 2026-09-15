@@ -1,0 +1,73 @@
+{
+  "part": "roBa_v3_tenting_stand_7deg",
+  "verified_at": "2026-09-16T08:13:36+09:00",
+  "spec": {
+    "expected_solids": 1,
+    "volume_range": [
+      17000.0,
+      20500.0
+    ],
+    "bbox": [
+      76.0,
+      72.0,
+      12.33162662862075
+    ],
+    "bbox_tolerance": 0.02,
+    "material_points": [
+      [
+        -36.5,
+        0.0,
+        1.5920884206771784
+      ],
+      [
+        36.5,
+        0.0,
+        6.073724893633196
+      ],
+      [
+        0.0,
+        34.0,
+        3.8329066571551875
+      ]
+    ],
+    "void_points": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        -30.0,
+        0.0,
+        2.9822764872232366
+      ],
+      [
+        30.0,
+        0.0,
+        10.349350141397514
+      ],
+      [
+        0.0,
+        0.0,
+        13.33162662862075
+      ]
+    ],
+    "point_tolerance": 1e-06
+  },
+  "result": {
+    "is_valid": true,
+    "solid_count": 1,
+    "volume": 18814.10962191645,
+    "bbox": [
+      76.0,
+      72.0,
+      12.33162662862075
+    ],
+    "material_points_checked": 3,
+    "void_points_checked": 4
+  },
+  "files": [
+    "generated\\roBa_v3_tenting_stand_7deg.step",
+    "generated\\roBa_v3_tenting_stand_7deg.stl"
+  ]
+}
