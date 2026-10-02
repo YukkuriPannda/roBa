@@ -1,0 +1,57 @@
+{
+  "part": "bottom_L_tenting",
+  "verified_at": "2026-09-16T12:37:11+09:00",
+  "spec": {
+    "volume_range": [
+      17323.65,
+      17923.65
+    ],
+    "bbox": [
+      126.569,
+      96.986,
+      17.410237708786433
+    ],
+    "bbox_tolerance": 0.3,
+    "material_points": [
+      [
+        47.296820453118066,
+        -22.0,
+        -14.04364156359468
+      ],
+      [
+        47.296820453118066,
+        22.0,
+        -14.04364156359468
+      ]
+    ],
+    "void_points": [
+      [
+        49.79073057876762,
+        -22.0,
+        -14.218032747954993
+      ],
+      [
+        49.79073057876762,
+        22.0,
+        -14.218032747954993
+      ]
+    ],
+    "expected_solids": 1
+  },
+  "result": {
+    "is_valid": true,
+    "solid_count": 1,
+    "volume": 17466.757414355947,
+    "bbox": [
+      126.568628005,
+      96.986423506,
+      17.216159902754875
+    ],
+    "material_points_checked": 2,
+    "void_points_checked": 2
+  },
+  "files": [
+    "D:\\OtherProjects\\roBa-case\\case\\v3\\tenting\\output\\bottom_L_tenting.stp",
+    "D:\\OtherProjects\\roBa-case\\case\\v3\\tenting\\output\\bottom_L_tenting.stl"
+  ]
+}
