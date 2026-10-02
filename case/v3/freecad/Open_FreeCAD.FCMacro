@@ -1,0 +1,28 @@
+"""Open the generated native FCStd with its Python proxy module on sys.path."""
+
+import sys
+from pathlib import Path
+
+macro_dir = Path(__file__).resolve().parent
+sys.path.insert(0, str(macro_dir))
+
+import FreeCAD as App
+import FreeCADGui as Gui
+
+from roba_freecad import DOCUMENT_FILE, GENERATED_DIR, build_document
+
+document_path = GENERATED_DIR / DOCUMENT_FILE
+if document_path.exists():
+    doc = App.openDocument(str(document_path))
+else:
+    doc = build_document()
+    doc.recompute()
+    GENERATED_DIR.mkdir(parents=True, exist_ok=True)
+    doc.saveAs(str(document_path))
+
+for obj in doc.Objects:
+    if hasattr(obj, "Shape") and hasattr(obj, "Placement") and obj.ViewObject:
+        obj.ViewObject.Visibility = obj.Name == "BottomLTenting"
+
+Gui.activeDocument().activeView().viewAxonometric()
+Gui.activeDocument().activeView().fitAll()
