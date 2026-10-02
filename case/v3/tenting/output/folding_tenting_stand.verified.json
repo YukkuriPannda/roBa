@@ -1,0 +1,57 @@
+{
+  "part": "folding_tenting_stand",
+  "verified_at": "2026-09-16T12:37:09+09:00",
+  "spec": {
+    "volume_range": [
+      3200.0,
+      4300.0
+    ],
+    "bbox": [
+      24.5,
+      60.0,
+      3.0
+    ],
+    "bbox_tolerance": 0.15,
+    "material_points": [
+      [
+        0.0,
+        0.0,
+        3.0
+      ],
+      [
+        10.0,
+        0.0,
+        3.0
+      ]
+    ],
+    "void_points": [
+      [
+        16.0,
+        -14.0,
+        3.0
+      ],
+      [
+        16.0,
+        14.0,
+        3.0
+      ]
+    ],
+    "expected_solids": 1
+  },
+  "result": {
+    "is_valid": true,
+    "solid_count": 1,
+    "volume": 3461.304425759705,
+    "bbox": [
+      24.35,
+      60.0,
+      3.0
+    ],
+    "material_points_checked": 2,
+    "void_points_checked": 2
+  },
+  "files": [
+    "D:\\OtherProjects\\roBa-case\\case\\v3\\tenting\\output\\folding_tenting_stand.stp",
+    "D:\\OtherProjects\\roBa-case\\case\\v3\\tenting\\output\\folding_tenting_stand.stl"
+  ]
+}

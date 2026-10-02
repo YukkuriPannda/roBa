@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "started_at_utc": "2026-10-02T14:10:21+00:00",
+  "phases": [
+    {
+      "name": "build",
+      "status": "PASS"
+    },
+    {
+      "name": "mutate",
+      "status": "PASS"
+    },
+    {
+      "name": "finalize",
+      "status": "PASS"
+    }
+  ],
+  "finished_at_utc": "2026-10-02T14:13:02+00:00",
+  "manifest": "freecad_build.verified.json"
+}

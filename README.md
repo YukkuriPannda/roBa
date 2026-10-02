@@ -1,4 +1,15 @@
 # roBa
+
+## 個人用ケース改造（FreeCAD / PLA）
+
+このフォークではroBa v3を基準に、既存の折り畳みテンティング案をFreeCADで編集・再生成できる構成へ移植しています。
+
+- [FreeCAD版の起動・編集・出力](case/v3/freecad/README.md)
+- [自然言語の要望から改造する手順とデータの役割](doc/freecad-workflow.md)
+- [PLAの強度チェック・解析・試し刷り](doc/pla-strength-check.md)
+
+基準STEPを保持し、追加形状をパラメーターで管理します。CAD検査の合格と、PLAで印刷した実物の強度・嵌合確認は別に記録します。
+
 roBaは[keyball](https://github.com/Yowkees/keyball/)に影響を受けたワイヤレスキーボードです  
 ![alt text](doc/img/roba.png)
 

@@ -1,0 +1,431 @@
+{
+  "status": "PASS",
+  "generated_by": "FreeCAD Part API",
+  "freecad_version": [
+    "1",
+    "1",
+    "4",
+    "20260928 (Git shallow)"
+  ],
+  "source_files": {
+    "BottomLSource": "case/v3/bottom_L.stp",
+    "BottomRSource": "case/v3/bottom_R.stp",
+    "TopLReference": "case/v3/top_L.stp",
+    "TopRReference": "case/v3/top_R.stp"
+  },
+  "generator_sha256": "8d216239b90c2342374eacf2b29cb29cebad9766821d99433b876bdb3c93e556",
+  "native_document": "roba_v3_folding_tenting.FCStd",
+  "source_hashes": {
+    "BottomLSource": "c8aa39aef701ba3a9dae273c621d7bef85a99fd7a873fb73dabfc2225b557298",
+    "BottomRSource": "17ad5c51dda57665c762061a5f9b7b6bfb765b022eca592cf89bdf7b9628eead",
+    "TopLReference": "821a78aea89ae07a5441a9e8bdeecfe38a8c4f41e8dd07c0cc852198c1aaec5b",
+    "TopRReference": "71abf242da896a3dd3ea328145666ab5f0acaccded1515d0cccc8faa38ba0123",
+    "LegacyDetentSeed": "f5b6ba45b6612dadf599f4c29ebaa8fdb2ac7a503598796f0e210c824e9a91ef",
+    "LegacyDetentSeedSource": "3bed5664f3e42c018846ec36260e08e469902789ea001bcb10efc0dab65649a3"
+  },
+  "native_reopen_and_parameter_edit": {
+    "status": "PASS",
+    "proxies_restored_from_module": true,
+    "stand_thickness_edit": {
+      "from_mm": 2.7,
+      "to_mm": 2.8000000000000003,
+      "volume_before_mm3": 3461.304425759705,
+      "volume_changed_mm3": 3581.6148774956328,
+      "restored_volume_mm3": 3461.304425759705
+    },
+    "socket_radius_edit": {
+      "from_mm": 3.2,
+      "to_mm": 3.3000000000000003,
+      "left_case_volume_before_mm3": 17466.8156786221,
+      "left_case_volume_changed_mm3": 17480.391307578804,
+      "restored_volume_mm3": 17466.8156786221
+    },
+    "restored_defaults": {
+      "BaseTentAngle": 4.0,
+      "DeployAngle": 65.0,
+      "NominalTotalTentAngle": 15.0,
+      "HingeX": 50.0,
+      "HingeAxisOffset": 3.0,
+      "HingeClipY": 22.0,
+      "HingeClipLength": 8.0,
+      "PinRadius": 1.5,
+      "BoreRadius": 1.7,
+      "SocketRadius": 3.2,
+      "SocketThroat": 2.65,
+      "StandLength": 20.0,
+      "StandSpan": 60.0,
+      "StandThickness": 2.7,
+      "DetentX": 16.0,
+      "DetentY": 14.0,
+      "DetentHoleRadius": 1.4,
+      "LeftUndersideZAtOrigin": -7.729,
+      "RightUndersideZAtOrigin": -7.719
+    }
+  },
+  "geometry": {
+    "status": "PASS",
+    "contract_version": "1",
+    "units": {
+      "length": "mm",
+      "angle": "degrees"
+    },
+    "legacy_default_regression_applied": true,
+    "imported_source_references": {
+      "BottomLSource": {
+        "source_file": "case/v3/bottom_L.stp",
+        "sha256": "c8aa39aef701ba3a9dae273c621d7bef85a99fd7a873fb73dabfc2225b557298",
+        "solid_count": 1,
+        "is_valid": true,
+        "snapshot_only": true
+      },
+      "BottomRSource": {
+        "source_file": "case/v3/bottom_R.stp",
+        "sha256": "17ad5c51dda57665c762061a5f9b7b6bfb765b022eca592cf89bdf7b9628eead",
+        "solid_count": 1,
+        "is_valid": true,
+        "snapshot_only": true
+      },
+      "TopLReference": {
+        "source_file": "case/v3/top_L.stp",
+        "sha256": "821a78aea89ae07a5441a9e8bdeecfe38a8c4f41e8dd07c0cc852198c1aaec5b",
+        "solid_count": 1,
+        "is_valid": true,
+        "snapshot_only": true
+      },
+      "TopRReference": {
+        "source_file": "case/v3/top_R.stp",
+        "sha256": "71abf242da896a3dd3ea328145666ab5f0acaccded1515d0cccc8faa38ba0123",
+        "solid_count": 1,
+        "is_valid": true,
+        "snapshot_only": true
+      },
+      "LegacyDetentSeed": {
+        "source_file": "case/v3/tenting/output/bottom_L_tenting.stp",
+        "source_faces": "Face 22 loft surface, Face 23 tip cap; lower cap reconstructed at z=-0.8 mm",
+        "source_sha256": "3bed5664f3e42c018846ec36260e08e469902789ea001bcb10efc0dab65649a3",
+        "seed_file": "case/v3/freecad/reference/legacy_detent.brep",
+        "seed_sha256": "f5b6ba45b6612dadf599f4c29ebaa8fdb2ac7a503598796f0e210c824e9a91ef",
+        "shape": {
+          "is_valid": true,
+          "solid_count": 1,
+          "volume_mm3": 8.970458230772593,
+          "bbox_mm": [
+            3.017222350971618,
+            3.017222366219842,
+            3.400000199996956
+          ]
+        },
+        "snapshot_only": true
+      }
+    },
+    "dimensions": {
+      "BaseTentAngle": 4.0,
+      "DeployAngle": 65.0,
+      "NominalTotalTentAngle": 15.0,
+      "HingeX": 50.0,
+      "HingeAxisOffset": 3.0,
+      "HingeClipY": 22.0,
+      "HingeClipLength": 8.0,
+      "PinRadius": 1.5,
+      "BoreRadius": 1.7,
+      "SocketRadius": 3.2,
+      "SocketThroat": 2.65,
+      "StandLength": 20.0,
+      "StandSpan": 60.0,
+      "StandThickness": 2.7,
+      "DetentX": 16.0,
+      "DetentY": 14.0,
+      "DetentHoleRadius": 1.4,
+      "LeftUndersideZAtOrigin": -7.729,
+      "RightUndersideZAtOrigin": -7.719
+    },
+    "pin_bore_throat_regression": {
+      "pin_radius_mm": 1.5,
+      "bore_radius_mm": 1.7,
+      "socket_throat_width_mm": 2.65,
+      "diametral_bore_clearance_mm": 0.3999999999999999,
+      "diametral_throat_retention_mm": 0.3500000000000001,
+      "socket_radial_wall_mm": 1.5000000000000002
+    },
+    "stand": {
+      "is_valid": true,
+      "solid_count": 1,
+      "volume_mm3": 3461.304425759705,
+      "bbox_mm": [
+        24.35,
+        60.0,
+        3.0
+      ]
+    },
+    "cases": {
+      "L": {
+        "source": {
+          "is_valid": true,
+          "solid_count": 1,
+          "volume_mm3": 16973.65147733879,
+          "bbox_mm": [
+            126.568628005,
+            96.986423506,
+            11.738136809678249
+          ]
+        },
+        "added_hardware": {
+          "is_valid": true,
+          "solid_count": 4,
+          "volume_mm3": 561.2326199796694
+        },
+        "modified": {
+          "is_valid": true,
+          "solid_count": 1,
+          "volume_mm3": 17466.8156786221,
+          "bbox_mm": [
+            126.568628005,
+            96.986423506,
+            17.216159902754875
+          ]
+        },
+        "legacy_comparison": {
+          "applied": true,
+          "volume_tolerance_mm3": 1.25,
+          "bbox_tolerance_mm": 0.3
+        },
+        "original_material_removed_mm3": 0.0,
+        "material_points_checked": 2,
+        "bore_void_points_checked": 2
+      },
+      "R": {
+        "source": {
+          "is_valid": true,
+          "solid_count": 1,
+          "volume_mm3": 20008.610499244704,
+          "bbox_mm": [
+            125.94018725900003,
+            96.88523983,
+            11.726183818403698
+          ]
+        },
+        "added_hardware": {
+          "is_valid": true,
+          "solid_count": 4,
+          "volume_mm3": 561.2326199796693
+        },
+        "modified": {
+          "is_valid": true,
+          "solid_count": 1,
+          "volume_mm3": 20502.686362285796,
+          "bbox_mm": [
+            125.94018725900003,
+            96.88523983,
+            17.206159902754873
+          ]
+        },
+        "legacy_comparison": {
+          "applied": true,
+          "volume_tolerance_mm3": 1.25,
+          "bbox_tolerance_mm": 0.3
+        },
+        "original_material_removed_mm3": 0.0,
+        "material_points_checked": 2,
+        "bore_void_points_checked": 2
+      }
+    },
+    "assembly_end_pose_overlaps": {
+      "L": {
+        "folded_overlap_mm3": 0.14057243745271453,
+        "deployed_overlap_mm3": 0.0006225297384756009,
+        "deployment_angle_deg": 65.0,
+        "limit_mm3": 2.0
+      },
+      "R": {
+        "folded_overlap_mm3": 0.14057244484365894,
+        "deployed_overlap_mm3": 0.00644997317780159,
+        "deployment_angle_deg": 65.0,
+        "limit_mm3": 2.0
+      }
+    },
+    "derived_nominal_tent_angle_deg": 15.157943492504574,
+    "physical_strength_or_print_validation": "not performed"
+  },
+  "exports": {
+    "folding_tenting_stand": {
+      "step_file": "folding_tenting_stand.stp",
+      "stl_file": "folding_tenting_stand.stl",
+      "step_round_trip": {
+        "is_valid": true,
+        "solid_count": 1,
+        "volume_mm3": 3461.3044257597085,
+        "bbox_mm": [
+          24.35,
+          60.0,
+          3.0
+        ]
+      },
+      "step_round_trip_comparison": {
+        "absolute_volume_delta_mm3": 3.637978807091713e-12,
+        "relative_volume_delta": 1.0510427167333687e-15,
+        "relative_volume_limit": 0.0002,
+        "optimal_bbox_before_mm": [
+          24.35,
+          60.0,
+          3.0
+        ],
+        "optimal_bbox_after_mm": [
+          24.35,
+          60.0,
+          3.0
+        ],
+        "optimal_bbox_axis_length_delta_mm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "optimal_bbox_axis_length_limit_mm": 0.02,
+        "sampled_boundary_distance": {
+          "sampling_deflection_mm": 0.1,
+          "samples_per_direction": 130,
+          "native_to_step_max_mm": 4.0101255649460654e-13,
+          "step_to_native_max_mm": 4.0101255649460654e-13,
+          "max_sampled_surface_distance_mm": 4.0101255649460654e-13,
+          "limit_mm": 0.005,
+          "method": "evenly spaced exact BRep and tessellation vertices; bidirectional point-to-solid distance"
+        }
+      },
+      "stl": {
+        "triangles": 824,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "misoriented_edges": 0,
+        "degenerate_triangles": 0,
+        "closed_oriented_mesh": true
+      },
+      "stl_tessellation": {
+        "linear_deflection_mm": 0.1,
+        "angular_deflection_rad": 0.3
+      }
+    },
+    "bottom_L_tenting": {
+      "step_file": "bottom_L_tenting.stp",
+      "stl_file": "bottom_L_tenting.stl",
+      "step_round_trip": {
+        "is_valid": true,
+        "solid_count": 1,
+        "volume_mm3": 17464.643557575306,
+        "bbox_mm": [
+          126.568628005,
+          96.986423506,
+          17.216159902750054
+        ]
+      },
+      "step_round_trip_comparison": {
+        "absolute_volume_delta_mm3": 2.1721210467949277,
+        "relative_volume_delta": 0.00012435701428128193,
+        "relative_volume_limit": 0.0002,
+        "optimal_bbox_before_mm": [
+          126.568628005,
+          96.986423506,
+          17.216159902754875
+        ],
+        "optimal_bbox_after_mm": [
+          126.568628005,
+          96.986423506,
+          17.216159902750054
+        ],
+        "optimal_bbox_axis_length_delta_mm": [
+          0.0,
+          0.0,
+          4.82103246213228e-12
+        ],
+        "optimal_bbox_axis_length_limit_mm": 0.02,
+        "sampled_boundary_distance": {
+          "sampling_deflection_mm": 0.1,
+          "samples_per_direction": 160,
+          "native_to_step_max_mm": 8.938770408112134e-12,
+          "step_to_native_max_mm": 8.938770408112134e-12,
+          "max_sampled_surface_distance_mm": 8.938770408112134e-12,
+          "limit_mm": 0.005,
+          "method": "evenly spaced exact BRep and tessellation vertices; bidirectional point-to-solid distance"
+        }
+      },
+      "stl": {
+        "triangles": 6230,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "misoriented_edges": 0,
+        "degenerate_triangles": 0,
+        "closed_oriented_mesh": true
+      },
+      "stl_tessellation": {
+        "linear_deflection_mm": 0.1,
+        "angular_deflection_rad": 0.3
+      }
+    },
+    "bottom_R_tenting": {
+      "step_file": "bottom_R_tenting.stp",
+      "stl_file": "bottom_R_tenting.stl",
+      "step_round_trip": {
+        "is_valid": true,
+        "solid_count": 1,
+        "volume_mm3": 20504.214388755332,
+        "bbox_mm": [
+          125.94018725900003,
+          96.88523983,
+          17.20615990275015
+        ]
+      },
+      "step_round_trip_comparison": {
+        "absolute_volume_delta_mm3": 1.528026469535689,
+        "relative_volume_delta": 7.452811024541923e-05,
+        "relative_volume_limit": 0.0002,
+        "optimal_bbox_before_mm": [
+          125.94018725900003,
+          96.88523983,
+          17.206159902754873
+        ],
+        "optimal_bbox_after_mm": [
+          125.94018725900003,
+          96.88523983,
+          17.20615990275015
+        ],
+        "optimal_bbox_axis_length_delta_mm": [
+          0.0,
+          0.0,
+          4.721556479125866e-12
+        ],
+        "optimal_bbox_axis_length_limit_mm": 0.02,
+        "sampled_boundary_distance": {
+          "sampling_deflection_mm": 0.1,
+          "samples_per_direction": 160,
+          "native_to_step_max_mm": 1.2461424682181725e-11,
+          "step_to_native_max_mm": 1.2461424682181725e-11,
+          "max_sampled_surface_distance_mm": 1.2461424682181725e-11,
+          "limit_mm": 0.005,
+          "method": "evenly spaced exact BRep and tessellation vertices; bidirectional point-to-solid distance"
+        }
+      },
+      "stl": {
+        "triangles": 7072,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "misoriented_edges": 0,
+        "degenerate_triangles": 0,
+        "closed_oriented_mesh": true
+      },
+      "stl_tessellation": {
+        "linear_deflection_mm": 0.1,
+        "angular_deflection_rad": 0.3
+      }
+    }
+  },
+  "artifact_sha256": {
+    "roba_v3_folding_tenting.FCStd": "7724c08c7e5380ab38a0cef14a32744f94b27315b7380f271f273e6cc022b328",
+    "folding_tenting_stand.stp": "2146db835445814095efa8a7ba9f5185e59c4151419b9196b6c0901838139ea2",
+    "folding_tenting_stand.stl": "c4d11d69c018c593d82c268b855f35d00c4fdfdb70f434a6202237bfda85ebd7",
+    "folding_tenting_stand.verified.json": "e70827bcd52cf8077e6161e0bac52839477ebeacd45f726c1fade84008bb78e1",
+    "bottom_L_tenting.stp": "6efaca850a2d82987469c141c47c60d63e87935e2433f5ec05060147959ca0d0",
+    "bottom_L_tenting.stl": "4bea0a0b747d117ef4492c099e7317192f27881b36e56dfb6a2f78554b3eaa4c",
+    "bottom_L_tenting.verified.json": "cd95943e96791b89f1c564f544e4c4454e341f13270c3ff8a15e592f395d88bf",
+    "bottom_R_tenting.stp": "8c3ebec517e316961bd32e87978ace220c294291ea32f7e2ebe325987cdaffaa",
+    "bottom_R_tenting.stl": "c43272bc6ac400f6d658c5a8eb206c06ae62f8ef11124d218f14c280ca837678",
+    "bottom_R_tenting.verified.json": "6b1f375c9afe521aafec515f1930ff927dcbc6412b73d9d1ab6939eb62267733"
+  }
+}

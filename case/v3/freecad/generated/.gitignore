@@ -1,0 +1,6 @@
+*.FCStd
+*.FCStd1
+*.stp
+*.step
+*.stl
+.freecad-build-*/

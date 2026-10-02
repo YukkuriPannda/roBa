@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "part": "bottom_R_tenting",
+  "geometry": {
+    "is_valid": true,
+    "solid_count": 1,
+    "volume_mm3": 20502.686362285796,
+    "bbox_mm": [
+      125.94018725900003,
+      96.88523983,
+      17.206159902754873
+    ]
+  },
+  "export": {
+    "step_file": "bottom_R_tenting.stp",
+    "stl_file": "bottom_R_tenting.stl",
+    "step_round_trip": {
+      "is_valid": true,
+      "solid_count": 1,
+      "volume_mm3": 20504.214388755332,
+      "bbox_mm": [
+        125.94018725900003,
+        96.88523983,
+        17.20615990275015
+      ]
+    },
+    "step_round_trip_comparison": {
+      "absolute_volume_delta_mm3": 1.528026469535689,
+      "relative_volume_delta": 7.452811024541923e-05,
+      "relative_volume_limit": 0.0002,
+      "optimal_bbox_before_mm": [
+        125.94018725900003,
+        96.88523983,
+        17.206159902754873
+      ],
+      "optimal_bbox_after_mm": [
+        125.94018725900003,
+        96.88523983,
+        17.20615990275015
+      ],
+      "optimal_bbox_axis_length_delta_mm": [
+        0.0,
+        0.0,
+        4.721556479125866e-12
+      ],
+      "optimal_bbox_axis_length_limit_mm": 0.02,
+      "sampled_boundary_distance": {
+        "sampling_deflection_mm": 0.1,
+        "samples_per_direction": 160,
+        "native_to_step_max_mm": 1.2461424682181725e-11,
+        "step_to_native_max_mm": 1.2461424682181725e-11,
+        "max_sampled_surface_distance_mm": 1.2461424682181725e-11,
+        "limit_mm": 0.005,
+        "method": "evenly spaced exact BRep and tessellation vertices; bidirectional point-to-solid distance"
+      }
+    },
+    "stl": {
+      "triangles": 7072,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "misoriented_edges": 0,
+      "degenerate_triangles": 0,
+      "closed_oriented_mesh": true
+    },
+    "stl_tessellation": {
+      "linear_deflection_mm": 0.1,
+      "angular_deflection_rad": 0.3
+    }
+  },
+  "units": {
+    "length": "mm",
+    "angle": "degrees"
+  }
+}
