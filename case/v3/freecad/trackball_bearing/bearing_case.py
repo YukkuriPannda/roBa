@@ -22,8 +22,16 @@ DEFAULTS = {
  'PilotDiameter':2.15, 'PocketClearance':0.30,
  'InnerRingContactDiameter':2.90, 'SpacerThickness':0.40,
  'BossRadius':3.20, 'BossLength':2.50, 'BallClearance':0.40, 'ToolAccessDepth':12.,
- 'LowerPolar':63., 'LowerAzimuth':285., 'LowerAxisTilt':17., 'UpperAzimuth':20.,
+ # COROPIT photo-derived topology: two upper flank sites and one lower site.
+ # Use the original v3 ceramic-seat normals as the nearest preserved case
+ # locations; COROPIT's exact coordinates and shaft angles are unpublished.
+ 'Support1Polar':98.30, 'Support1Azimuth':123.58, 'Support1AxisTilt':0.,
+ # Raise the lower support from the original ceramic-seat angle (28.41 deg)
+ # to clear the v3 body while preserving the lower COROPIT-style support role.
+ 'Support2Polar':60.00, 'Support2Azimuth':258.57, 'Support2AxisTilt':0.,
+ 'Support3Polar':116.77, 'Support3Azimuth':358.09, 'Support3AxisTilt':0.,
 }
+ANGLE_NAMES = {name for name in DEFAULTS if name.endswith(('Polar', 'Azimuth', 'AxisTilt'))}
 
 def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def verify_source_hashes():
@@ -39,27 +47,24 @@ def radial(polar,azimuth):
  return App.Vector(math.sin(p)*math.cos(a),math.sin(p)*math.sin(a),-math.cos(p))
 def cylinder(radius,t0,t1,c,axis): return Part.makeCylinder(radius,t1-t0,c+axis*t0,axis)
 def directions(p):
- original_ceramic=App.Vector(-10.7403,15.7009,22.7509)-unit(App.Vector(-.54725,.82442,.14439))
- first=unit(original_ceramic-CENTER)
- low=radial(value(p,'LowerPolar'),value(p,'LowerAzimuth'))
- z=.45043; az=math.radians(value(p,'UpperAzimuth'))
- third=App.Vector(math.sqrt(1-z*z)*math.cos(az),math.sqrt(1-z*z)*math.sin(az),z)
- return [first,low,third]
+ return [
+  radial(value(p,f'Support{i}Polar'),value(p,f'Support{i}Azimuth'))
+  for i in range(1,4)
+ ]
 def frames(p):
  dirs=directions(p); radius=value(p,'BallDiameter')/2+value(p,'BearingOuterDiameter')/2
  result=[]
  for i,u in enumerate(dirs):
   axis=unit(App.Vector(0,0,1).cross(u))
-  if i==1:
-   axis=-axis
-   tilt=math.radians(value(p,'LowerAxisTilt'))
-   axis=unit(axis*math.cos(tilt)+u.cross(axis)*math.sin(tilt))
+  tilt=math.radians(value(p,f'Support{i+1}AxisTilt'))
+  axis=unit(axis*math.cos(tilt)+u.cross(axis)*math.sin(tilt))
   result.append((CENTER+u*radius,axis,u))
  return result
 
 def validate_parameters(p):
  vals={k:value(p,k) for k in DEFAULTS}
- if not all(math.isfinite(v) and v>0 for k,v in vals.items() if k!='UpperAzimuth'):raise ValueError('dimensions must be positive finite values')
+ if not all(math.isfinite(v) for v in vals.values()):raise ValueError('dimensions must be finite values')
+ if not all(v>0 for k,v in vals.items() if k not in ANGLE_NAMES):raise ValueError('length dimensions must be positive')
  if vals['BearingInnerDiameter']>=vals['BearingOuterDiameter']:raise ValueError('bearing ID must be below OD')
  if not vals['BearingInnerDiameter']<vals['InnerRingContactDiameter']<vals['BearingOuterDiameter']:raise ValueError('inner-ring contact diameter out of range')
  if vals['PilotDiameter']>=vals['ScrewDiameter']:raise ValueError('pilot must be smaller than screw')
@@ -67,9 +72,9 @@ def validate_parameters(p):
  if vals['ScrewHeadDiameter']<=vals['InnerRingContactDiameter']:raise ValueError('head must retain inner-ring spacer')
  if vals['ScrewLength']<vals['BearingWidth']+2*vals['SpacerThickness']+1.5:raise ValueError('insufficient screw engagement')
  if vals['ToolAccessDepth']<8:raise ValueError('insufficient fastener access depth')
- if not 50<=vals['LowerPolar']<=65 or not 270<=vals['LowerAzimuth']<=300:raise ValueError('lower support outside examined design range')
- if not -20<=vals['LowerAxisTilt']<=20:raise ValueError('lower support shaft tilt outside examined design range')
- if not -20<=vals['UpperAzimuth']<=25:raise ValueError('upper support outside examined design range')
+ for i in range(1,4):
+  if not 0<vals[f'Support{i}Polar']<180:raise ValueError(f'Support{i}Polar must be between 0 and 180 degrees')
+  if not -20<=vals[f'Support{i}AxisTilt']<=20:raise ValueError(f'Support{i}AxisTilt outside examined design range')
  return vals
 
 def hardware(p):
@@ -144,7 +149,7 @@ def build():
  doc=App.newDocument('TrackballBearing')
  p=doc.addObject('App::FeaturePython','Dimensions');p.Label='Bearing case dimensions (mm / degrees)'
  for name,val in DEFAULTS.items():
-  typ='App::PropertyAngle' if name in ('LowerPolar','LowerAzimuth','LowerAxisTilt','UpperAzimuth') else 'App::PropertyLength'
+  typ='App::PropertyAngle' if name in ANGLE_NAMES else 'App::PropertyLength'
   p.addProperty(typ,name,'Bearing design');setattr(p,name,val)
  mesh=Mesh.Mesh(str(ROOT/'case/trackballcase.stl'))
  ref=doc.addObject('Mesh::Feature','OriginalMesh');ref.Mesh=mesh;ref.Label='Original STL reference (unchanged)'

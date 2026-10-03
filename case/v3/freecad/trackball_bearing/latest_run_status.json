@@ -1,4 +1,5 @@
 {
-  "status": "CAD_CHECKS_PASS_PHYSICAL_UNVERIFIED",
-  "run_directory": "D:\\OtherProjects\\roBa-case\\case\\v3\\freecad\\trackball_bearing\\runs\\20261003-124413"
+  "status": "FAIL_NOT_PRINT_READY",
+  "run_directory": "D:\\OtherProjects\\roBa-case\\case\\v3\\freecad\\trackball_bearing\\runs\\20261003-164024",
+  "error": "export_case_mesh.py failed; inspect its run log"
 }
