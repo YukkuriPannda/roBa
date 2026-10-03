@@ -1,0 +1,114 @@
+{
+  "freecad_version": [
+    "1",
+    "1",
+    "4",
+    "20260928 (Git shallow)"
+  ],
+  "meshes": {
+    "trackballcase.stl": {
+      "file": "case/trackballcase.stl",
+      "sha256": "cdaa94d5c244317f9dec7bfc47de96845a091c61c89673050497cd625df796c9",
+      "points": 12264,
+      "facets": 24536,
+      "is_solid": true,
+      "has_non_manifolds": false,
+      "has_self_intersections": true,
+      "has_invalid_points": false,
+      "volume_mm3": 8944.220703125,
+      "area_mm2": 8728.7763671875,
+      "bbox": [
+        -17.467098236083984,
+        -15.836212158203125,
+        2.0,
+        31.788068771362305,
+        19.498001098632812,
+        35.7445068359375
+      ],
+      "components": 1
+    },
+    "trackballcase_JLC3DP.stl": {
+      "file": "case/trackballcase_JLC3DP.stl",
+      "sha256": "b90bfb4ed157003a43710a637443d8a30afebc3675cd12e8b86ef8170fa5cc0d",
+      "points": 12452,
+      "facets": 24920,
+      "is_solid": true,
+      "has_non_manifolds": false,
+      "has_self_intersections": true,
+      "has_invalid_points": false,
+      "volume_mm3": 8991.8642578125,
+      "area_mm2": 8916.53515625,
+      "bbox": [
+        -17.467098236083984,
+        -15.836212158203125,
+        2.0,
+        31.788068771362305,
+        19.498001098632812,
+        35.7445068359375
+      ],
+      "components": 1
+    }
+  },
+  "steps": {
+    "top_R.stp": {
+      "file": "case/v3/top_R.stp",
+      "sha256": "71abf242da896a3dd3ea328145666ab5f0acaccded1515d0cccc8faa38ba0123",
+      "valid": true,
+      "solids": 1,
+      "volume_mm3": 39930.62140396129,
+      "bbox": [
+        -67.383253846,
+        -52.653878416,
+        -3.0000001,
+        66.986625633,
+        52.248088496,
+        16.0000001
+      ]
+    },
+    "top_L.stp": {
+      "file": "case/v3/top_L.stp",
+      "sha256": "821a78aea89ae07a5441a9e8bdeecfe38a8c4f41e8dd07c0cc852198c1aaec5b",
+      "valid": true,
+      "solids": 1,
+      "volume_mm3": 41563.43348924901,
+      "bbox": [
+        -67.1325,
+        -52.493564861,
+        -3.0000001000000043,
+        67.245378851,
+        52.4025,
+        16.0
+      ]
+    },
+    "bottom_R.stp": {
+      "file": "case/v3/bottom_R.stp",
+      "sha256": "17ad5c51dda57665c762061a5f9b7b6bfb765b022eca592cf89bdf7b9628eead",
+      "valid": true,
+      "solids": 1,
+      "volume_mm3": 20008.610499244704,
+      "bbox": [
+        -63.203561526,
+        -48.474321645,
+        -11.726183718403698,
+        62.736625733000025,
+        48.410918185,
+        1e-07
+      ]
+    },
+    "bottom_L.stp": {
+      "file": "case/v3/bottom_L.stp",
+      "sha256": "c8aa39aef701ba3a9dae273c621d7bef85a99fd7a873fb73dabfc2225b557298",
+      "valid": true,
+      "solids": 1,
+      "volume_mm3": 16973.651477338793,
+      "bbox": [
+        -62.930002361,
+        -48.373593817,
+        -11.73813670967825,
+        63.638625643999994,
+        48.612829688999994,
+        1e-07
+      ]
+    }
+  }
+}

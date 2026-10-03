@@ -1,0 +1,19 @@
+from pathlib import Path
+import sys, json
+import FreeCAD as App
+import FreeCADGui as Gui
+folder=Path(__file__).resolve().parent
+sys.path.insert(0,str(folder))
+import bearing_case
+path=folder/'generated/trackball_bearing.FCStd'
+verification=folder/'generated/verification.json'
+if not verification.exists() or json.loads(verification.read_text())['status']!='CAD_CHECKS_PASS_PHYSICAL_UNVERIFIED':raise RuntimeError('Run build_verify.py; latest published document has no passing CAD record')
+if not path.exists():raise RuntimeError('Run build_verify.py first; no verified document available')
+doc=App.openDocument(str(path))
+for obj in doc.Objects:
+ if hasattr(obj,'ViewObject'):obj.ViewObject.Visibility=obj.Name in ('BearingCase','Bearings','Screws','LooseSpacers','Ball34')
+doc.getObject('BearingCase').ViewObject.ShapeColor=(.68,.76,.85)
+doc.getObject('Bearings').ViewObject.ShapeColor=(.3,.75,.45)
+doc.getObject('Screws').ViewObject.ShapeColor=(.95,.65,.20)
+doc.getObject('Ball34').ViewObject.Transparency=80
+Gui.activeDocument().activeView().viewAxonometric();Gui.activeDocument().activeView().fitAll()

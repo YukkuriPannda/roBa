@@ -1,0 +1,282 @@
+{
+  "status": "PASS",
+  "units": "mm",
+  "output_path": "D:\\OtherProjects\\roBa-case\\case\\v3\\freecad\\trackball_bearing\\runs\\20261003-124413\\trackball_bearing.stl",
+  "output_sha256": "4ce6cc4b2aa4cd089929ab4ebd0e6856c50dbe433be80414f16f2d63ff17cadb",
+  "input_brep": {
+    "valid": true,
+    "solid_count": 1,
+    "volume_mm3": 8888.248229329854
+  },
+  "raw_shape_triangulation": {
+    "deflection_mm": 0.08,
+    "facets": 32488,
+    "volume_mm3": 8888.5322265625
+  },
+  "initial_stl_round_trip": {
+    "facets": 32488,
+    "components": 1,
+    "closed": true,
+    "non_manifold": false,
+    "self_intersections": 15
+  },
+  "repair_input_second_stl_round_trip": {
+    "facets": 32488,
+    "components": 1,
+    "closed": true,
+    "non_manifold": false,
+    "self_intersections": 15
+  },
+  "final_stl_round_trip": {
+    "facets": 32466,
+    "components": 1,
+    "closed": true,
+    "non_manifold": false,
+    "self_intersections": 0
+  },
+  "repair_policy": {
+    "method": "collapse only short shared edges adjacent to reported self-intersection facets",
+    "max_edge_length_mm": 1.0,
+    "max_steps": 50,
+    "protected_zone_mm": {
+      "x": [
+        -10.0,
+        25.0
+      ],
+      "y": [
+        -15.0,
+        15.0
+      ],
+      "z": [
+        1.9,
+        5.9
+      ]
+    },
+    "operations": [
+      {
+        "step": 1,
+        "edge_length_mm": 0.000336434889131678,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          2677,
+          2678
+        ],
+        "adjacent_facets_before_collapse": [
+          20284,
+          20807
+        ],
+        "intersections_before": 15,
+        "intersections_after_stl_round_trip": 13,
+        "facets_after_stl_round_trip": 32486,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 2,
+        "edge_length_mm": 0.00037842008374761385,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          2977,
+          2978
+        ],
+        "adjacent_facets_before_collapse": [
+          22337,
+          22901
+        ],
+        "intersections_before": 13,
+        "intersections_after_stl_round_trip": 12,
+        "facets_after_stl_round_trip": 32484,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 3,
+        "edge_length_mm": 0.0013546660848993382,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          2598,
+          2599
+        ],
+        "adjacent_facets_before_collapse": [
+          21120,
+          21749
+        ],
+        "intersections_before": 12,
+        "intersections_after_stl_round_trip": 11,
+        "facets_after_stl_round_trip": 32482,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 4,
+        "edge_length_mm": 0.0027103430783554845,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          2598,
+          2599
+        ],
+        "adjacent_facets_before_collapse": [
+          21119,
+          21747
+        ],
+        "intersections_before": 11,
+        "intersections_after_stl_round_trip": 10,
+        "facets_after_stl_round_trip": 32480,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 5,
+        "edge_length_mm": 0.0027103692522538257,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          2597,
+          2598
+        ],
+        "adjacent_facets_before_collapse": [
+          21119,
+          21746
+        ],
+        "intersections_before": 10,
+        "intersections_after_stl_round_trip": 9,
+        "facets_after_stl_round_trip": 32478,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 6,
+        "edge_length_mm": 0.0058832654682488775,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          5853,
+          5856
+        ],
+        "adjacent_facets_before_collapse": [
+          15118,
+          15972
+        ],
+        "intersections_before": 9,
+        "intersections_after_stl_round_trip": 8,
+        "facets_after_stl_round_trip": 32476,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 7,
+        "edge_length_mm": 0.006253205549867805,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          2274,
+          2280
+        ],
+        "adjacent_facets_before_collapse": [
+          20635,
+          21085
+        ],
+        "intersections_before": 8,
+        "intersections_after_stl_round_trip": 7,
+        "facets_after_stl_round_trip": 32474,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 8,
+        "edge_length_mm": 0.010540719818117416,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          13012,
+          13016
+        ],
+        "adjacent_facets_before_collapse": [
+          5355,
+          31151
+        ],
+        "intersections_before": 7,
+        "intersections_after_stl_round_trip": 3,
+        "facets_after_stl_round_trip": 32472,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 9,
+        "edge_length_mm": 0.011764982400197303,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          5850,
+          5852
+        ],
+        "adjacent_facets_before_collapse": [
+          15116,
+          15969
+        ],
+        "intersections_before": 3,
+        "intersections_after_stl_round_trip": 2,
+        "facets_after_stl_round_trip": 32470,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 10,
+        "edge_length_mm": 0.047932742002891195,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          2973,
+          3005
+        ],
+        "adjacent_facets_before_collapse": [
+          22323,
+          22331
+        ],
+        "intersections_before": 2,
+        "intersections_after_stl_round_trip": 1,
+        "facets_after_stl_round_trip": 32468,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 11,
+        "edge_length_mm": 0.39634506739963926,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          8365,
+          8375
+        ],
+        "adjacent_facets_before_collapse": [
+          19448,
+          19453
+        ],
+        "intersections_before": 1,
+        "intersections_after_stl_round_trip": 0,
+        "facets_after_stl_round_trip": 32466,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      }
+    ]
+  },
+  "geometry_deviation": {
+    "max_allowed_mm": 0.08,
+    "raw_to_final_bidirectional_sampled_distance": {
+      "raw_shape_to_final_mesh": {
+        "sample_count": 48714,
+        "max_distance_upper_bound_mm": 0.0035484589431042874,
+        "exact_triangle_queries": 48
+      },
+      "final_mesh_to_raw_shape": {
+        "sample_count": 48681,
+        "max_distance_upper_bound_mm": 0.00038880473894913726,
+        "exact_triangle_queries": 15
+      },
+      "max_distance_upper_bound_mm": 0.0035484589431042874,
+      "source_samples_are_vertices_and_face_centroids": true,
+      "protected_zone_samples_include_triangles_whose_bounds_touch_zone": false,
+      "shortcut_surface_upper_bound_mm": 1e-05
+    },
+    "protected_zone_max_allowed_mm": 0.01,
+    "protected_zone_bidirectional_sampled_distance": {
+      "raw_shape_to_final_mesh": {
+        "sample_count": 5329,
+        "max_distance_upper_bound_mm": 0.0,
+        "exact_triangle_queries": 0
+      },
+      "final_mesh_to_raw_shape": {
+        "sample_count": 5329,
+        "max_distance_upper_bound_mm": 0.0,
+        "exact_triangle_queries": 0
+      },
+      "max_distance_upper_bound_mm": 0.0,
+      "source_samples_are_vertices_and_face_centroids": true,
+      "protected_zone_samples_include_triangles_whose_bounds_touch_zone": true,
+      "shortcut_surface_upper_bound_mm": 1e-05
+    }
+  },
+  "mesh_volume_delta_mm3": 0.0234375
+}

@@ -1,0 +1,111 @@
+{
+  "method": "2D rigid least-squares fit of two ear-hole centroids and the sensor-hole centroid (mesh section z=3.5/2.2) to bottom_R cylinder axes; Z from flange underside to bottom_R top face",
+  "local_points": [
+    [
+      9.5881,
+      -7.72
+    ],
+    [
+      9.5881,
+      8.48
+    ],
+    [
+      -0.3119,
+      -0.0015
+    ]
+  ],
+  "global_points": [
+    [
+      20.4853,
+      -36.4115
+    ],
+    [
+      20.4995,
+      -20.2096
+    ],
+    [
+      10.5642,
+      -28.764
+    ]
+  ],
+  "local_ear_r_equiv": [
+    0.84,
+    0.84
+  ],
+  "local_sensor_r_equiv": 6.978,
+  "bottom_holes": [
+    [
+      20.485280974,
+      -36.411476943,
+      1.2,
+      -2.0
+    ],
+    [
+      20.499504344,
+      -20.20961115,
+      1.2,
+      -2.0
+    ]
+  ],
+  "bottom_sensor_hole": [
+    [
+      10.564223908,
+      -28.763965073,
+      6.999482882,
+      -2.0
+    ]
+  ],
+  "rotation_z_deg": 0.1025,
+  "translation_xy": [
+    10.8954,
+    -28.7258
+  ],
+  "residuals_xy_mm": [
+    [
+      -0.012,
+      0.0171
+    ],
+    [
+      0.0312,
+      0.019
+    ],
+    [
+      -0.0192,
+      -0.0361
+    ]
+  ],
+  "max_residual_mm": 0.0409,
+  "bottom_top_faces_at_holes": [
+    {
+      "z": -2.0,
+      "normal_z": 1.0,
+      "area": 1255.3
+    },
+    {
+      "z": -2.0,
+      "normal_z": 1.0,
+      "area": 1255.3
+    }
+  ],
+  "mesh_flange_underside_z": 2.0,
+  "translation_z_assuming_flange_contact": -4.0,
+  "ball_center_global": [
+    10.5775,
+    -28.7265,
+    16.001
+  ],
+  "top_R_sphere": {
+    "center": [
+      10.7033,
+      -28.5021,
+      15.8039
+    ],
+    "radius": 20.0
+  },
+  "top_R_sphere_center_offset_from_ball_center": [
+    0.1258,
+    0.2244,
+    -0.1971
+  ],
+  "top_L_sphere_faces": 0
+}

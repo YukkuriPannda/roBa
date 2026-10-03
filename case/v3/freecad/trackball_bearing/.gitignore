@@ -1,0 +1,12 @@
+__pycache__/
+runs/
+mesh_export_work/
+*.stdout.txt
+implementation-*.txt
+implementation-result.json
+probe_*.py
+check_hardware.py
+hardware-check.json
+inspect/*.py
+inspect/logs/*trial*
+inspect/logs/repaired_source.stl

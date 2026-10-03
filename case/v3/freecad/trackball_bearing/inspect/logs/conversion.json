@@ -1,0 +1,14 @@
+{
+  "faces": 24536,
+  "make_shape_s": 2.69,
+  "shell_closed": true,
+  "solid_valid": true,
+  "solid_volume": 8944.224384591893,
+  "mesh_volume": 8944.220703125,
+  "solid_s": 39.57,
+  "check": "BOP check found the following errors:\nError in Edge: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo SelfIntersect\nError in Face: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo SelfIntersect\nError in Face: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo SelfIntersect\nError in Face: BOPAlgo SelfIntersect\nError in Face: BOPAlgo SelfIntersect\nError in Face: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo SelfIntersect\nError in Face: BOPAlgo SelfIntersect\nError in Face: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo SelfIntersect\nError in Face: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo SelfIntersect\nError in Face: BOPAlgo SelfIntersect\nError in Edge: BOPAlgo",
+  "test_cut_valid": true,
+  "test_cut_solids": 1,
+  "test_cut_removed_mm3": 27.11179380876638,
+  "test_cut_s": 7.37
+}

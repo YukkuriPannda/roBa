@@ -1,0 +1,589 @@
+{
+  "status": "CAD_CHECKS_PASS_PHYSICAL_UNVERIFIED",
+  "checks": {
+    "case_single_valid_solid": {
+      "pass": true,
+      "evidence": {
+        "solids": 1,
+        "volume_mm3": 8888.248229329854
+      }
+    },
+    "ball_case_clearance": {
+      "pass": true,
+      "evidence": {
+        "minimum_surface_gap_mm": 0.38805368114479677,
+        "centre_inside_material": false,
+        "method": "all-triangle plane/edge distance and ray parity"
+      }
+    },
+    "original_ball_seating_reference": {
+      "pass": true,
+      "evidence": {
+        "ceramic_centre_distances_mm": [
+          18.00000000177138,
+          18.000000001839943,
+          17.99999999561138
+        ],
+        "assumption": "2mm ceramic spheres against measured flat recess bottoms; not physical seating proof"
+      }
+    },
+    "bearing_0_contact_and_rotation": {
+      "pass": true,
+      "evidence": {
+        "case_overlap_mm3": 0.0,
+        "ball_contact_gap_mm": 2.219130444901576e-12
+      }
+    },
+    "bearing_0_outer_ring_sweep": {
+      "pass": true,
+      "evidence": 0.0
+    },
+    "bearing_0_driver_access": {
+      "pass": true,
+      "evidence": 0.0
+    },
+    "screw_0_vs_ball": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 0.15721422609160232
+      }
+    },
+    "bearing_1_contact_and_rotation": {
+      "pass": true,
+      "evidence": {
+        "case_overlap_mm3": 0.0,
+        "ball_contact_gap_mm": 5.740431459531136e-11
+      }
+    },
+    "bearing_1_outer_ring_sweep": {
+      "pass": true,
+      "evidence": 0.0
+    },
+    "bearing_1_driver_access": {
+      "pass": true,
+      "evidence": 0.0
+    },
+    "screw_1_vs_ball": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 0.15721422609160088
+      }
+    },
+    "bearing_2_contact_and_rotation": {
+      "pass": true,
+      "evidence": {
+        "case_overlap_mm3": 0.0,
+        "ball_contact_gap_mm": 3.4099482708618556e-11
+      }
+    },
+    "bearing_2_outer_ring_sweep": {
+      "pass": true,
+      "evidence": 0.0
+    },
+    "bearing_2_driver_access": {
+      "pass": true,
+      "evidence": 0.0
+    },
+    "screw_2_vs_ball": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 0.1572142260915964
+      }
+    },
+    "assembly_alignment": {
+      "pass": true,
+      "evidence": {
+        "method": "2D rigid least-squares fit of two ear-hole centroids and the sensor-hole centroid (mesh section z=3.5/2.2) to bottom_R cylinder axes; Z from flange underside to bottom_R top face",
+        "local_points": [
+          [
+            9.5881,
+            -7.72
+          ],
+          [
+            9.5881,
+            8.48
+          ],
+          [
+            -0.3119,
+            -0.0015
+          ]
+        ],
+        "global_points": [
+          [
+            20.4853,
+            -36.4115
+          ],
+          [
+            20.4995,
+            -20.2096
+          ],
+          [
+            10.5642,
+            -28.764
+          ]
+        ],
+        "local_ear_r_equiv": [
+          0.84,
+          0.84
+        ],
+        "local_sensor_r_equiv": 6.978,
+        "bottom_holes": [
+          [
+            20.485280974,
+            -36.411476943,
+            1.2,
+            -2.0
+          ],
+          [
+            20.499504344,
+            -20.20961115,
+            1.2,
+            -2.0
+          ]
+        ],
+        "bottom_sensor_hole": [
+          [
+            10.564223908,
+            -28.763965073,
+            6.999482882,
+            -2.0
+          ]
+        ],
+        "rotation_z_deg": 0.1025,
+        "translation_xy": [
+          10.8954,
+          -28.7258
+        ],
+        "residuals_xy_mm": [
+          [
+            -0.012,
+            0.0171
+          ],
+          [
+            0.0312,
+            0.019
+          ],
+          [
+            -0.0192,
+            -0.0361
+          ]
+        ],
+        "max_residual_mm": 0.0409,
+        "bottom_top_faces_at_holes": [
+          {
+            "z": -2.0,
+            "normal_z": 1.0,
+            "area": 1255.3
+          },
+          {
+            "z": -2.0,
+            "normal_z": 1.0,
+            "area": 1255.3
+          }
+        ],
+        "mesh_flange_underside_z": 2.0,
+        "translation_z_assuming_flange_contact": -4.0,
+        "ball_center_global": [
+          10.5775,
+          -28.7265,
+          16.001
+        ],
+        "top_R_sphere": {
+          "center": [
+            10.7033,
+            -28.5021,
+            15.8039
+          ],
+          "radius": 20.0
+        },
+        "top_R_sphere_center_offset_from_ball_center": [
+          0.1258,
+          0.2244,
+          -0.1971
+        ],
+        "top_L_sphere_faces": 0
+      }
+    },
+    "sensor_hole_relationship": {
+      "pass": true,
+      "evidence": {
+        "ball_center_global": [
+          10.610647463720397,
+          -28.629699207552896,
+          15.890323380000002
+        ],
+        "sensor_hole_axis_global": [
+          10.564223908,
+          -28.763965073
+        ],
+        "radial_offset_mm": 0.14206501733356078,
+        "ball_surface_z_at_sensor_axis": -1.1090830076021838,
+        "optical_axis_model_available": false
+      }
+    },
+    "case_vs_top_R": {
+      "pass": true,
+      "evidence": {
+        "method": "mesh surface intersection; reference deflection 0.1mm",
+        "intersection_facets": 0,
+        "flange_contact_only": false,
+        "intersection_bbox": "BoundBox (1.79769e+308, 1.79769e+308, 1.79769e+308, -1.79769e+308, -1.79769e+308, -1.79769e+308)",
+        "reference_self_intersection_warning": false
+      }
+    },
+    "holder_0_vs_top_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 8.965787138321984
+      }
+    },
+    "holder_1_vs_top_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 0.5439553556817708
+      }
+    },
+    "holder_2_vs_top_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 15.241814086976362
+      }
+    },
+    "ball34_vs_top_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 2.951137560250268,
+        "contact_allowed_for_original_mount": false
+      }
+    },
+    "bearings_vs_top_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 1.3719313304695337,
+        "contact_allowed_for_original_mount": false
+      }
+    },
+    "screws_vs_top_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 0.38565970697261687,
+        "contact_allowed_for_original_mount": false
+      }
+    },
+    "screw_0_installation_path_top_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 0.0,
+        "in_place_replacement_available": true,
+        "required_procedure": "checked screw-head insertion envelope clears body",
+        "screw_head_diameter_mm": 3.8
+      }
+    },
+    "driver_0_access_path_top_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 0.0,
+        "in_place_access_available": true,
+        "required_procedure": "checked 4mm driver envelope clears body",
+        "driver_diameter_mm": 4.0,
+        "case_access_tunnel_diameter_mm": 4.3999999999999995
+      }
+    },
+    "screw_1_installation_path_top_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 37.54133662704834,
+        "in_place_replacement_available": false,
+        "required_procedure": "remove trackball case from body before assembly/replacement",
+        "screw_head_diameter_mm": 3.8
+      }
+    },
+    "driver_1_access_path_top_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 40.472597127417544,
+        "in_place_access_available": false,
+        "required_procedure": "remove trackball case from body before operating tool",
+        "driver_diameter_mm": 4.0,
+        "case_access_tunnel_diameter_mm": 4.3999999999999995
+      }
+    },
+    "screw_2_installation_path_top_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 0.0,
+        "in_place_replacement_available": true,
+        "required_procedure": "checked screw-head insertion envelope clears body",
+        "screw_head_diameter_mm": 3.8
+      }
+    },
+    "driver_2_access_path_top_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 0.0,
+        "in_place_access_available": true,
+        "required_procedure": "checked 4mm driver envelope clears body",
+        "driver_diameter_mm": 4.0,
+        "case_access_tunnel_diameter_mm": 4.3999999999999995
+      }
+    },
+    "case_vs_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "method": "mesh surface intersection; reference deflection 0.1mm",
+        "intersection_facets": 422,
+        "flange_contact_only": true,
+        "intersection_bbox": "BoundBox (-10.1991, -11.7094, 2, 33.6347, 16.3186, 2)",
+        "reference_self_intersection_warning": true
+      }
+    },
+    "holder_0_vs_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 17.575315448236204
+      }
+    },
+    "holder_1_vs_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 6.510157714892701
+      }
+    },
+    "holder_2_vs_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 23.248493380000003
+      }
+    },
+    "ball34_vs_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 2.159536800549774,
+        "contact_allowed_for_original_mount": false
+      }
+    },
+    "bearings_vs_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 8.1849444709503,
+        "contact_allowed_for_original_mount": false
+      }
+    },
+    "screws_vs_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "gap_mm": 8.48299721952616,
+        "contact_allowed_for_original_mount": false
+      }
+    },
+    "screw_0_installation_path_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 0.0,
+        "in_place_replacement_available": true,
+        "required_procedure": "checked screw-head insertion envelope clears body",
+        "screw_head_diameter_mm": 3.8
+      }
+    },
+    "driver_0_access_path_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 0.0,
+        "in_place_access_available": true,
+        "required_procedure": "checked 4mm driver envelope clears body",
+        "driver_diameter_mm": 4.0,
+        "case_access_tunnel_diameter_mm": 4.3999999999999995
+      }
+    },
+    "screw_1_installation_path_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 0.0,
+        "in_place_replacement_available": true,
+        "required_procedure": "checked screw-head insertion envelope clears body",
+        "screw_head_diameter_mm": 3.8
+      }
+    },
+    "driver_1_access_path_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 0.0,
+        "in_place_access_available": true,
+        "required_procedure": "checked 4mm driver envelope clears body",
+        "driver_diameter_mm": 4.0,
+        "case_access_tunnel_diameter_mm": 4.3999999999999995
+      }
+    },
+    "screw_2_installation_path_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 0.0,
+        "in_place_replacement_available": true,
+        "required_procedure": "checked screw-head insertion envelope clears body",
+        "screw_head_diameter_mm": 3.8
+      }
+    },
+    "driver_2_access_path_bottom_R": {
+      "pass": true,
+      "evidence": {
+        "detached_case_overlap_mm3": 0.0,
+        "assembled_body_overlap_mm3": 0.0,
+        "in_place_access_available": true,
+        "required_procedure": "checked 4mm driver envelope clears body",
+        "driver_diameter_mm": 4.0,
+        "case_access_tunnel_diameter_mm": 4.3999999999999995
+      }
+    },
+    "source_retention_construction": {
+      "pass": true,
+      "evidence": {
+        "operations": "source cut by declared pocket/head/pilot cylinders, then holder union",
+        "cut_count": 12,
+        "holder_count": 3,
+        "repair_record": "inspect/logs/repair.json",
+        "full_difference_volume_not_computed": true
+      }
+    },
+    "vertical_load_distribution": {
+      "pass": true,
+      "evidence": {
+        "relative_reactions_per_unit_downward_load": [
+          5.60573942316979,
+          6.061979428287483,
+          2.0118090657414243
+        ],
+        "condition_number": 14.044532758711417,
+        "criteria": "all positive; peak coefficient <10; condition <30",
+        "not_strength_evidence": true
+      }
+    },
+    "mounting_and_lower_sensor_zone_preserved": {
+      "pass": true,
+      "evidence": 0.0
+    },
+    "trackball_bearing_mesh": {
+      "pass": true,
+      "evidence": {
+        "components": 1,
+        "degenerate_facets": 0,
+        "minimum_triangle_area_mm2": 2.284178184476805e-08,
+        "closed": true,
+        "non_manifold": false,
+        "self_intersections": false,
+        "facets": 32466,
+        "volume_mm3": 8888.5556640625
+      }
+    },
+    "fit_coupon_mesh": {
+      "pass": true,
+      "evidence": {
+        "components": 1,
+        "degenerate_facets": 0,
+        "minimum_triangle_area_mm2": 0.0003303310704799897,
+        "closed": true,
+        "non_manifold": false,
+        "self_intersections": false,
+        "facets": 1702,
+        "volume_mm3": 156.01834106445312
+      }
+    },
+    "inner_ring_spacer_mesh": {
+      "pass": true,
+      "evidence": {
+        "components": 1,
+        "degenerate_facets": 0,
+        "minimum_triangle_area_mm2": 0.00485983147974452,
+        "closed": true,
+        "non_manifold": false,
+        "self_intersections": false,
+        "facets": 1008,
+        "volume_mm3": 0.5170084834098816
+      }
+    },
+    "step_round_trip": {
+      "pass": true,
+      "evidence": {
+        "valid": true,
+        "solids": 1,
+        "volume_delta": 6.089752787374891e-06
+      }
+    },
+    "named_dimension_recompute": {
+      "pass": true,
+      "evidence": {
+        "volume_before": 8888.248229329854,
+        "volume_after": 8888.093762506005,
+        "changed_parameter": "BearingWidth",
+        "value_before": 2.0,
+        "value_after": 2.05
+      }
+    },
+    "dependent_hardware_recompute": {
+      "pass": true,
+      "evidence": {
+        "volume_before": 45.94579255875074,
+        "volume_after": 47.09443737271949
+      }
+    },
+    "dimension_restore": {
+      "pass": true,
+      "evidence": {
+        "volume_delta": 9.094947017729282e-12
+      }
+    },
+    "saved_document_reopen": {
+      "pass": true,
+      "evidence": {
+        "volume": 8888.248229329853
+      }
+    },
+    "oversize_screw_rejected": {
+      "pass": true,
+      "evidence": {
+        "test_screw_diameter": 2.6,
+        "bearing_bore": 2.5
+      }
+    }
+  },
+  "limitations": [
+    "physical bearing inner-ring face dimensions unavailable",
+    "PCB/wiring model unavailable",
+    "print, fit and strength untested",
+    "global wall thickness untested",
+    "ball-side boss face includes a thin local section below 1.6mm review guideline; strength approval withheld"
+  ],
+  "local_wall_review": {
+    "selected_boss_ball_side_web_estimate_mm": 0.5814132890569603,
+    "nominal_outer_side_wall_mm": 2.125,
+    "method": "analytic radial section at boss face before source union and sensor clipping",
+    "review_goal_for_rigid_wall_mm": 1.6,
+    "strength_status": "HOLD_THIN_LOCAL_SECTION_REQUIRES_COUPON_AND_LOAD_CONDITIONS",
+    "global_minimum_not_measured": true
+  }
+}
