@@ -5,13 +5,13 @@
       "pass": true,
       "evidence": {
         "solids": 1,
-        "volume_mm3": 8903.445827012365
+        "volume_mm3": 8944.569122575504
       }
     },
     "ball_case_clearance": {
       "pass": true,
       "evidence": {
-        "minimum_surface_gap_mm": 0.38511251158118753,
+        "minimum_surface_gap_mm": 0.3882988721260361,
         "centre_inside_material": false,
         "method": "all-triangle plane/edge distance and ray parity"
       }
@@ -31,7 +31,7 @@
       "pass": true,
       "evidence": {
         "case_overlap_mm3": 0.0,
-        "ball_contact_gap_mm": 1.7955880367967707e-11
+        "ball_contact_gap_mm": 1.8866167008962756e-11
       }
     },
     "bearing_0_outer_ring_sweep": {
@@ -46,14 +46,14 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 0.15721422609160066
+        "gap_mm": 1.1620483426291977
       }
     },
     "bearing_1_contact_and_rotation": {
       "pass": true,
       "evidence": {
         "case_overlap_mm3": 0.0,
-        "ball_contact_gap_mm": 1.0371030816082398e-10
+        "ball_contact_gap_mm": 2.7106117474361022e-11
       }
     },
     "bearing_1_outer_ring_sweep": {
@@ -68,14 +68,14 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 0.15721422609160315
+        "gap_mm": 1.162048342629202
       }
     },
     "bearing_2_contact_and_rotation": {
       "pass": true,
       "evidence": {
         "case_overlap_mm3": 0.0,
-        "ball_contact_gap_mm": 1.129118924255222e-09
+        "ball_contact_gap_mm": 8.240775444764415e-10
       }
     },
     "bearing_2_outer_ring_sweep": {
@@ -90,7 +90,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 0.15721422609159877
+        "gap_mm": 1.1620483426291954
       }
     },
     "assembly_alignment": {
@@ -238,21 +238,21 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 1.5789405953195974
+        "gap_mm": 1.0941309750732593
       }
     },
     "holder_1_vs_top_R": {
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 0.6506298594289438
+        "gap_mm": 0.49942363811097207
       }
     },
     "holder_2_vs_top_R": {
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 3.4890744416530373
+        "gap_mm": 3.108134010347745
       }
     },
     "ball34_vs_top_R": {
@@ -267,7 +267,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 2.2863660189576325,
+        "gap_mm": 1.0566206365845692,
         "contact_allowed_for_original_mount": false
       }
     },
@@ -275,7 +275,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 0.1627708679770991,
+        "gap_mm": 0.4188139896882755,
         "contact_allowed_for_original_mount": false
       }
     },
@@ -283,7 +283,7 @@
       "pass": true,
       "evidence": {
         "detached_case_overlap_mm3": 0.0,
-        "assembled_body_overlap_mm3": 24.8698599418716,
+        "assembled_body_overlap_mm3": 37.00119012493956,
         "in_place_replacement_available": false,
         "required_procedure": "remove trackball case from body before assembly/replacement",
         "screw_head_diameter_mm": 3.8
@@ -293,7 +293,7 @@
       "pass": true,
       "evidence": {
         "detached_case_overlap_mm3": 0.0,
-        "assembled_body_overlap_mm3": 27.078822075110175,
+        "assembled_body_overlap_mm3": 39.2846216455908,
         "in_place_access_available": false,
         "required_procedure": "remove trackball case from body before operating tool",
         "driver_diameter_mm": 4.0,
@@ -346,9 +346,9 @@
       "pass": true,
       "evidence": {
         "method": "mesh surface intersection; reference deflection 0.1mm",
-        "intersection_facets": 464,
+        "intersection_facets": 280,
         "flange_contact_only": true,
-        "intersection_bbox": "BoundBox (-10.307, -11.715, 2, 21.7497, 16.3186, 2)",
+        "intersection_bbox": "BoundBox (-10.3107, -9.8686, 2, 26.6768, 16.2867, 2)",
         "reference_self_intersection_warning": true
       }
     },
@@ -356,21 +356,21 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 5.178940595319597
+        "gap_mm": 4.694130975073259
       }
     },
     "holder_1_vs_bottom_R": {
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 6.551021549035189
+        "gap_mm": 6.623890928139741
       }
     },
     "holder_2_vs_bottom_R": {
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 5.178940595319597
+        "gap_mm": 4.694130975073259
       }
     },
     "ball34_vs_bottom_R": {
@@ -385,7 +385,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 6.678940595319597,
+        "gap_mm": 5.194130975073259,
         "contact_allowed_for_original_mount": false
       }
     },
@@ -393,7 +393,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 6.778940595319597,
+        "gap_mm": 6.294130975073259,
         "contact_allowed_for_original_mount": false
       }
     },
@@ -486,8 +486,8 @@
     "ball_side_web_measured_mesh": {
       "pass": true,
       "evidence": {
-        "analytic_mm": 0.581413289056961,
-        "mesh_min_mm": 0.5875615675909207,
+        "analytic_mm": 1.8397757441676035,
+        "mesh_min_mm": 1.8459844043289941,
         "rays": 39,
         "method": "radial rays from pilot wall toward ball centre, first hit on final STL"
       }
@@ -501,12 +501,12 @@
       "evidence": {
         "components": 1,
         "degenerate_facets": 0,
-        "minimum_triangle_area_mm2": 2.995645680187749e-09,
+        "minimum_triangle_area_mm2": 1.4428069035597301e-07,
         "closed": true,
         "non_manifold": false,
         "self_intersections": false,
-        "facets": 29776,
-        "volume_mm3": 8903.7099609375
+        "facets": 29604,
+        "volume_mm3": 8944.6796875
       }
     },
     "fit_coupon_mesh": {
@@ -514,12 +514,12 @@
       "evidence": {
         "components": 1,
         "degenerate_facets": 0,
-        "minimum_triangle_area_mm2": 0.022375056534201576,
+        "minimum_triangle_area_mm2": 0.03502398499995252,
         "closed": true,
         "non_manifold": false,
         "self_intersections": false,
         "facets": 2762,
-        "volume_mm3": 2233.021240234375
+        "volume_mm3": 2724.50927734375
       }
     },
     "inner_ring_spacer_mesh": {
@@ -527,12 +527,12 @@
       "evidence": {
         "components": 1,
         "degenerate_facets": 0,
-        "minimum_triangle_area_mm2": 0.004859914407228818,
+        "minimum_triangle_area_mm2": 0.010467458514529434,
         "closed": true,
         "non_manifold": false,
         "self_intersections": false,
         "facets": 1008,
-        "volume_mm3": 0.5190226435661316
+        "volume_mm3": 1.5699666738510132
       }
     },
     "step_round_trip": {
@@ -540,14 +540,14 @@
       "evidence": {
         "valid": true,
         "solids": 1,
-        "volume_delta": -4.268596967449412e-06
+        "volume_delta": -8.04399860498961e-06
       }
     },
     "named_dimension_recompute": {
       "pass": true,
       "evidence": {
-        "volume_before": 8903.445827012365,
-        "volume_after": 8903.318713318324,
+        "volume_before": 8944.569122575504,
+        "volume_after": 8943.64854887373,
         "changed_parameter": "BearingWidth",
         "value_before": 2.0,
         "value_after": 2.05
@@ -556,21 +556,21 @@
     "dependent_hardware_recompute": {
       "pass": true,
       "evidence": {
-        "volume_before": 45.94579255875071,
-        "volume_after": 47.09443737271948
+        "volume_before": 150.7964473723101,
+        "volume_after": 154.56635855661779
       }
     },
     "dimension_restore": {
       "pass": true,
       "evidence": {
-        "volume_delta": 1.2732925824820995e-11
+        "volume_delta": -1.2732925824820995e-11
       }
     },
     "teardrop_toggle_recompute": {
       "pass": true,
       "evidence": {
-        "volume_teardrop_on": 8903.445827012378,
-        "volume_teardrop_off": 8915.989123310488,
+        "volume_teardrop_on": 8944.56912257549,
+        "volume_teardrop_off": 8960.803747477543,
         "expected": "teardrop removes more material than round holes"
       }
     },
@@ -580,17 +580,17 @@
         "requested_mm": 0.5,
         "groups": {
           "pilot_end": {
-            "edges": 11,
+            "edges": 3,
             "mode": "none",
-            "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
+            "reason": "fillet produced invalid or out-of-range solid; chamfer failed (class StdFail_NotDone BRep_API: command not done); "
           },
           "entrance": {
-            "edges": 100,
+            "edges": 115,
             "mode": "none",
             "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
           },
           "root": {
-            "edges": 68,
+            "edges": 56,
             "mode": "none",
             "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
           }
@@ -602,14 +602,14 @@
     "saved_document_reopen": {
       "pass": true,
       "evidence": {
-        "volume": 8903.445827012369
+        "volume": 8944.5691225755
       }
     },
     "oversize_screw_rejected": {
       "pass": true,
       "evidence": {
-        "test_screw_diameter": 2.6,
-        "bearing_bore": 2.5
+        "test_screw_diameter": 2.1,
+        "bearing_bore": 2.0
       }
     }
   },
@@ -618,19 +618,19 @@
     "PCB/wiring model unavailable",
     "print, fit and strength untested",
     "global wall thickness untested",
-    "ball-side web 0.581 mm (mesh 0.588 mm) is below the 1.6 mm target and the 1.2 mm floor; face offset change or hardware-stack change needed; strength approval withheld",
+    "ball-side web 1.840 mm (mesh 1.846 mm) is below the 1.6 mm target and the 1.2 mm floor; face offset change or hardware-stack change needed; strength approval withheld",
     "edge break applied to 0 of 3 groups; unapplied groups recorded in verification.json"
   ],
   "ball_side_web": {
-    "analytic_mm": 0.581413289056961,
-    "mesh_min_mm": 0.5875615675909207,
+    "analytic_mm": 1.8397757441676035,
+    "mesh_min_mm": 1.8459844043289941,
     "target_mm": 1.6,
     "floor_mm": 1.2,
-    "status": "BELOW_FLOOR_HOLD",
-    "boss_face_offset_mm": 1.4,
-    "required_boss_face_offset_for_target_mm": 6.021160602408799,
-    "required_boss_face_offset_for_floor_mm": 4.79941402673284,
-    "alternative_web_mm_ball_clearance_0.2_pilot_2.05": 0.8320714287202406,
+    "status": "MEETS_TARGET",
+    "boss_face_offset_mm": 1.5,
+    "required_boss_face_offset_for_target_mm": 2.4892061111444567e-59,
+    "required_boss_face_offset_for_floor_mm": 2.4892061111444567e-59,
+    "alternative_web_mm_ball_clearance_0.2_pilot_1.55": 2.0905318144974245,
     "reason": "web = (ball radius + bearing OD/2 - pilot radius) - sqrt((ball radius + ball clearance)^2 - face offset^2); bearing centre distance, pilot, clearance and face offset are fixed by the frozen bearing stack (width 2 mm + 0.4 mm metal spacer)",
     "strength_status": "HOLD_THIN_LOCAL_SECTION_REQUIRES_COUPON_AND_LOAD_CONDITIONS",
     "global_minimum_not_measured": true

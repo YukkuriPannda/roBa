@@ -181,9 +181,9 @@ def write_print_md(case, coupon):
         '',
         '| 段 | ベアリング座の逃げ | 下穴径 | 注意 |',
         '|---|---|---|---|',
-        '| 1（左） | 0.20 mm | 2.05 mm | ネジのタップ用に小さい側 |',
-        '| 2（中） | 0.30 mm | 2.15 mm | 設計値 |',
-        '| 3（右） | 0.40 mm | 2.25 mm | ネジが緩くなる側 |',
+        '| 1（左） | 0.20 mm | 1.55 mm | ネジのタップ用に小さい側 |',
+        '| 2（中） | 0.30 mm | 1.65 mm | 設計値 |',
+        '| 3（右） | 0.40 mm | 1.75 mm | ネジが緩くなる側 |',
         '',
         '## 印刷設定（FlashPrintで手動設定）',
         '',
@@ -212,10 +212,14 @@ def write_print_md(case, coupon):
         '',
         '- 印刷結果（寸法・反り・層間剥離）は未確認。試し刷りが必要。',
         '- 嵌合（ベアリング・ネジ・ボール）と強度・耐久性は未確認。',
-        '- ボール側のボス薄肉（約0.58 mm）は目標1.6 mm、下限1.2 mmに満たない。詳細はverification.jsonとREADMEを参照。',
+        f"- ボール側のボス薄肉（解析値 {_web:.2f} mm）。目標 {_bc.DEFAULTS['MinBallSideWeb']:.1f} mm、下限 {_bc.DEFAULTS['BallSideWebFloor']:.1f} mm。全体肉厚と荷重下の強度は未確認。詳細はverification.jsonとREADMEを参照。",
         '- FlashPrintのプロファイル名と生成G-codeは作っていない。',
     ]
     (PRINT / 'PRINT.md').write_text(chr(10).join(lines) + chr(10), encoding='utf-8')
+
+from types import SimpleNamespace
+import bearing_case as _bc
+_web = _bc.ball_side_web(SimpleNamespace(**_bc.DEFAULTS))
 
 def main():
     PRINT.mkdir(parents=True, exist_ok=True)

@@ -28,7 +28,7 @@ for i,(elev,az) in enumerate(((25,-65),(88,0))):
   ax.add_collection3d(Poly3DCollection(tri,facecolor=color,edgecolor='none',alpha=alpha))
  ax.set_xlim(-23,33);ax.set_ylim(-25,25);ax.set_zlim(0,42)
  ax.set_box_aspect((56,50,42));ax.view_init(elev,az);ax.set_axis_off()
- ax.set_title('34mm ball / 3 bearings / M2.5 x 5mm'+(' / case and ball hidden' if i==1 else ''))
+ ax.set_title('34mm ball / 3 bearings / M2 x 6mm'+(' / case and ball hidden' if i==1 else ''))
 fig.tight_layout();fig.savefig(O/'assembly_preview.png',dpi=140);plt.close(fig)
 
 fig,axs=plt.subplots(1,3,figsize=(15,5))

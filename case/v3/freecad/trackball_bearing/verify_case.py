@@ -101,13 +101,13 @@ def main():
  check('ball_side_web_measured_mesh',abs(measured_min-analytic)<.05,{'analytic_mm':analytic,'mesh_min_mm':measured_min,'rays':len(measured),'method':'radial rays from pilot wall toward ball centre, first hit on final STL'})
  target=v['MinBallSideWeb'];floor=v['BallSideWebFloor']
  alt_r=v['BallDiameter']/2;alt_D=alt_r+v['BearingOuterDiameter']/2
- alt_web=(alt_D-2.05/2)-math.sqrt((alt_r+.2)**2-face**2)
+ alt_web=(alt_D-v['CouponPilot1']/2)-math.sqrt((alt_r+.2)**2-face**2)
  report['ball_side_web']={'analytic_mm':analytic,'mesh_min_mm':measured_min,'target_mm':target,'floor_mm':floor,
   'status':'MEETS_TARGET' if analytic>=target else ('MEETS_FLOOR_ONLY' if analytic>=floor else 'BELOW_FLOOR_HOLD'),
   'boss_face_offset_mm':face,
   'required_boss_face_offset_for_target_mm':model.boss_face_offset_for_web(p,target),
   'required_boss_face_offset_for_floor_mm':model.boss_face_offset_for_web(p,floor),
-  'alternative_web_mm_ball_clearance_0.2_pilot_2.05':alt_web,
+  f"alternative_web_mm_ball_clearance_0.2_pilot_{v['CouponPilot1']}":alt_web,
   'reason':'web = (ball radius + bearing OD/2 - pilot radius) - sqrt((ball radius + ball clearance)^2 - face offset^2); bearing centre distance, pilot, clearance and face offset are fixed by the frozen bearing stack (width 2 mm + 0.4 mm metal spacer)',
   'strength_status':'HOLD_THIN_LOCAL_SECTION_REQUIRES_COUPON_AND_LOAD_CONDITIONS','global_minimum_not_measured':True}
  report['limitations'].append(f"ball-side web {analytic:.3f} mm (mesh {measured_min:.3f} mm) is below the {target} mm target and the {floor} mm floor; face offset change or hardware-stack change needed; strength approval withheld")
@@ -143,11 +143,11 @@ def main():
  doc=App.openDocument(str(O/'recompute_test.FCStd'))
  check('saved_document_reopen',doc.getObject('BearingCase').Shape.isValid() and abs(doc.getObject('BearingCase').Shape.Volume-before)<.01,{'volume':doc.getObject('BearingCase').Shape.Volume})
  # Guard a formerly permitted screw/bearing mismatch.
- p=doc.getObject('Dimensions');p.ScrewDiameter=2.6
+ p=doc.getObject('Dimensions');p.ScrewDiameter=2.1
  rejected=False
  try:model.validate_parameters(p)
  except ValueError:rejected=True
- check('oversize_screw_rejected',rejected,{'test_screw_diameter':2.6,'bearing_bore':2.5})
+ check('oversize_screw_rejected',rejected,{'test_screw_diameter':2.1,'bearing_bore':v['BearingInnerDiameter']})
  report['status']='CAD_CHECKS_PASS_PHYSICAL_UNVERIFIED' if all(x['pass'] for x in report['checks'].values()) else 'FAIL_NOT_PRINT_READY'
  return report['status'].startswith('CAD_CHECKS_PASS')
 if __name__=='__main__':

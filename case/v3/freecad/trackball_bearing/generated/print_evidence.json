@@ -7,25 +7,25 @@
   "parts": [
     {
       "label": "case body",
-      "facets": 29776,
+      "facets": 29604,
       "components": 1,
       "closed": true,
       "non_manifold": false,
       "self_intersections": 0,
       "min_z_mm": 0.0,
       "xy_centre_mm": [
-        -0.00030040740966796875,
+        0.0,
         0.0
       ],
-      "volume_mm3": 8903.6884765625,
-      "expected_volume_mm3": 8903.7099609375,
+      "volume_mm3": 8944.7060546875,
+      "expected_volume_mm3": 8944.6796875,
       "pass": true,
       "xy_rounding_shift_mm": [
-        -0.00030000000000000003,
+        0.0,
         0.0
       ],
       "stats": {
-        "unsupported_overhang_area_mm2": 782.2218906268668,
+        "unsupported_overhang_area_mm2": 807.3703517293286,
         "bed_contact_area_mm2": 261.60452917283055,
         "height_mm": 33.7445068359375
       },
@@ -48,7 +48,7 @@
       ],
       "constraint": "print Z parallel to source Z (bearing axes stay horizontal)",
       "unconstrained_best": {
-        "unsupported_overhang_area_mm2": 782.2218906268668,
+        "unsupported_overhang_area_mm2": 807.3703517293286,
         "rotation_row_major": [
           [
             1,
@@ -87,7 +87,7 @@
             ]
           ],
           "allowed": true,
-          "unsupported_overhang_area_mm2": 782.2218906268668,
+          "unsupported_overhang_area_mm2": 807.3703517293286,
           "bed_contact_area_mm2": 261.60452917283055,
           "height_mm": 33.7445068359375
         },
@@ -110,7 +110,7 @@
             ]
           ],
           "allowed": true,
-          "unsupported_overhang_area_mm2": 782.2218906268668,
+          "unsupported_overhang_area_mm2": 807.3703517293286,
           "bed_contact_area_mm2": 261.60452917283055,
           "height_mm": 33.7445068359375
         },
@@ -133,7 +133,7 @@
             ]
           ],
           "allowed": true,
-          "unsupported_overhang_area_mm2": 782.2218906268668,
+          "unsupported_overhang_area_mm2": 807.3703517293286,
           "bed_contact_area_mm2": 261.60452917283055,
           "height_mm": 33.7445068359375
         },
@@ -156,7 +156,7 @@
             ]
           ],
           "allowed": true,
-          "unsupported_overhang_area_mm2": 782.2218906268668,
+          "unsupported_overhang_area_mm2": 807.3703517293286,
           "bed_contact_area_mm2": 261.60452917283055,
           "height_mm": 33.7445068359375
         },
@@ -179,7 +179,7 @@
             ]
           ],
           "allowed": true,
-          "unsupported_overhang_area_mm2": 867.7947615773428,
+          "unsupported_overhang_area_mm2": 862.6959564588587,
           "bed_contact_area_mm2": 0.0,
           "height_mm": 33.7445068359375
         }
@@ -187,7 +187,7 @@
       "candidate_count": 24,
       "source": "trackball_bearing.stl",
       "output": "print/trackball_bearing_case_print.stl",
-      "output_sha256": "f9ebe35e685c7179397a8a202bac5444f62dac80e0138e46f4b456c784b57005"
+      "output_sha256": "60bd1d8b620469e35da9e73623e0710736bd94b0d289d494b0596bd5accd8130"
     },
     {
       "label": "fit coupon",
@@ -201,17 +201,17 @@
         0.0,
         0.0
       ],
-      "volume_mm3": 2233.02197265625,
-      "expected_volume_mm3": 2233.021240234375,
+      "volume_mm3": 2724.509521484375,
+      "expected_volume_mm3": 2724.50927734375,
       "pass": true,
       "xy_rounding_shift_mm": [
         0.0,
         0.0
       ],
       "stats": {
-        "unsupported_overhang_area_mm2": 48.671957974448496,
+        "unsupported_overhang_area_mm2": 36.735876291965376,
         "bed_contact_area_mm2": 276.760014858246,
-        "height_mm": 9.399999618530273
+        "height_mm": 11.80832576751709
       },
       "orientation_row_major": [
         [
@@ -272,7 +272,7 @@
           ],
           "allowed": false,
           "unsupported_overhang_area_mm2": 15.99475476076586,
-          "bed_contact_area_mm2": 278.89729222596054,
+          "bed_contact_area_mm2": 355.6219909957907,
           "height_mm": 8.0
         },
         {
@@ -295,7 +295,7 @@
           ],
           "allowed": false,
           "unsupported_overhang_area_mm2": 15.99475476076586,
-          "bed_contact_area_mm2": 278.89729222596054,
+          "bed_contact_area_mm2": 355.6219909957907,
           "height_mm": 8.0
         },
         {
@@ -318,7 +318,7 @@
           ],
           "allowed": false,
           "unsupported_overhang_area_mm2": 15.99475476076586,
-          "bed_contact_area_mm2": 278.89729222596054,
+          "bed_contact_area_mm2": 355.6219909957907,
           "height_mm": 8.0
         },
         {
@@ -341,7 +341,7 @@
           ],
           "allowed": false,
           "unsupported_overhang_area_mm2": 15.99475476076586,
-          "bed_contact_area_mm2": 278.89729222596054,
+          "bed_contact_area_mm2": 355.6219909957907,
           "height_mm": 8.0
         },
         {
@@ -363,15 +363,15 @@
             ]
           ],
           "allowed": true,
-          "unsupported_overhang_area_mm2": 48.671957974448496,
+          "unsupported_overhang_area_mm2": 36.735876291965376,
           "bed_contact_area_mm2": 276.760014858246,
-          "height_mm": 9.399999618530273
+          "height_mm": 11.80832576751709
         }
       ],
       "candidate_count": 24,
       "source": "fit_coupon.stl",
       "output": "print/fit_coupon_print.stl",
-      "output_sha256": "7419c0f23169e7aa3e33619be2f294407c458422a156e22194cc57bb8b2b1ddd"
+      "output_sha256": "fb4acf8ba888461ff2bbacf162075c03797b3e061886e0475ef1356f9cf32132"
     }
   ]
 }

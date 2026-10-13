@@ -20,22 +20,22 @@
     },
     "2_boss_face_crush_spacer": {
       "formula": "sigma = F_pre / A, A = pi/4 (OD^2 - ID^2) of metal spacer contact annulus",
-      "A_contact_mm2": 1.2959069696057892,
+      "A_contact_mm2": 3.141592653589793,
       "rows": [
         {
           "F_pre_N": 30.0,
-          "stress_MPa": 23.149809904275696,
-          "SF_vs_provisional_compressive": 2.5918139392115784
+          "stress_MPa": 9.549296585513721,
+          "SF_vs_provisional_compressive": 6.283185307179586
         },
         {
           "F_pre_N": 50.0,
-          "stress_MPa": 38.58301650712615,
-          "SF_vs_provisional_compressive": 1.5550883635269472
+          "stress_MPa": 15.915494309189533,
+          "SF_vs_provisional_compressive": 3.7699111843077517
         },
         {
           "F_pre_N": 100.0,
-          "stress_MPa": 77.1660330142523,
-          "SF_vs_provisional_compressive": 0.7775441817634736
+          "stress_MPa": 31.830988618379067,
+          "SF_vs_provisional_compressive": 1.8849555921538759
         }
       ],
       "layer_direction": "boss face is perpendicular to the horizontal screw axis, i.e. a vertical plane; the compressive load runs along the axis, parallel to layer planes (in-plane direction)",
@@ -43,22 +43,22 @@
     },
     "3_screw_pullout_shear": {
       "formula": "tau = F_pre / (pi * d_pilot * L_eng)",
-      "A_shear_mm2": 14.859733251479723,
+      "A_shear_mm2": 12.959069696057897,
       "rows": [
         {
           "F_pre_N": 30.0,
-          "shear_MPa": 2.0188787707217166,
-          "SF_vs_provisional_shear": 14.859733251479723
+          "shear_MPa": 2.3149809904275687,
+          "SF_vs_provisional_shear": 12.959069696057897
         },
         {
           "F_pre_N": 50.0,
-          "shear_MPa": 3.364797951202861,
-          "SF_vs_provisional_shear": 8.915839950887833
+          "shear_MPa": 3.8583016507126144,
+          "SF_vs_provisional_shear": 7.7754418176347375
         },
         {
           "F_pre_N": 100.0,
-          "shear_MPa": 6.729595902405722,
-          "SF_vs_provisional_shear": 4.457919975443916
+          "shear_MPa": 7.716603301425229,
+          "SF_vs_provisional_shear": 3.8877209088173688
         }
       ],
       "layer_direction": "shear surface is cylindrical about screw axis (horizontal); layer planes cut it, so shear crosses layer interfaces on the thread flank",
@@ -66,90 +66,90 @@
     },
     "4_ball_side_web_bending": {
       "formula": "sigma = 6 M / (b t^2), M = N L/2 (uniform) or N L (tip)",
-      "b_mm": 1.9148792621793636,
-      "t_min_mm": 0.581413289056961,
-      "L_mm": 2.2,
+      "b_mm": 1.6691281768522093,
+      "t_min_mm": 1.8397757441676035,
+      "L_mm": 2.5,
       "rows": [
         {
           "F_ball_N": 5.0,
           "N_N": 3.4377755660455236,
-          "M_root_Nmm": 3.781553122650076,
-          "stress_MPa_uniform": 35.05178605581098,
-          "SF_vs_provisional_in_plane_tension": 1.4264608348455574,
-          "stress_MPa_point_load_at_tip": 70.10357211162196,
-          "SF_point_load": 0.7132304174227787
+          "M_root_Nmm": 4.2972194575569045,
+          "stress_MPa_uniform": 4.5637234328052605,
+          "SF_vs_provisional_in_plane_tension": 10.955966271002898,
+          "stress_MPa_point_load_at_tip": 9.127446865610521,
+          "SF_point_load": 5.477983135501449
         },
         {
           "F_ball_N": 10.0,
           "N_N": 6.875551132091047,
-          "M_root_Nmm": 7.563106245300152,
-          "stress_MPa_uniform": 70.10357211162196,
-          "SF_vs_provisional_in_plane_tension": 0.7132304174227787,
-          "stress_MPa_point_load_at_tip": 140.20714422324392,
-          "SF_point_load": 0.35661520871138935
+          "M_root_Nmm": 8.594438915113809,
+          "stress_MPa_uniform": 9.127446865610521,
+          "SF_vs_provisional_in_plane_tension": 5.477983135501449,
+          "stress_MPa_point_load_at_tip": 18.254893731221042,
+          "SF_point_load": 2.7389915677507246
         },
         {
           "F_ball_N": 20.0,
           "N_N": 13.751102264182094,
-          "M_root_Nmm": 15.126212490600304,
-          "stress_MPa_uniform": 140.20714422324392,
-          "SF_vs_provisional_in_plane_tension": 0.35661520871138935,
-          "stress_MPa_point_load_at_tip": 280.41428844648783,
-          "SF_point_load": 0.17830760435569468
+          "M_root_Nmm": 17.188877830227618,
+          "stress_MPa_uniform": 18.254893731221042,
+          "SF_vs_provisional_in_plane_tension": 2.7389915677507246,
+          "stress_MPa_point_load_at_tip": 36.509787462442084,
+          "SF_point_load": 1.3694957838753623
         }
       ],
-      "allowable_ball_press_for_SF2_provisional_N": 3.5661520871138936,
-      "allowable_N_per_support_N": 2.451926101976478,
+      "allowable_ball_press_for_SF2_provisional_N": 27.389915677507247,
+      "allowable_N_per_support_N": 18.832076574436325,
       "layer_direction": "bending stress acts along the screw/bearing axis (horizontal), i.e. in the layer plane; the web normal has a vertical component cos(61)=0.485 so layer interfaces cut the web thickness at an angle",
       "line_count": {
-        "web_thickness_mm": 0.581413289056961,
-        "nozzle_0.4_lines": 1.4535332226424025,
-        "note": "thickness is between one and two 0.4 mm lines; 3 vs 4 perimeter setting does not add lines to this web"
+        "web_thickness_mm": 1.8397757441676035,
+        "nozzle_0.4_lines": 4.599439360419009,
+        "note": "web thickness in 0.4 mm lines; 3 vs 4 perimeter setting does not add lines to this web"
       }
     },
     "5_boss_root_bending": {
       "formula": "sigma = M/Z, Z = pi(Ro^4-Ri^4)/(4Ro); tau = V/A (vertical component only)",
-      "A_mm2": 34.85400699617026,
-      "Z_mm3": 33.37426768128821,
+      "A_mm2": 36.34626350662541,
+      "Z_mm3": 33.56999311109701,
       "rows": [
         {
           "F_ball_N": 5.0,
           "N_N": 3.4377755660455236,
           "M_root_Nmm": 8.594438915113809,
-          "sigma_bending_MPa": 0.2575169288263488,
-          "SF_in_plane_tension": 194.16199248677924,
-          "tau_mean_layer_MPa": 0.047818509557589726,
-          "SF_layer_shear": 418.24808395404307
+          "sigma_bending_MPa": 0.2560155102406858,
+          "SF_in_plane_tension": 195.30066734235712,
+          "tau_mean_layer_MPa": 0.04585524083824619,
+          "SF_layer_shear": 436.15516207950486
         },
         {
           "F_ball_N": 10.0,
           "N_N": 6.875551132091047,
           "M_root_Nmm": 17.188877830227618,
-          "sigma_bending_MPa": 0.5150338576526976,
-          "SF_in_plane_tension": 97.08099624338962,
-          "tau_mean_layer_MPa": 0.09563701911517945,
-          "SF_layer_shear": 209.12404197702153
+          "sigma_bending_MPa": 0.5120310204813716,
+          "SF_in_plane_tension": 97.65033367117856,
+          "tau_mean_layer_MPa": 0.09171048167649239,
+          "SF_layer_shear": 218.07758103975243
         },
         {
           "F_ball_N": 20.0,
           "N_N": 13.751102264182094,
           "M_root_Nmm": 34.377755660455236,
-          "sigma_bending_MPa": 1.0300677153053952,
-          "SF_in_plane_tension": 48.54049812169481,
-          "tau_mean_layer_MPa": 0.1912740382303589,
-          "SF_layer_shear": 104.56202098851077
+          "sigma_bending_MPa": 1.0240620409627432,
+          "SF_in_plane_tension": 48.82516683558928,
+          "tau_mean_layer_MPa": 0.18342096335298477,
+          "SF_layer_shear": 109.03879051987622
         }
       ],
       "layer_direction": "bending stress is along the boss axis (horizontal, in layer plane); interlayer shear is the vertical component only",
       "note": "Root bending is low; not governing under these assumptions."
     },
     "6_wall_thickness_rule": {
-      "ball_side_web_mm": 0.581413289056961,
-      "ball_side_web_lines": 1.4535332226424025,
+      "ball_side_web_mm": 1.8397757441676035,
+      "ball_side_web_lines": 4.599439360419009,
       "ball_side_web_rule_lines": 4,
       "ball_side_web_rule_mm": 1.6,
-      "boss_outer_radial_mm": 2.425,
-      "boss_outer_lines": 6.062499999999999,
+      "boss_outer_radial_mm": 2.675,
+      "boss_outer_lines": 6.687499999999999,
       "boss_root_rule_lines": 6,
       "boss_root_rule_mm": 2.4000000000000004,
       "boss_outer_with_3_walls_each_side_mm": 2.4000000000000004,
@@ -168,9 +168,9 @@
   "inputs": {
     "ball_radius_mm": 17.0,
     "ball_void_radius_mm": 17.4,
-    "bearing_centre_distance_mm": 19.0,
-    "pilot_radius_mm": 1.075,
-    "boss_face_offset_mm": 1.4,
+    "bearing_centre_distance_mm": 20.0,
+    "pilot_radius_mm": 0.825,
+    "boss_face_offset_mm": 1.5,
     "boss_radius_mm": 3.5,
     "boss_length_mm": 2.5,
     "support_polar_deg": 61.0,
@@ -179,12 +179,13 @@
       259.0,
       19.0
     ],
-    "screw_engagement_in_boss_mm": 2.2,
-    "screw_diameter_mm": 2.5,
+    "screw_engagement_in_boss_mm": 2.5,
+    "screw_diameter_mm": 2.0,
     "spacer_contact_od_mm": 2.9,
-    "spacer_contact_id_mm": 2.6,
-    "ball_side_web_analytic_mm": 0.581413289056961,
-    "ball_side_web_neck_width_le1mm_mm": 1.9148792621793636,
+    "spacer_contact_id_mm": 2.1,
+    "ball_side_web_analytic_mm": 1.8397757441676035,
+    "ball_side_web_neck_width_mm": 1.6691281768522093,
+    "neck_limit_mm": 2.2397757441676034,
     "support_share_per_unit_load": 0.6875551132091047,
     "print": {
       "nozzle_mm": 0.4,
@@ -205,7 +206,7 @@
     "Screw preload 30 / 50 / 100 N, ASSUMED (no torque or preload measurement).",
     "PLA strengths in REF are provisional placeholders, not same-condition test data; per doc they are comparison values only.",
     "Bearing reaction taken as vertical-load equal triad: each support reaction = share * F (verified in verification.json).",
-    "Web model: thin cantilever of thickness t_min, neck width b where t<=1.0 mm, fixed at shell end, load N distributed over L_eng. Crude; real web is curved and partly supported by the boss. Not FEM.",
+    "Web model: thin cantilever of thickness t_min, neck width b where t<=t_min+0.4 mm (one nozzle line), fixed at shell end, load N distributed over L_eng. Crude; real web is curved and partly supported by the boss. Not FEM.",
     "Boss root model: annular cantilever (R_out 3.5, bore 1.075), point load N at boss height 2.5 mm. Crude.",
     "Thread stress from screw-pilot interference is NOT computed: no thread-form or fit data. Requires coupon test.",
     "Drop/handling loads: NOT computed (no impact energy or height defined).",
@@ -223,7 +224,7 @@
     "Printer model, PLA product and lot, drying, and profile version are not fixed (doc requires them).",
     "No user load is defined; all loads here are assumptions. Finger press is assumed 5/10/20 N.",
     "No same-condition allowable exists; the PLA strengths used are provisional placeholders, so only comparisons are valid.",
-    "Ball-side web is 0.58 mm, below the 1.2 mm floor and the 1.6 mm target. Under the provisional crude model it fails SF 2 at a ball press above about 3.6 N.",
+    "Ball-side web is 1.84 mm (target 1.6, floor 1.2). Under the provisional crude model SF 2 holds only up to a ball press of about 27.4 N.",
     "Boss-face crush under metal spacer is high at 50-100 N preload; preload not defined.",
     "Boss root bending and screw shear are low under the assumed loads, not governing.",
     "No physical print, fit, or drop/cycle test has been done."

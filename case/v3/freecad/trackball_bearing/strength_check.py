@@ -42,9 +42,10 @@ POLAR = P['Support1Polar']                      # 61 deg
 DP = P['PilotDiameter']
 SCREW_D = P['ScrewDiameter']                    # 2.5
 CONTACT_OD = P['InnerRingContactDiameter']      # 2.9 metal spacer
-CONTACT_ID = 2.60                               # spacer bore 2*1.30 (hardware(): cylinder(1.30))
-L_ENG = (-HALF - SP + P['ScrewLength']) - (HALF + SP)  # screw tip t=3.6 minus boss face t=1.4 -> 2.2
-assert abs(L_ENG - 2.2) < 1e-9, L_ENG
+CONTACT_ID = P['SpacerBoreDiameter']             # metal spacer bore (hardware(): SpacerBoreDiameter/2)
+# In-boss thread engagement: screw tip or boss end, whichever comes first, minus boss face.
+L_ENG = min((-HALF - SP + P['ScrewLength']), (HALF + SP + LB)) - (HALF + SP)
+assert L_ENG >= P['MinThreadEngagement'] - 1e-9, L_ENG
 
 # ---- ball-side web ----
 web_analytic = (D - RP) - math.sqrt(RV * RV - A_FACE * A_FACE)
@@ -68,8 +69,11 @@ def neck_width(t_limit):
 
 # neck_width integrates theta in [0, pi]; the thin region is symmetric about theta=0,
 # so the full neck arc is twice the one-sided arc.
-B_NECK_1MM = min(2 * neck_width(1.0), 2 * RP * math.pi)
 T_MIN = web_analytic
+# The former 1.0 mm neck threshold no longer exists for this web (minimum about 1.8 mm).
+# Neck = bore arc where the wall is within one 0.4 mm line of the minimum. Narrow neck = conservative.
+NECK_LIMIT = T_MIN + 0.4
+B_NECK = min(2 * neck_width(NECK_LIMIT), 2 * RP * math.pi)
 
 # ---- support loads ----
 share = 1 / (3 * math.cos(math.radians(POLAR)))   # equal triad, vertical load
@@ -98,7 +102,7 @@ results['inputs'] = {
     'boss_length_mm': LB, 'support_polar_deg': POLAR, 'support_azimuth_deg': [P['Support1Azimuth'], P['Support2Azimuth'], P['Support3Azimuth']],
     'screw_engagement_in_boss_mm': L_ENG, 'screw_diameter_mm': SCREW_D,
     'spacer_contact_od_mm': CONTACT_OD, 'spacer_contact_id_mm': CONTACT_ID,
-    'ball_side_web_analytic_mm': web_analytic, 'ball_side_web_neck_width_le1mm_mm': B_NECK_1MM,
+    'ball_side_web_analytic_mm': web_analytic, 'ball_side_web_neck_width_mm': B_NECK, 'neck_limit_mm': NECK_LIMIT,
     'support_share_per_unit_load': share,
     'print': {'nozzle_mm': 0.4, 'layer_mm': 0.2, 'walls_printed_by_PRINT_md': 3,
               'walls_doc_baseline': 4, 'top_bottom_min_mm': 1.0, 'infill': '30-40% gyroid',
@@ -111,7 +115,7 @@ results['assumptions'] = [
     'Screw preload 30 / 50 / 100 N, ASSUMED (no torque or preload measurement).',
     'PLA strengths in REF are provisional placeholders, not same-condition test data; per doc they are comparison values only.',
     'Bearing reaction taken as vertical-load equal triad: each support reaction = share * F (verified in verification.json).',
-    'Web model: thin cantilever of thickness t_min, neck width b where t<=1.0 mm, fixed at shell end, load N distributed over L_eng. Crude; real web is curved and partly supported by the boss. Not FEM.',
+    'Web model: thin cantilever of thickness t_min, neck width b where t<=t_min+0.4 mm (one nozzle line), fixed at shell end, load N distributed over L_eng. Crude; real web is curved and partly supported by the boss. Not FEM.',
     'Boss root model: annular cantilever (R_out 3.5, bore 1.075), point load N at boss height 2.5 mm. Crude.',
     'Thread stress from screw-pilot interference is NOT computed: no thread-form or fit data. Requires coupon test.',
     'Drop/handling loads: NOT computed (no impact energy or height defined).',
@@ -154,25 +158,25 @@ rows = []
 for F in FORCES:
     N = share * F
     M = N * M_FACTOR
-    s = 6 * M / (B_NECK_1MM * T_MIN ** 2)
-    s_point = 6 * (N * L_ENG) / (B_NECK_1MM * T_MIN ** 2)
+    s = 6 * M / (B_NECK * T_MIN ** 2)
+    s_point = 6 * (N * L_ENG) / (B_NECK * T_MIN ** 2)
     rows.append({'F_ball_N': F, 'N_N': N, 'M_root_Nmm': M, 'stress_MPa_uniform': s,
                  'SF_vs_provisional_in_plane_tension': sf(REF['tensile_in_plane'], s),
                  'stress_MPa_point_load_at_tip': s_point,
                  'SF_point_load': sf(REF['tensile_in_plane'], s_point)})
 # allowable ball press for SF target, uniform model
 sigma_allow = REF['tensile_in_plane'] / SF_TARGET
-N_allow = sigma_allow * B_NECK_1MM * T_MIN ** 2 / (6 * M_FACTOR)
+N_allow = sigma_allow * B_NECK * T_MIN ** 2 / (6 * M_FACTOR)
 F_allow = N_allow / share
 results['checks']['4_ball_side_web_bending'] = {
     'formula': 'sigma = 6 M / (b t^2), M = N L/2 (uniform) or N L (tip)',
-    'b_mm': B_NECK_1MM, 't_min_mm': T_MIN, 'L_mm': L_ENG,
+    'b_mm': B_NECK, 't_min_mm': T_MIN, 'L_mm': L_ENG,
     'rows': rows,
     'allowable_ball_press_for_SF2_provisional_N': F_allow,
     'allowable_N_per_support_N': N_allow,
     'layer_direction': 'bending stress acts along the screw/bearing axis (horizontal), i.e. in the layer plane; the web normal has a vertical component cos(61)=0.485 so layer interfaces cut the web thickness at an angle',
     'line_count': {'web_thickness_mm': T_MIN, 'nozzle_0.4_lines': T_MIN / 0.4,
-                   'note': 'thickness is between one and two 0.4 mm lines; 3 vs 4 perimeter setting does not add lines to this web'},
+                   'note': 'web thickness in 0.4 mm lines; 3 vs 4 perimeter setting does not add lines to this web'},
 }
 
 # ---- Check 5: boss root bending and shear (annulus) ----
@@ -218,7 +222,7 @@ results['verdict_reasons'] = [
     'Printer model, PLA product and lot, drying, and profile version are not fixed (doc requires them).',
     'No user load is defined; all loads here are assumptions. Finger press is assumed 5/10/20 N.',
     'No same-condition allowable exists; the PLA strengths used are provisional placeholders, so only comparisons are valid.',
-    'Ball-side web is 0.58 mm, below the 1.2 mm floor and the 1.6 mm target. Under the provisional crude model it fails SF 2 at a ball press above about %.1f N.' % F_allow,
+    'Ball-side web is %.2f mm (target %.1f, floor %.1f). Under the provisional crude model SF 2 holds only up to a ball press of about %.1f N.' % (T_MIN, P['MinBallSideWeb'], P['BallSideWebFloor'], F_allow),
     'Boss-face crush under metal spacer is high at 50-100 N preload; preload not defined.',
     'Boss root bending and screw shear are low under the assumed loads, not governing.',
     'No physical print, fit, or drop/cycle test has been done.',
@@ -227,6 +231,6 @@ results['governing_failure_mode'] = 'ball-side web bending (thin neck between pi
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 OUT.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding='utf-8')
-print(json.dumps({'verdict': results['verdict'], 'web_mm': web_analytic, 'b_neck_mm': B_NECK_1MM,
+print(json.dumps({'verdict': results['verdict'], 'web_mm': web_analytic, 'b_neck_mm': B_NECK,
                   'F_allow_web_SF2_N': F_allow, 'A_contact_mm2': A_CONTACT, 'A_shear_mm2': A_SHEAR,
                   'Z_root_mm3': Z_ROOT}, indent=2))

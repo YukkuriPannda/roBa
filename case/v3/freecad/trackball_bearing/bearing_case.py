@@ -15,12 +15,20 @@ OUT = Path(os.environ.get('ROBA_BEARING_OUTPUT',str(HERE/'generated')))
 # against measured flat recess bottoms. Physical seating is still unverified.
 CENTER = App.Vector(-0.28458016, 0.09661005, 19.89032338)
 DEFAULTS = {
- 'BallDiameter':34., 'BearingOuterDiameter':4., 'BearingInnerDiameter':2.5,
- 'BearingWidth':2., 'ScrewLength':5., 'ScrewDiameter':2.5,
- # NBK SNSS-M2.5-5-SD manufacturer dimensional envelope.
- 'ScrewHeadDiameter':3.8, 'ScrewHeadHeight':2.5,
- 'PilotDiameter':2.15, 'PocketClearance':0.30,
- 'InnerRingContactDiameter':2.90, 'SpacerThickness':0.40,
+ 'BallDiameter':34., 'BearingOuterDiameter':6., 'BearingInnerDiameter':2.,
+ # Tamiya Mini 4WD 620 ball bearing (Item 15519): ID 2.0, OD 6.0, width 2.0 mm.
+ 'BearingWidth':2., 'ScrewLength':6., 'ScrewDiameter':2.,
+ # M2 Mini 4WD screw. Pan head 3.8 x 1.3 mm is an ASSUMPTION (not a datasheet
+ # value); confirm against the purchased screw before printing.
+ 'ScrewHeadDiameter':3.8, 'ScrewHeadHeight':1.3,
+ # Self-tapping pilot for M2 into PLA; the coupon pilots bracket this value.
+ 'PilotDiameter':1.65, 'PocketClearance':0.30,
+ # Inner-ring spacer (metal, Mini 4WD). OD must stay below the outer-ring bore so
+ # it touches only the inner ring. SpacerBore is the screw clearance through it.
+ 'InnerRingContactDiameter':2.90, 'SpacerThickness':0.50,
+ 'SpacerBoreDiameter':2.10, 'ShellReliefDiameter':2.15,
+ # Minimum screw length inside the boss (tip to boss face, capped at boss end).
+ 'MinThreadEngagement':2.00,
  'BossRadius':3.50, 'BossLength':2.50, 'BallClearance':0.40, 'ToolAccessDepth':12.,
  # Print-oriented options (FDM, 0.4 mm nozzle, 0.2 mm layers).
  # TeardropHoles: horizontal bearing-seat and head-tunnel holes get a 45 degree
@@ -36,9 +44,9 @@ DEFAULTS = {
  # Multi-level fit coupon: three bearing-seat / pilot pairs, ordered left to
  # right at x = -pitch, 0, +pitch (see README).
  'CouponBaseThickness':2.40, 'CouponElephantChamfer':0.30, 'CouponPitch':12.,
- 'CouponClearance1':0.20, 'CouponPilot1':2.05,
- 'CouponClearance2':0.30, 'CouponPilot2':2.15,
- 'CouponClearance3':0.40, 'CouponPilot3':2.25,
+ 'CouponClearance1':0.20, 'CouponPilot1':1.55,
+ 'CouponClearance2':0.30, 'CouponPilot2':1.65,
+ 'CouponClearance3':0.40, 'CouponPilot3':1.75,
  # INTERIM layout (pending review). Polar is measured from the bottom pole
  # (z = -cos(polar), see radial()), so polar < 90 deg is below the ball equator
  # and polar > 90 deg is above it. The previous 91/60/100 set had two supports
@@ -137,7 +145,12 @@ def validate_parameters(p):
  if vals['PilotDiameter']>=vals['ScrewDiameter']:raise ValueError('pilot must be smaller than screw')
  if vals['ScrewDiameter']>vals['BearingInnerDiameter']:raise ValueError('screw cannot exceed bearing bore')
  if vals['ScrewHeadDiameter']<=vals['InnerRingContactDiameter']:raise ValueError('head must retain inner-ring spacer')
+ if not vals['ScrewDiameter']<vals['SpacerBoreDiameter']<vals['InnerRingContactDiameter']:raise ValueError('spacer bore must clear the screw and stay inside the spacer OD')
+ if vals['ShellReliefDiameter']<=vals['ScrewDiameter']:raise ValueError('shell relief must clear the screw')
  if vals['ScrewLength']<vals['BearingWidth']+2*vals['SpacerThickness']+1.5:raise ValueError('insufficient screw engagement')
+ _face=vals['BearingWidth']/2+vals['SpacerThickness']
+ _tip=-_face+vals['ScrewLength']; _boss_end=_face+vals['BossLength']
+ if min(_tip,_boss_end)-_face<vals['MinThreadEngagement']:raise ValueError('insufficient thread engagement in boss')
  if vals['ToolAccessDepth']<8:raise ValueError('insufficient fastener access depth')
  if vals['BallSideWebFloor']>vals['MinBallSideWeb']:raise ValueError('web floor above web target')
  if vals['EdgeBreak']>0.8:raise ValueError('EdgeBreak above the 0.8 mm review limit')
@@ -177,13 +190,14 @@ def hardware(p):
   # Screw is inserted along the negative axis. Open the shell for its head
   # and driver as well as the bearing; the assembly sweep is checked separately.
   headspace=teardrop(v['ScrewHeadDiameter']/2+.30,-v['ToolAccessDepth'],-half-.01,c,ax,tear)
-  cuts.extend([pocket,headspace,pilot,cylinder(1.325,half-.01,half+spacer+.01,c,ax)])
+  cuts.extend([pocket,headspace,pilot,cylinder(v['ShellReliefDiameter']/2,half-.01,half+spacer+.01,c,ax)])
   underhead=-half-spacer
   shank=cylinder(v['ScrewDiameter']/2,underhead,underhead+v['ScrewLength'],c,ax)
   head=cylinder(v['ScrewHeadDiameter']/2,underhead-v['ScrewHeadHeight'],underhead,c,ax)
   screws.append(shank.fuse(head))
-  spacers.append(cylinder(v['InnerRingContactDiameter']/2,underhead,-half,c,ax).cut(cylinder(1.30,underhead-.01,-half+.01,c,ax)))
-  spacers.append(cylinder(v['InnerRingContactDiameter']/2,half,half+spacer,c,ax).cut(cylinder(1.30,half-.01,half+spacer+.01,c,ax)))
+  bore=v['SpacerBoreDiameter']/2
+  spacers.append(cylinder(v['InnerRingContactDiameter']/2,underhead,-half,c,ax).cut(cylinder(bore,underhead-.01,-half+.01,c,ax)))
+  spacers.append(cylinder(v['InnerRingContactDiameter']/2,half,half+spacer,c,ax).cut(cylinder(bore,half-.01,half+spacer+.01,c,ax)))
  return holders,cuts,bearings,screws,spacers
 
 def _edge_points(edge):
@@ -270,11 +284,17 @@ def _coupon_base(p):
  y_axis=App.Vector(0,1,0)
  plate=Part.makeBox(2*(pitch+7),8,T,App.Vector(-(pitch+7),-4,0))
  body=plate;pockets=[];pilots=[]
+ # Seat radius follows the bearing OD. The seat centre keeps a 0.6 mm floor under
+ # the largest seat, and the block top clears the teardrop roof apex (r*sqrt2)
+ # by 0.6 mm, so no roof breaks through the block.
+ seat=value(p,'BearingOuterDiameter')/2
+ r_max=seat+max(value(p,f'CouponClearance{k}') for k in COUPON_LEVELS)
+ zc=T+r_max+.6; top=zc+r_max*math.sqrt(2.)+.6
  for k,x in zip(COUPON_LEVELS,(-pitch,0.,pitch)):
-  body=body.fuse(Part.makeBox(10,8,7,App.Vector(x-5,-4,T)))
-  c=App.Vector(x,-4,T+3)
-  pockets.append(teardrop(2.+value(p,f'CouponClearance{k}'),-.01,2.01,c,y_axis,tear))
-  pilots.append(Part.makeCylinder(value(p,f'CouponPilot{k}')/2,8.02,App.Vector(x,-4.01,T+3),y_axis))
+  body=body.fuse(Part.makeBox(10,8,top-T,App.Vector(x-5,-4,T)))
+  c=App.Vector(x,-4,zc)
+  pockets.append(teardrop(seat+value(p,f'CouponClearance{k}'),-.01,2.01,c,y_axis,tear))
+  pilots.append(Part.makeCylinder(value(p,f'CouponPilot{k}')/2,8.02,App.Vector(x,-4.01,zc),y_axis))
  for cutter in pockets+pilots:body=body.cut(cutter)
  return body.removeSplitter()
 
@@ -334,7 +354,7 @@ def build():
   obj=doc.addObject('Part::FeaturePython',name);obj.addProperty('App::PropertyLink','Dimensions');obj.Dimensions=p;HardwareProxy(obj,name)
  ball=doc.addObject('Part::FeaturePython','Ball34');ball.addProperty('App::PropertyLink','Dimensions');ball.Dimensions=p;HardwareProxy(ball,'Ball')
  # Coupon: three bearing-seat / pilot pairs with 0.2/0.3/0.4 mm pocket clearance
- # and 2.05/2.15/2.25 mm pilots. It is a fast fit check, not a structural proof.
+ # and 1.55/1.65/1.75 mm pilots (M2 self-tap bracket). It is a fast fit check, not a structural proof.
  coupon=doc.addObject('Part::FeaturePython','FitCoupon');coupon.addProperty('App::PropertyLink','Dimensions');coupon.Dimensions=p;HardwareProxy(coupon,'Coupon')
  doc.recompute();doc.saveAs(str(OUT/'trackball_bearing.FCStd'))
  result.Shape.exportStep(str(OUT/'trackball_bearing.step'))
