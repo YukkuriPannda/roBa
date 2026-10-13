@@ -103,7 +103,7 @@ STLの数値丸めで検査結果が変わるため、修復した基準メッ�
 | FreeCAD | 1.1.4（Git shallow 20260928、commit 4fd3bf320）。Python 3.11.14、NumPy 1.26.4、SciPy 1.16.3 |
 | 実行 | `runs/20261013-114236`（CAD検査 58項目すべて合格。形状・印刷用STLは合格、物理的な合格ではない） |
 | 元STL SHA-256 | `cdaa94d5c244317f9dec7bfc47de96845a091c61c89673050497cd625df796c9` |
-| 生成コード `bearing_case.py` SHA-256 | `dca4f2733e45b955590f7adf556ad070df9e6fc80467f4739161f2ff7f084464`（`build.json` の `code_hashes_sha256` に全コードのハッシュ） |
+| 生成コード `bearing_case.py` SHA-256 | `38ba51262a237377477ff3aa6a40f3493df000a0e492ba053b398949245b0d15`（`build.json` の `code_hashes_sha256` に全コードのハッシュ） |
 | `trackball_bearing.FCStd` | `b2456a6c59196410f390f653786f798778d46fd8d5e018ece5eb50d5c5bdfb35` |
 | `trackball_bearing.stl` | `8e2a614da7b9335c4f37892be0d3a0054a1b1dde25fe95572afdfad8fb2a7bc7` |
 | `fit_coupon.stl` | `73a431a000f2d14a8897352167551afa6d71e8d3c784f1e8316fbc9273d88cea` |
