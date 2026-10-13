@@ -11,7 +11,7 @@ save_status()
 try:
  for name in ('source.brep','source.sha256'):
   if (H/'generated'/name).exists():shutil.copy2(H/'generated'/name,stage/name)
- for script in ('repair_source.py','bearing_case.py','export_case_mesh.py','verify_case.py','render_case.py','render_six_view.py','publish_verified.py'):
+ for script in ('repair_source.py','bearing_case.py','export_case_mesh.py','verify_case.py','render_case.py','render_six_view.py','export_print.py','publish_verified.py'):
   with (stage/(script+'.stdout.txt')).open('w',encoding='utf-8') as log:
    result=subprocess.run([sys.executable,str(H/script)],env=env,stdout=log,stderr=subprocess.STDOUT)
   if result.returncode:raise RuntimeError(script+' failed; inspect its run log')

@@ -28,6 +28,10 @@ PUBLISH_NAMES = (
     "source.brep",
     "source.sha256",
     "build.json",
+    "print_evidence.json",
+    "print/trackball_bearing_case_print.stl",
+    "print/fit_coupon_print.stl",
+    "print/PRINT.md",
 )
 DELIVERABLE_NAMES = (
     "trackball_bearing.FCStd",
@@ -82,6 +86,7 @@ code_names = (
     "render_six_view.py",
     "build_verify.py",
     "publish_verified.py",
+    "export_print.py",
 )
 record["code_hashes_sha256"] = {name: digest(HERE / name) for name in code_names}
 input_names = ("sources.json", "alignment.json", "site_feasibility.json", "repair.json")
@@ -109,7 +114,9 @@ for name in LEGACY_DEBUG_NAMES:
     if stale.is_file():
         stale.unlink()
 for name in PUBLISH_NAMES:
-    shutil.copy2(STAGE / name, generated / name)
+    target = generated / name
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(STAGE / name, target)
 
 status = {"status": "CAD_CHECKS_PASS_PHYSICAL_UNVERIFIED", "run_directory": str(STAGE)}
 (HERE / "latest_run_status.json").write_text(json.dumps(status, indent=2), encoding="utf-8")

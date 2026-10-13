@@ -1,0 +1,377 @@
+{
+  "status": "PRINT_FILES_CHECKED_PHYSICAL_UNVERIFIED",
+  "units": "mm",
+  "method": "cube-rotation search; 45 deg overhang screen; watertight/placement checks",
+  "overhang_threshold_deg": 45.0,
+  "bed_tolerance_mm": 0.05,
+  "parts": [
+    {
+      "label": "case body",
+      "facets": 29776,
+      "components": 1,
+      "closed": true,
+      "non_manifold": false,
+      "self_intersections": 0,
+      "min_z_mm": 0.0,
+      "xy_centre_mm": [
+        -0.00030040740966796875,
+        0.0
+      ],
+      "volume_mm3": 8903.6884765625,
+      "expected_volume_mm3": 8903.7099609375,
+      "pass": true,
+      "xy_rounding_shift_mm": [
+        -0.00030000000000000003,
+        0.0
+      ],
+      "stats": {
+        "unsupported_overhang_area_mm2": 782.2218906268668,
+        "bed_contact_area_mm2": 261.60452917283055,
+        "height_mm": 33.7445068359375
+      },
+      "orientation_row_major": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "constraint": "print Z parallel to source Z (bearing axes stay horizontal)",
+      "unconstrained_best": {
+        "unsupported_overhang_area_mm2": 782.2218906268668,
+        "rotation_row_major": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "candidate_orientations": [
+        {
+          "rotation_row_major": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "allowed": true,
+          "unsupported_overhang_area_mm2": 782.2218906268668,
+          "bed_contact_area_mm2": 261.60452917283055,
+          "height_mm": 33.7445068359375
+        },
+        {
+          "rotation_row_major": [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "allowed": true,
+          "unsupported_overhang_area_mm2": 782.2218906268668,
+          "bed_contact_area_mm2": 261.60452917283055,
+          "height_mm": 33.7445068359375
+        },
+        {
+          "rotation_row_major": [
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "allowed": true,
+          "unsupported_overhang_area_mm2": 782.2218906268668,
+          "bed_contact_area_mm2": 261.60452917283055,
+          "height_mm": 33.7445068359375
+        },
+        {
+          "rotation_row_major": [
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "allowed": true,
+          "unsupported_overhang_area_mm2": 782.2218906268668,
+          "bed_contact_area_mm2": 261.60452917283055,
+          "height_mm": 33.7445068359375
+        },
+        {
+          "rotation_row_major": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              -1
+            ]
+          ],
+          "allowed": true,
+          "unsupported_overhang_area_mm2": 867.7947615773428,
+          "bed_contact_area_mm2": 0.0,
+          "height_mm": 33.7445068359375
+        }
+      ],
+      "candidate_count": 24,
+      "source": "trackball_bearing.stl",
+      "output": "print/trackball_bearing_case_print.stl",
+      "output_sha256": "f9ebe35e685c7179397a8a202bac5444f62dac80e0138e46f4b456c784b57005"
+    },
+    {
+      "label": "fit coupon",
+      "facets": 2762,
+      "components": 1,
+      "closed": true,
+      "non_manifold": false,
+      "self_intersections": 0,
+      "min_z_mm": 0.0,
+      "xy_centre_mm": [
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 2233.02197265625,
+      "expected_volume_mm3": 2233.021240234375,
+      "pass": true,
+      "xy_rounding_shift_mm": [
+        0.0,
+        0.0
+      ],
+      "stats": {
+        "unsupported_overhang_area_mm2": 48.671957974448496,
+        "bed_contact_area_mm2": 276.760014858246,
+        "height_mm": 9.399999618530273
+      },
+      "orientation_row_major": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "constraint": "print Z perpendicular to source Y (holes stay horizontal)",
+      "unconstrained_best": {
+        "unsupported_overhang_area_mm2": 15.99475476076586,
+        "rotation_row_major": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "candidate_orientations": [
+        {
+          "rotation_row_major": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              -1,
+              0
+            ]
+          ],
+          "allowed": false,
+          "unsupported_overhang_area_mm2": 15.99475476076586,
+          "bed_contact_area_mm2": 278.89729222596054,
+          "height_mm": 8.0
+        },
+        {
+          "rotation_row_major": [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              -1
+            ],
+            [
+              0,
+              -1,
+              0
+            ]
+          ],
+          "allowed": false,
+          "unsupported_overhang_area_mm2": 15.99475476076586,
+          "bed_contact_area_mm2": 278.89729222596054,
+          "height_mm": 8.0
+        },
+        {
+          "rotation_row_major": [
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ]
+          ],
+          "allowed": false,
+          "unsupported_overhang_area_mm2": 15.99475476076586,
+          "bed_contact_area_mm2": 278.89729222596054,
+          "height_mm": 8.0
+        },
+        {
+          "rotation_row_major": [
+            [
+              0,
+              0,
+              -1
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ]
+          ],
+          "allowed": false,
+          "unsupported_overhang_area_mm2": 15.99475476076586,
+          "bed_contact_area_mm2": 278.89729222596054,
+          "height_mm": 8.0
+        },
+        {
+          "rotation_row_major": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "allowed": true,
+          "unsupported_overhang_area_mm2": 48.671957974448496,
+          "bed_contact_area_mm2": 276.760014858246,
+          "height_mm": 9.399999618530273
+        }
+      ],
+      "candidate_count": 24,
+      "source": "fit_coupon.stl",
+      "output": "print/fit_coupon_print.stl",
+      "output_sha256": "7419c0f23169e7aa3e33619be2f294407c458422a156e22194cc57bb8b2b1ddd"
+    }
+  ]
+}

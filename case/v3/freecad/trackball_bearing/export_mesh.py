@@ -4,6 +4,9 @@ All geometry is in millimetres. The mesh starts from the unchanged BRep
 tessellation at the repository's 0.08 mm deflection. Repairs only collapse
 short shared edges adjacent to reported self-intersections; no global remesh,
 surface smoothing, BRep Boolean, or whole-case reconstruction is performed.
+Round-trip float32 rounding can relocate an intersection without changing its
+count; such a local edge collapse is accepted only when its location is new,
+the mesh state has not been revisited, and final geometry-deviation checks pass.
 """
 from pathlib import Path
 import hashlib
@@ -33,6 +36,30 @@ def _mesh_data(mesh):
     face_ids = np.asarray(faces, dtype=np.int64)
     triangles = xyz[face_ids]
     return xyz, face_ids, triangles
+
+
+def _intersection_signature(intersections):
+    """Identify intersection locations independently of changing facet IDs."""
+    def point_key(point):
+        return tuple(round(float(getattr(point, axis)), 4) for axis in ("x", "y", "z"))
+
+    return tuple(
+        sorted(
+            tuple(sorted((point_key(pair[2]), point_key(pair[3]))))
+            for pair in intersections
+        )
+    )
+
+
+def _mesh_fingerprint(mesh):
+    """Hash a round-tripped mesh state so equal-count relocations cannot cycle."""
+    points, faces = mesh.Topology
+    xyz = np.asarray([[point.x, point.y, point.z] for point in points], dtype=np.float64)
+    face_ids = np.asarray(faces, dtype=np.int64)
+    digest = hashlib.sha256()
+    digest.update(xyz.tobytes())
+    digest.update(face_ids.tobytes())
+    return digest.hexdigest()
 
 
 def _mesh_status(mesh):
@@ -112,6 +139,8 @@ def _collapse_until_clean(mesh, raw_mesh, work_path, initial_path):
     status, intersections = _mesh_status(mesh)
     operations = []
     round_trip_path = Path(initial_path)
+    visited_states = {_mesh_fingerprint(mesh)}
+    visited_intersection_signatures = {_intersection_signature(intersections)}
     if not status["closed"] or status["non_manifold"] or status["components"] != 1:
         raise RuntimeError("initial STL round-trip is not one closed manifold component")
 
@@ -120,6 +149,7 @@ def _collapse_until_clean(mesh, raw_mesh, work_path, initial_path):
             return mesh, operations, status, round_trip_path
 
         before_count = status["self_intersections"]
+        before_signature = _intersection_signature(intersections)
         candidates = _candidate_edges(mesh, intersections)
         accepted = None
         for edge_length, touches_zone, adjacent, edge in candidates:
@@ -133,7 +163,7 @@ def _collapse_until_clean(mesh, raw_mesh, work_path, initial_path):
             # STL float32 rounding. The accepted candidate is always checked
             # again after a save/reload, where rounding can restore flags.
             trial_intersections = trial.getSelfIntersections()
-            if len(trial_intersections) >= before_count:
+            if len(trial_intersections) > before_count:
                 continue
             if not trial.isSolid() or trial.hasNonManifolds() or trial.countComponents() != 1:
                 continue
@@ -144,8 +174,19 @@ def _collapse_until_clean(mesh, raw_mesh, work_path, initial_path):
                 reloaded_status["closed"]
                 and not reloaded_status["non_manifold"]
                 and reloaded_status["components"] == 1
-                and reloaded_status["self_intersections"] < before_count
+                and reloaded_status["self_intersections"] <= before_count
             ):
+                after_signature = _intersection_signature(reloaded_intersections)
+                state_fingerprint = _mesh_fingerprint(reloaded)
+                strict_reduction = reloaded_status["self_intersections"] < before_count
+                relocated_without_cycle = (
+                    reloaded_status["self_intersections"] == before_count
+                    and after_signature != before_signature
+                    and after_signature not in visited_intersection_signatures
+                    and state_fingerprint not in visited_states
+                )
+                if not strict_reduction and not relocated_without_cycle:
+                    continue
                 zone_deviation = None
                 if touches_zone:
                     zone_deviation = _bidirectional_deviation(raw_mesh, reloaded, zone_only=True)
@@ -160,16 +201,33 @@ def _collapse_until_clean(mesh, raw_mesh, work_path, initial_path):
                     zone_deviation,
                     adjacent,
                     edge,
+                    state_fingerprint,
+                    after_signature,
+                    relocated_without_cycle,
                 )
                 break
 
         if accepted is None:
             raise RuntimeError(
-                "no protected-zone-safe shared edge collapse reduced the "
-                f"{before_count} self-intersections after STL round-trip"
+                "no bounded local edge collapse reduced or safely relocated "
+                f"the {before_count} self-intersections after STL round-trip"
             )
 
-        mesh, status, intersections, edge_length, touches_zone, zone_deviation, adjacent, edge = accepted
+        (
+            mesh,
+            status,
+            intersections,
+            edge_length,
+            touches_zone,
+            zone_deviation,
+            adjacent,
+            edge,
+            state_fingerprint,
+            after_signature,
+            relocated_without_cycle,
+        ) = accepted
+        visited_states.add(state_fingerprint)
+        visited_intersection_signatures.add(after_signature)
         round_trip_path = Path(work_path)
         operations.append(
             {
@@ -180,6 +238,7 @@ def _collapse_until_clean(mesh, raw_mesh, work_path, initial_path):
                 "adjacent_facets_before_collapse": [int(adjacent[0]), int(adjacent[1])],
                 "intersections_before": int(before_count),
                 "intersections_after_stl_round_trip": int(status["self_intersections"]),
+                "relocated_equal_count_intersection": bool(relocated_without_cycle),
                 "facets_after_stl_round_trip": int(status["facets"]),
                 "protected_zone_deviation_after_step_upper_bound_mm": (
                     None if zone_deviation is None else float(zone_deviation["max_distance_upper_bound_mm"])
@@ -191,7 +250,7 @@ def _collapse_until_clean(mesh, raw_mesh, work_path, initial_path):
         raise RuntimeError(
             f"self-intersections remain after the fixed {_MAX_REPAIR_STEPS}-step repair bound"
         )
-    return mesh, operations, status
+    return mesh, operations, status, round_trip_path
 
 
 def _point_to_triangles(point, triangles):
