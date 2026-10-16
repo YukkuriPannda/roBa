@@ -1,0 +1,26 @@
+{
+  "title": "PCBスライドケース",
+  "summary": "FreeCAD版 standalone/pcb-slide-case/build.py と同じ形状を SolidCraft のコマンドスクリプトで作り直した。寸法は5つの名前付きパラメータで決まる。",
+  "script": "solidcraft/pcb-slide-case/slide_case.json",
+  "eval": "solidcraft/pcb-slide-case/generated/slide_case.eval.json",
+  "expected": {"CaseBody": [106, 106, 62.6], "SlidingLid": [99.4, 102.7, 3]},
+  "tolerance_mm": 0.01,
+  "labels": {"CaseBody": "ケース本体", "SlidingLid": "スライド蓋"},
+  "checks": [
+    {"status": "done", "text": "ビルド（solidcraft/build.ps1）が正常終了"},
+    {"status": "done", "text": "外形・体積が手計算と一致"},
+    {"status": "done", "text": "InnerWidth=110 で本体幅 116 mm に追従"},
+    {"status": "done", "text": "蓋を閉じた位置で本体と干渉なし"},
+    {"status": "todo", "text": "蓋をスライドさせた途中の干渉"},
+    {"status": "todo", "text": "FreeCAD版との体積の直接比較"},
+    {"status": "todo", "text": "STLの閉じ確認・スライサー"},
+    {"status": "todo", "text": "実物の嵌合・PLA強度"}
+  ],
+  "files": [
+    {"path": "AGENTS.md", "note": "サブエージェント規則とSolidCraft運用"},
+    {"path": ".mcp.json", "note": "SolidCraft の MCP サーバー登録（solidcraft/ 以下に限定）"},
+    {"path": "solidcraft/build.ps1", "note": "全スクリプトをビルドして STEP / STL / 3MF / PNG を出力"},
+    {"path": "solidcraft/pcb-slide-case/", "note": "スクリプトJSON・README・生成物"},
+    {"path": ".claude/skills/cad-visual-report/", "note": "3面図・寸法照合の報告スキル"}
+  ]
+}
