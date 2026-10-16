@@ -1,34 +1,34 @@
 {
   "status": "PASS",
   "units": "mm",
-  "output_path": "D:\\OtherProjects\\roBa-case\\case\\v3\\freecad\\trackball_bearing\\runs\\20261013-114236\\trackball_bearing.stl",
-  "output_sha256": "8e2a614da7b9335c4f37892be0d3a0054a1b1dde25fe95572afdfad8fb2a7bc7",
+  "output_path": "D:\\OtherProjects\\roBa-case\\case\\v3\\freecad\\trackball_bearing\\runs\\20261016-135411\\trackball_bearing.stl",
+  "output_sha256": "36965b1bf5f94063cba519e8ba3d4e935d0264d1b1b4a1bb3f30f0431e602166",
   "input_brep": {
     "valid": true,
     "solid_count": 1,
-    "volume_mm3": 8944.569122575504
+    "volume_mm3": 8877.504920274268
   },
   "raw_shape_triangulation": {
     "deflection_mm": 0.08,
-    "facets": 29624,
-    "volume_mm3": 8944.6875
+    "facets": 29800,
+    "volume_mm3": 8877.8818359375
   },
   "initial_stl_round_trip": {
-    "facets": 29624,
+    "facets": 29800,
     "components": 1,
     "closed": true,
     "non_manifold": false,
-    "self_intersections": 8
+    "self_intersections": 17
   },
   "repair_input_second_stl_round_trip": {
-    "facets": 29624,
+    "facets": 29800,
     "components": 1,
     "closed": true,
     "non_manifold": false,
-    "self_intersections": 8
+    "self_intersections": 17
   },
   "final_stl_round_trip": {
-    "facets": 29604,
+    "facets": 29764,
     "components": 1,
     "closed": true,
     "non_manifold": false,
@@ -55,182 +55,326 @@
     "operations": [
       {
         "step": 1,
-        "edge_length_mm": 7.654536068565258e-05,
+        "edge_length_mm": 0.0010087701675352506,
         "edge_neighborhood_touches_protected_zone": false,
         "edge_vertex_indices_before_collapse": [
-          4124,
-          4125
+          3259,
+          3260
         ],
         "adjacent_facets_before_collapse": [
-          17862,
-          28938
+          18163,
+          18896
         ],
-        "intersections_before": 8,
-        "intersections_after_stl_round_trip": 7,
+        "intersections_before": 17,
+        "intersections_after_stl_round_trip": 15,
         "relocated_equal_count_intersection": false,
-        "facets_after_stl_round_trip": 29622,
+        "facets_after_stl_round_trip": 29798,
         "protected_zone_deviation_after_step_upper_bound_mm": null
       },
       {
         "step": 2,
-        "edge_length_mm": 7.672338029277538e-05,
+        "edge_length_mm": 0.0010099127335927564,
         "edge_neighborhood_touches_protected_zone": false,
         "edge_vertex_indices_before_collapse": [
-          4123,
-          4124
+          3259,
+          3260
         ],
         "adjacent_facets_before_collapse": [
-          17861,
-          28936
+          18162,
+          18894
         ],
-        "intersections_before": 7,
-        "intersections_after_stl_round_trip": 6,
+        "intersections_before": 15,
+        "intersections_after_stl_round_trip": 14,
         "relocated_equal_count_intersection": false,
-        "facets_after_stl_round_trip": 29620,
+        "facets_after_stl_round_trip": 29796,
         "protected_zone_deviation_after_step_upper_bound_mm": null
       },
       {
         "step": 3,
-        "edge_length_mm": 0.00030606594496428955,
+        "edge_length_mm": 0.001297478726653907,
         "edge_neighborhood_touches_protected_zone": false,
         "edge_vertex_indices_before_collapse": [
-          4123,
-          4124
+          4164,
+          4165
         ],
         "adjacent_facets_before_collapse": [
-          17861,
-          28935
+          18120,
+          18957
         ],
-        "intersections_before": 6,
-        "intersections_after_stl_round_trip": 5,
+        "intersections_before": 14,
+        "intersections_after_stl_round_trip": 13,
         "relocated_equal_count_intersection": false,
-        "facets_after_stl_round_trip": 29618,
+        "facets_after_stl_round_trip": 29794,
         "protected_zone_deviation_after_step_upper_bound_mm": null
       },
       {
         "step": 4,
-        "edge_length_mm": 0.001522363845950471,
+        "edge_length_mm": 0.0012979361171024302,
         "edge_neighborhood_touches_protected_zone": false,
         "edge_vertex_indices_before_collapse": [
-          3431,
-          3432
+          4164,
+          4165
         ],
         "adjacent_facets_before_collapse": [
-          348,
-          28956
+          18117,
+          18956
         ],
-        "intersections_before": 5,
-        "intersections_after_stl_round_trip": 5,
-        "relocated_equal_count_intersection": true,
-        "facets_after_stl_round_trip": 29616,
+        "intersections_before": 13,
+        "intersections_after_stl_round_trip": 11,
+        "relocated_equal_count_intersection": false,
+        "facets_after_stl_round_trip": 29792,
         "protected_zone_deviation_after_step_upper_bound_mm": null
       },
       {
         "step": 5,
-        "edge_length_mm": 0.001521964117693363,
+        "edge_length_mm": 0.0014353980209011674,
         "edge_neighborhood_touches_protected_zone": false,
         "edge_vertex_indices_before_collapse": [
-          3429,
-          3430
+          667,
+          669
         ],
         "adjacent_facets_before_collapse": [
-          346,
-          28958
+          19149,
+          19632
         ],
-        "intersections_before": 5,
-        "intersections_after_stl_round_trip": 4,
+        "intersections_before": 11,
+        "intersections_after_stl_round_trip": 10,
         "relocated_equal_count_intersection": false,
-        "facets_after_stl_round_trip": 29614,
+        "facets_after_stl_round_trip": 29790,
         "protected_zone_deviation_after_step_upper_bound_mm": null
       },
       {
         "step": 6,
-        "edge_length_mm": 0.0024540470094155426,
+        "edge_length_mm": 0.0014358766398619928,
         "edge_neighborhood_touches_protected_zone": false,
         "edge_vertex_indices_before_collapse": [
-          3439,
-          3441
+          666,
+          667
         ],
         "adjacent_facets_before_collapse": [
-          351,
-          28957
+          19149,
+          19631
         ],
-        "intersections_before": 4,
-        "intersections_after_stl_round_trip": 2,
+        "intersections_before": 10,
+        "intersections_after_stl_round_trip": 9,
         "relocated_equal_count_intersection": false,
-        "facets_after_stl_round_trip": 29612,
+        "facets_after_stl_round_trip": 29788,
         "protected_zone_deviation_after_step_upper_bound_mm": null
       },
       {
         "step": 7,
-        "edge_length_mm": 0.004211400729947978,
+        "edge_length_mm": 0.0020605662495964384,
         "edge_neighborhood_touches_protected_zone": false,
         "edge_vertex_indices_before_collapse": [
-          3837,
-          3839
+          1885,
+          1887
         ],
         "adjacent_facets_before_collapse": [
-          18358,
-          29032
+          17897,
+          18569
         ],
-        "intersections_before": 2,
-        "intersections_after_stl_round_trip": 1,
-        "relocated_equal_count_intersection": false,
-        "facets_after_stl_round_trip": 29610,
+        "intersections_before": 9,
+        "intersections_after_stl_round_trip": 9,
+        "relocated_equal_count_intersection": true,
+        "facets_after_stl_round_trip": 29786,
         "protected_zone_deviation_after_step_upper_bound_mm": null
       },
       {
         "step": 8,
-        "edge_length_mm": 0.19323266661717733,
+        "edge_length_mm": 0.0020977991084782754,
         "edge_neighborhood_touches_protected_zone": false,
         "edge_vertex_indices_before_collapse": [
-          7903,
-          7904
+          1887,
+          1888
         ],
         "adjacent_facets_before_collapse": [
-          19205,
-          19800
+          17895,
+          18571
         ],
-        "intersections_before": 1,
-        "intersections_after_stl_round_trip": 1,
-        "relocated_equal_count_intersection": true,
-        "facets_after_stl_round_trip": 29608,
+        "intersections_before": 9,
+        "intersections_after_stl_round_trip": 8,
+        "relocated_equal_count_intersection": false,
+        "facets_after_stl_round_trip": 29784,
         "protected_zone_deviation_after_step_upper_bound_mm": null
       },
       {
         "step": 9,
-        "edge_length_mm": 0.31089491776117245,
+        "edge_length_mm": 0.002822059435927086,
         "edge_neighborhood_touches_protected_zone": false,
         "edge_vertex_indices_before_collapse": [
-          7903,
-          7905
+          664,
+          665
         ],
         "adjacent_facets_before_collapse": [
-          18288,
-          18808
+          19146,
+          19623
         ],
-        "intersections_before": 1,
-        "intersections_after_stl_round_trip": 1,
-        "relocated_equal_count_intersection": true,
-        "facets_after_stl_round_trip": 29606,
+        "intersections_before": 8,
+        "intersections_after_stl_round_trip": 6,
+        "relocated_equal_count_intersection": false,
+        "facets_after_stl_round_trip": 29782,
         "protected_zone_deviation_after_step_upper_bound_mm": null
       },
       {
         "step": 10,
+        "edge_length_mm": 0.003090521374158723,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          1883,
+          1885
+        ],
+        "adjacent_facets_before_collapse": [
+          17896,
+          18567
+        ],
+        "intersections_before": 6,
+        "intersections_after_stl_round_trip": 5,
+        "relocated_equal_count_intersection": false,
+        "facets_after_stl_round_trip": 29780,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 11,
+        "edge_length_mm": 0.004195617401371483,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          1884,
+          1885
+        ],
+        "adjacent_facets_before_collapse": [
+          17895,
+          18567
+        ],
+        "intersections_before": 5,
+        "intersections_after_stl_round_trip": 4,
+        "relocated_equal_count_intersection": false,
+        "facets_after_stl_round_trip": 29778,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 12,
+        "edge_length_mm": 0.004197676587575878,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          3491,
+          3492
+        ],
+        "adjacent_facets_before_collapse": [
+          16837,
+          17427
+        ],
+        "intersections_before": 4,
+        "intersections_after_stl_round_trip": 3,
+        "relocated_equal_count_intersection": false,
+        "facets_after_stl_round_trip": 29776,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 13,
+        "edge_length_mm": 0.01188538650606896,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          665,
+          668
+        ],
+        "adjacent_facets_before_collapse": [
+          19139,
+          19621
+        ],
+        "intersections_before": 3,
+        "intersections_after_stl_round_trip": 3,
+        "relocated_equal_count_intersection": true,
+        "facets_after_stl_round_trip": 29774,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 14,
+        "edge_length_mm": 0.008515393217229383,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          661,
+          665
+        ],
+        "adjacent_facets_before_collapse": [
+          19139,
+          19141
+        ],
+        "intersections_before": 3,
+        "intersections_after_stl_round_trip": 2,
+        "relocated_equal_count_intersection": false,
+        "facets_after_stl_round_trip": 29772,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 15,
+        "edge_length_mm": 0.024067298356748177,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          4155,
+          4158
+        ],
+        "adjacent_facets_before_collapse": [
+          18110,
+          18269
+        ],
+        "intersections_before": 2,
+        "intersections_after_stl_round_trip": 1,
+        "relocated_equal_count_intersection": false,
+        "facets_after_stl_round_trip": 29770,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 16,
         "edge_length_mm": 0.2552330230943295,
         "edge_neighborhood_touches_protected_zone": false,
         "edge_vertex_indices_before_collapse": [
-          6761,
-          6794
+          6746,
+          6779
         ],
         "adjacent_facets_before_collapse": [
-          11921,
-          12257
+          11198,
+          11540
+        ],
+        "intersections_before": 1,
+        "intersections_after_stl_round_trip": 1,
+        "relocated_equal_count_intersection": true,
+        "facets_after_stl_round_trip": 29768,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 17,
+        "edge_length_mm": 0.19323266661717733,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          7887,
+          7888
+        ],
+        "adjacent_facets_before_collapse": [
+          19347,
+          19817
+        ],
+        "intersections_before": 1,
+        "intersections_after_stl_round_trip": 1,
+        "relocated_equal_count_intersection": true,
+        "facets_after_stl_round_trip": 29766,
+        "protected_zone_deviation_after_step_upper_bound_mm": null
+      },
+      {
+        "step": 18,
+        "edge_length_mm": 0.31089491776117245,
+        "edge_neighborhood_touches_protected_zone": false,
+        "edge_vertex_indices_before_collapse": [
+          7887,
+          7889
+        ],
+        "adjacent_facets_before_collapse": [
+          18075,
+          18757
         ],
         "intersections_before": 1,
         "intersections_after_stl_round_trip": 0,
         "relocated_equal_count_intersection": false,
-        "facets_after_stl_round_trip": 29604,
+        "facets_after_stl_round_trip": 29764,
         "protected_zone_deviation_after_step_upper_bound_mm": null
       }
     ]
@@ -239,16 +383,16 @@
     "max_allowed_mm": 0.08,
     "raw_to_final_bidirectional_sampled_distance": {
       "raw_shape_to_final_mesh": {
-        "sample_count": 44418,
-        "max_distance_upper_bound_mm": 0.0043873666132373005,
-        "exact_triangle_queries": 47
+        "sample_count": 44684,
+        "max_distance_upper_bound_mm": 0.004387366613237303,
+        "exact_triangle_queries": 83
       },
       "final_mesh_to_raw_shape": {
-        "sample_count": 44388,
+        "sample_count": 44630,
         "max_distance_upper_bound_mm": 0.003501951259520283,
-        "exact_triangle_queries": 17
+        "exact_triangle_queries": 28
       },
-      "max_distance_upper_bound_mm": 0.0043873666132373005,
+      "max_distance_upper_bound_mm": 0.004387366613237303,
       "source_samples_are_vertices_and_face_centroids": true,
       "protected_zone_samples_include_triangles_whose_bounds_touch_zone": false,
       "shortcut_surface_upper_bound_mm": 1e-05
@@ -256,12 +400,12 @@
     "protected_zone_max_allowed_mm": 0.01,
     "protected_zone_bidirectional_sampled_distance": {
       "raw_shape_to_final_mesh": {
-        "sample_count": 5457,
+        "sample_count": 5467,
         "max_distance_upper_bound_mm": 0.0,
         "exact_triangle_queries": 0
       },
       "final_mesh_to_raw_shape": {
-        "sample_count": 5457,
+        "sample_count": 5467,
         "max_distance_upper_bound_mm": 0.0,
         "exact_triangle_queries": 0
       },
@@ -271,5 +415,5 @@
       "shortcut_surface_upper_bound_mm": 1e-05
     }
   },
-  "mesh_volume_delta_mm3": -0.0078125
+  "mesh_volume_delta_mm3": 0.017578125
 }

@@ -15,9 +15,10 @@ OUT = Path(os.environ.get('ROBA_BEARING_OUTPUT',str(HERE/'generated')))
 # against measured flat recess bottoms. Physical seating is still unverified.
 CENTER = App.Vector(-0.28458016, 0.09661005, 19.89032338)
 DEFAULTS = {
- 'BallDiameter':34., 'BearingOuterDiameter':6., 'BearingInnerDiameter':2.,
- # Tamiya Mini 4WD 620 ball bearing (Item 15519): ID 2.0, OD 6.0, width 2.0 mm.
- 'BearingWidth':2., 'ScrewLength':6., 'ScrewDiameter':2.,
+ 'BallDiameter':34., 'BearingOuterDiameter':4., 'BearingInnerDiameter':2.,
+ # MR42 ball bearing: ID 2.0, OD 4.0, width 1.5 mm. Strength is knowingly
+ # secondary for this variant; the ball-side web is reported, not enforced.
+ 'BearingWidth':1.5, 'ScrewLength':6., 'ScrewDiameter':2.,
  # M2 Mini 4WD screw. Pan head 3.8 x 1.3 mm is an ASSUMPTION (not a datasheet
  # value); confirm against the purchased screw before printing.
  'ScrewHeadDiameter':3.8, 'ScrewHeadHeight':1.3,
@@ -25,11 +26,12 @@ DEFAULTS = {
  'PilotDiameter':1.65, 'PocketClearance':0.30,
  # Inner-ring spacer (metal, Mini 4WD). OD must stay below the outer-ring bore so
  # it touches only the inner ring. SpacerBore is the screw clearance through it.
- 'InnerRingContactDiameter':2.90, 'SpacerThickness':0.50,
+ # MR42 inner-ring OD is not published; 2.60 is an ASSUMPTION to check on the part.
+ 'InnerRingContactDiameter':2.60, 'SpacerThickness':0.50,
  'SpacerBoreDiameter':2.10, 'ShellReliefDiameter':2.15,
  # Minimum screw length inside the boss (tip to boss face, capped at boss end).
  'MinThreadEngagement':2.00,
- 'BossRadius':3.50, 'BossLength':2.50, 'BallClearance':0.40, 'ToolAccessDepth':12.,
+ 'BossRadius':3.00, 'BossLength':2.50, 'BallClearance':0.40, 'ToolAccessDepth':12.,
  # Print-oriented options (FDM, 0.4 mm nozzle, 0.2 mm layers).
  # TeardropHoles: horizontal bearing-seat and head-tunnel holes get a 45 degree
  # roof so they print without support. The screw pilot stays round because its
