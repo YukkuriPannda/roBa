@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "solidcraft": {
+      "command": "C:\\Users\\Pannda\\AppData\\Local\\Programs\\SolidCraft\\solidcraft-0.13.1-windows-x64-portable\\solidcraft-cli.exe",
+      "args": ["mcp", "--allow-path", "D:\\OtherProjects\\roBa-case\\solidcraft"]
+    }
+  }
+}
