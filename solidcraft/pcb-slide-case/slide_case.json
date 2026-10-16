@@ -1,0 +1,224 @@
+{
+ "commands": [
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "InnerWidth",
+    "expression": "100",
+    "unit": "mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "InnerLength",
+    "expression": "100",
+    "unit": "mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "InnerHeight",
+    "expression": "50",
+    "unit": "mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "Wall",
+    "expression": "3",
+    "unit": "mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "Clearance",
+    "expression": "0.3",
+    "unit": "mm"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "InnerWidth+2*Wall",
+    "width": "InnerLength+2*Wall",
+    "height": "InnerHeight+Wall",
+    "corner": [
+     "0",
+     "0",
+     "0"
+    ],
+    "name": "CaseBody",
+    "body_name": "CaseBody"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "InnerWidth",
+    "width": "InnerLength",
+    "height": "InnerHeight+1",
+    "corner": [
+     "Wall",
+     "Wall",
+     "Wall"
+    ],
+    "name": "StorageVoid",
+    "body_name": "StorageVoid"
+   }
+  },
+  {
+   "command": "solid.combine",
+   "params": {
+    "target": "CaseBody",
+    "tools": [
+     "StorageVoid"
+    ],
+    "operation": "cut"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "2*Wall",
+    "width": "InnerLength+2*Wall",
+    "height": "3*Wall+2*Clearance",
+    "corner": [
+     "0",
+     "0",
+     "InnerHeight+Wall"
+    ],
+    "name": "LeftRail",
+    "body_name": "LeftRail"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "Wall",
+    "width": "InnerLength+2*Wall+2",
+    "height": "Wall+2*Clearance",
+    "corner": [
+     "Wall",
+     "-1",
+     "InnerHeight+2*Wall"
+    ],
+    "name": "LeftGroove",
+    "body_name": "LeftGroove"
+   }
+  },
+  {
+   "command": "solid.combine",
+   "params": {
+    "target": "LeftRail",
+    "tools": [
+     "LeftGroove"
+    ],
+    "operation": "cut"
+   }
+  },
+  {
+   "command": "solid.combine",
+   "params": {
+    "target": "CaseBody",
+    "tools": [
+     "LeftRail"
+    ],
+    "operation": "join"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "2*Wall",
+    "width": "InnerLength+2*Wall",
+    "height": "3*Wall+2*Clearance",
+    "corner": [
+     "InnerWidth",
+     "0",
+     "InnerHeight+Wall"
+    ],
+    "name": "RightRail",
+    "body_name": "RightRail"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "Wall",
+    "width": "InnerLength+2*Wall+2",
+    "height": "Wall+2*Clearance",
+    "corner": [
+     "InnerWidth",
+     "-1",
+     "InnerHeight+2*Wall"
+    ],
+    "name": "RightGroove",
+    "body_name": "RightGroove"
+   }
+  },
+  {
+   "command": "solid.combine",
+   "params": {
+    "target": "RightRail",
+    "tools": [
+     "RightGroove"
+    ],
+    "operation": "cut"
+   }
+  },
+  {
+   "command": "solid.combine",
+   "params": {
+    "target": "CaseBody",
+    "tools": [
+     "RightRail"
+    ],
+    "operation": "join"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "InnerWidth+2*Wall",
+    "width": "Wall",
+    "height": "3*Wall+2*Clearance",
+    "corner": [
+     "0",
+     "InnerLength+Wall",
+     "InnerHeight+Wall"
+    ],
+    "name": "RearStop",
+    "body_name": "RearStop"
+   }
+  },
+  {
+   "command": "solid.combine",
+   "params": {
+    "target": "CaseBody",
+    "tools": [
+     "RearStop"
+    ],
+    "operation": "join"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "InnerWidth-2*Clearance",
+    "width": "InnerLength+Wall-Clearance",
+    "height": "Wall",
+    "corner": [
+     "Wall+Clearance",
+     "0",
+     "InnerHeight+2*Wall+Clearance"
+    ],
+    "name": "SlidingLid",
+    "body_name": "SlidingLid"
+   }
+  }
+ ]
+}

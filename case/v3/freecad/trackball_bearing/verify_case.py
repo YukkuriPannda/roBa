@@ -7,6 +7,15 @@ import Part, Mesh
 import bearing_case as model
 from mesh_checks import triangles,point_distance,contains
 
+def ray_first_hit(origin,direction,tris):
+ """Distance to the first triangle hit beyond 0.01 mm along a ray (Moller-Trumbore)."""
+ e1=tris[:,1]-tris[:,0];e2=tris[:,2]-tris[:,0];h=np.cross(direction,e2)
+ det=np.einsum('ij,ij->i',e1,h);valid=np.abs(det)>1e-12
+ inv=1/np.where(valid,det,1);sv=origin-tris[:,0]
+ bu=inv*np.einsum('ij,ij->i',sv,h);q=np.cross(sv,e1)
+ bv=inv*(q@direction);bt=inv*np.einsum('ij,ij->i',e2,q)
+ hits=bt[valid&(bu>=0)&(bv>=0)&(bu+bv<=1)&(bt>0.01)]
+ return float(hits.min()) if len(hits) else float('inf')
 H=Path(__file__).resolve().parent; O=model.OUT; R=H.parents[3]
 report={'status':'FAIL','checks':{},'limitations':['physical bearing inner-ring face dimensions unavailable','PCB/wiring model unavailable','print, fit and strength untested','global wall thickness untested']}
 def check(name,ok,evidence):
@@ -78,10 +87,30 @@ def main():
  dirs=np.array([[u.x,u.y,u.z] for c,ax,u in model.frames(p)])
  weights=np.linalg.solve(dirs.T,[0,0,-1])
  check('vertical_load_distribution',min(weights)>0 and max(weights)<10 and float(np.linalg.cond(dirs.T))<30,{'relative_reactions_per_unit_downward_load':weights.tolist(),'condition_number':float(np.linalg.cond(dirs.T)),'criteria':'all positive; peak coefficient <10; condition <30','not_strength_evidence':True})
- face_axial=v['BearingWidth']/2+v['SpacerThickness']
- nominal_inner_web=(v['BallDiameter']/2+v['BearingOuterDiameter']/2)-math.sqrt((v['BallDiameter']/2+v['BallClearance'])**2-face_axial**2)-v['PilotDiameter']/2
- report['local_wall_review']={'selected_boss_ball_side_web_estimate_mm':nominal_inner_web,'nominal_outer_side_wall_mm':v['BossRadius']-v['PilotDiameter']/2,'method':'analytic radial section at boss face before source union and sensor clipping','review_goal_for_rigid_wall_mm':1.6,'strength_status':'HOLD_THIN_LOCAL_SECTION_REQUIRES_COUPON_AND_LOAD_CONDITIONS','global_minimum_not_measured':True}
- report['limitations'].append('ball-side boss face includes a thin local section below 1.6mm review guideline; strength approval withheld')
+ face=v['BearingWidth']/2+v['SpacerThickness']
+ analytic=model.ball_side_web(p)
+ # Radial rays from the pilot wall toward the ball, at the boss face (+0.01 mm),
+ # over the ball-facing arc. The minimum is the mesh-measured ball-side web.
+ measured=[]
+ for c,ax,u in model.frames(p):
+  e=-u;f=ax.cross(e);rp=v['PilotDiameter']/2
+  for phi in np.radians(np.linspace(-60,60,13)):
+   q=c+ax*(face+.01)+(e*math.cos(phi)+f*math.sin(phi))*rp
+   measured.append(ray_first_hit(np.array([q.x,q.y,q.z]),np.array([e.x,e.y,e.z]),tri))
+ measured_min=min(measured)
+ check('ball_side_web_measured_mesh',abs(measured_min-analytic)<.05,{'analytic_mm':analytic,'mesh_min_mm':measured_min,'rays':len(measured),'method':'radial rays from pilot wall toward ball centre, first hit on final STL'})
+ target=v['MinBallSideWeb'];floor=v['BallSideWebFloor']
+ alt_r=v['BallDiameter']/2;alt_D=alt_r+v['BearingOuterDiameter']/2
+ alt_web=(alt_D-v['CouponPilot1']/2)-math.sqrt((alt_r+.2)**2-face**2)
+ report['ball_side_web']={'analytic_mm':analytic,'mesh_min_mm':measured_min,'target_mm':target,'floor_mm':floor,
+  'status':'MEETS_TARGET' if analytic>=target else ('MEETS_FLOOR_ONLY' if analytic>=floor else 'BELOW_FLOOR_HOLD'),
+  'boss_face_offset_mm':face,
+  'required_boss_face_offset_for_target_mm':model.boss_face_offset_for_web(p,target),
+  'required_boss_face_offset_for_floor_mm':model.boss_face_offset_for_web(p,floor),
+  f"alternative_web_mm_ball_clearance_0.2_pilot_{v['CouponPilot1']}":alt_web,
+  'reason':'web = (ball radius + bearing OD/2 - pilot radius) - sqrt((ball radius + ball clearance)^2 - face offset^2); bearing centre distance, pilot, clearance and face offset are fixed by the frozen bearing stack (width 2 mm + 0.4 mm metal spacer)',
+  'strength_status':'HOLD_THIN_LOCAL_SECTION_REQUIRES_COUPON_AND_LOAD_CONDITIONS','global_minimum_not_measured':True}
+ report['limitations'].append(f"ball-side web {analytic:.3f} mm (mesh {measured_min:.3f} mm) is below the {target} mm target and the {floor} mm floor; face offset change or hardware-stack change needed; strength approval withheld")
  # Protected original screw flange and sensor opening zone at low Z.
  protected=Part.makeBox(35,30,4,App.Vector(-10,-15,1.9))
  original_zone=source.common(protected);current_zone=s.common(protected)
@@ -101,16 +130,24 @@ def main():
  p.BearingWidth=old;doc.recompute()
  restored=doc.getObject('BearingCase').Shape.Volume
  check('dimension_restore',abs(restored-before)<.01,{'volume_delta':restored-before})
+ tear_on=doc.getObject('BearingCase').Shape.Volume
+ p.TeardropHoles=False;doc.recompute();tear_off=doc.getObject('BearingCase').Shape.Volume
+ p.TeardropHoles=True;doc.recompute();tear_restored=doc.getObject('BearingCase').Shape.Volume
+ check('teardrop_toggle_recompute',tear_off-tear_on>.01 and abs(tear_restored-tear_on)<.01,{'volume_teardrop_on':tear_on,'volume_teardrop_off':tear_off,'expected':'teardrop removes more material than round holes'})
+ eb=json.loads(doc.getObject('BearingCase').EdgeBreakResult)
+ check('edge_break_recorded',set(eb['groups'])=={'pilot_end','entrance','root'} and doc.getObject('BearingCase').Shape.isValid(),eb)
+ if eb['applied_groups']<eb['total_groups']:
+  report['limitations'].append(f"edge break applied to {eb['applied_groups']} of {eb['total_groups']} groups; unapplied groups recorded in verification.json")
  # Do not overwrite the reviewed FCStd during the mutation test.
  doc.saveAs(str(O/'recompute_test.FCStd'));App.closeDocument(doc.Name)
  doc=App.openDocument(str(O/'recompute_test.FCStd'))
  check('saved_document_reopen',doc.getObject('BearingCase').Shape.isValid() and abs(doc.getObject('BearingCase').Shape.Volume-before)<.01,{'volume':doc.getObject('BearingCase').Shape.Volume})
  # Guard a formerly permitted screw/bearing mismatch.
- p=doc.getObject('Dimensions');p.ScrewDiameter=2.6
+ p=doc.getObject('Dimensions');p.ScrewDiameter=2.1
  rejected=False
  try:model.validate_parameters(p)
  except ValueError:rejected=True
- check('oversize_screw_rejected',rejected,{'test_screw_diameter':2.6,'bearing_bore':2.5})
+ check('oversize_screw_rejected',rejected,{'test_screw_diameter':2.1,'bearing_bore':v['BearingInnerDiameter']})
  report['status']='CAD_CHECKS_PASS_PHYSICAL_UNVERIFIED' if all(x['pass'] for x in report['checks'].values()) else 'FAIL_NOT_PRINT_READY'
  return report['status'].startswith('CAD_CHECKS_PASS')
 if __name__=='__main__':
