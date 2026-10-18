@@ -1,0 +1,6 @@
+{
+  "type": "process",
+  "name": "roBa AD5M Pro 0.20mm Standard",
+  "from": "User",
+  "inherits": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle"
+}

@@ -1,0 +1,6 @@
+{
+  "type": "filament",
+  "name": "roBa Flashforge Generic PLA",
+  "from": "User",
+  "inherits": "Flashforge Generic PLA"
+}

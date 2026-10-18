@@ -1,0 +1,46 @@
+name: slicer-api
+
+services:
+  orca:
+    # Upstream AFKFelix/orca-slicer-api (AGPL-3.0) runs as a separate container.
+    build:
+      context: ./orca
+      args:
+        ORCA_VERSION: "2.4.2"
+    image: slicer-api-orca:2.4.2
+    restart: unless-stopped
+    expose:
+      - "3000"
+    # Upstream indexes ~9800 system profiles at startup (about a minute).
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: slicer-api-gateway:dev
+    restart: unless-stopped
+    depends_on:
+      orca:
+        condition: service_healthy
+    # Loopback only by default. To expose on the LAN, change to "8080:8080" and set API_KEY.
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      ORCA_URL: http://orca:3000
+      MAX_CONCURRENT_JOBS: "1"
+      MAX_QUEUED_JOBS: "20"
+      JOB_RETENTION_HOURS: "24"
+      SLICE_TIMEOUT_S: "900"
+      # Optional. When set, every request except GET /health needs header X-API-Key.
+      API_KEY: ${API_KEY:-}
+    volumes:
+      - slicer-data:/data
+
+volumes:
+  slicer-data:

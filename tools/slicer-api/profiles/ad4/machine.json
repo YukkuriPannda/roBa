@@ -1,0 +1,7 @@
+{
+  "type": "machine",
+  "name": "roBa FlashForge Adventurer 4 0.4",
+  "from": "User",
+  "inherits": "Flashforge Adventurer 4 Series 0.4 Nozzle",
+  "thumbnails": ""
+}

@@ -1,0 +1,6 @@
+{
+  "type": "machine",
+  "name": "roBa FlashForge Adventurer 5M Pro 0.4",
+  "from": "User",
+  "inherits": "Flashforge Adventurer 5M Pro 0.4 Nozzle"
+}
