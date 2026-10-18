@@ -197,7 +197,8 @@ def _parse_outputs(raw: str | None, spec: PrinterSpec) -> list[str]:
 def _normalize_profile(spec: PrinterSpec, kind: str, data: bytes) -> bytes:
     """Validate an uploaded profile and force the server-side fields.
 
-    - `type` is set from the kind; `from` and `setting_id` are dropped.
+    - `type` is set from the kind; `from` is forced to "User" (upstream requires it);
+      `setting_id` is dropped.
     - `inherits` is forced to the printer's system parent. A different value is a 400.
     """
     if len(data) > MAX_PROFILE_BYTES:
@@ -221,6 +222,7 @@ def _normalize_profile(spec: PrinterSpec, kind: str, data: bytes) -> bytes:
 
     normalized = {k: v for k, v in parsed.items() if k not in ("from", "setting_id", "inherits")}
     normalized["type"] = kind
+    normalized["from"] = "User"
     if parent is not None:
         normalized["inherits"] = parent
     return json.dumps(normalized, ensure_ascii=False).encode("utf-8")

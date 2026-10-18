@@ -167,7 +167,7 @@ def test_per_job_profile_override_is_normalized_and_used(client, fake):
     assert sent["name"] == "job-only"
     assert sent["type"] == "machine"
     assert sent["inherits"] == "Flashforge Adventurer 4 Series 0.4 Nozzle"
-    assert "from" not in sent and "setting_id" not in sent
+    assert sent["from"] == "User" and "setting_id" not in sent
     assert fake.calls[0]["process"] == (PROFILE_DIR / "ad4" / "process.json").read_bytes()
 
 
