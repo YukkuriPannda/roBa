@@ -5,7 +5,7 @@
       "pass": true,
       "evidence": {
         "solids": 1,
-        "volume_mm3": 8877.504920274268
+        "volume_mm3": 8817.919781761297
       }
     },
     "ball_case_clearance": {
@@ -25,6 +25,62 @@
           17.99999999561138
         ],
         "assumption": "2mm ceramic spheres against measured flat recess bottoms; not physical seating proof"
+      }
+    },
+    "ceramic_recesses_filled": {
+      "pass": true,
+      "evidence": {
+        "radii_mm": [
+          18.3,
+          18.7,
+          19.0
+        ],
+        "inside_material": {
+          "0": [
+            true,
+            true,
+            true
+          ],
+          "1": [
+            true,
+            true,
+            true
+          ],
+          "2": [
+            true,
+            true,
+            true
+          ]
+        }
+      }
+    },
+    "ceramic_pads_removed": {
+      "pass": true,
+      "evidence": {
+        "0": {
+          "pad_zone_empty": [
+            true,
+            true,
+            true
+          ],
+          "wall_beyond_cut": true
+        },
+        "1": {
+          "pad_zone_empty": [
+            true,
+            true,
+            true
+          ],
+          "wall_beyond_cut": true
+        },
+        "2": {
+          "pad_zone_empty": [
+            true,
+            true,
+            true
+          ],
+          "wall_beyond_cut": true
+        }
       }
     },
     "bearing_0_contact_and_rotation": {
@@ -53,7 +109,7 @@
       "pass": true,
       "evidence": {
         "case_overlap_mm3": 0.0,
-        "ball_contact_gap_mm": 3.584994796702892e-11
+        "ball_contact_gap_mm": 1.5973328583952282e-11
       }
     },
     "bearing_1_outer_ring_sweep": {
@@ -68,7 +124,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 0.14562626444423774
+        "gap_mm": 0.14562626444423915
       }
     },
     "bearing_2_contact_and_rotation": {
@@ -85,6 +141,14 @@
     "bearing_2_driver_access": {
       "pass": true,
       "evidence": 0.0
+    },
+    "bearing_2_driver_through_wall": {
+      "pass": true,
+      "evidence": {
+        "overlap_mm3": 0.0,
+        "length_mm": 30.0,
+        "driver_diameter_mm": 4.0
+      }
     },
     "screw_2_vs_ball": {
       "pass": true,
@@ -245,7 +309,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 1.150629859428944
+        "gap_mm": 0.45342060995202144
       }
     },
     "holder_2_vs_top_R": {
@@ -275,7 +339,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 1.1818120638500462,
+        "gap_mm": 0.43968736616112913,
         "contact_allowed_for_original_mount": false
       }
     },
@@ -346,9 +410,9 @@
       "pass": true,
       "evidence": {
         "method": "mesh surface intersection; reference deflection 0.1mm",
-        "intersection_facets": 370,
+        "intersection_facets": 401,
         "flange_contact_only": true,
-        "intersection_bbox": "BoundBox (-10.0256, -11.7153, 2, 21.8881, 10.6795, 2)",
+        "intersection_bbox": "BoundBox (-10.9751, -10.1195, 2, 26.6768, 16.2867, 2)",
         "reference_self_intersection_warning": true
       }
     },
@@ -363,7 +427,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 7.0498210810430555
+        "gap_mm": 6.20607852024605
       }
     },
     "holder_2_vs_bottom_R": {
@@ -393,7 +457,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 6.778940595319597,
+        "gap_mm": 5.255661324489446,
         "contact_allowed_for_original_mount": false
       }
     },
@@ -464,7 +528,7 @@
       "pass": true,
       "evidence": {
         "operations": "source cut by declared pocket/head/pilot cylinders, then holder union",
-        "cut_count": 12,
+        "cut_count": 13,
         "holder_count": 3,
         "repair_record": "inspect/logs/repair.json",
         "full_difference_volume_not_computed": true
@@ -474,11 +538,11 @@
       "pass": true,
       "evidence": {
         "relative_reactions_per_unit_downward_load": [
-          0.6875551132091048,
-          0.6875551132091046,
-          0.6875551132091046
+          0.6735561059278785,
+          0.6878344533186357,
+          0.7012747803807997
         ],
-        "condition_number": 1.2756544013367925,
+        "condition_number": 1.2909923756443593,
         "criteria": "all positive; peak coefficient <10; condition <30",
         "not_strength_evidence": true
       }
@@ -494,19 +558,23 @@
     },
     "mounting_and_lower_sensor_zone_preserved": {
       "pass": true,
-      "evidence": 0.0
+      "evidence": {
+        "loss_outside_intended_cuts_mm3": 7.498398879590695e-08,
+        "total_removed_mm3": 4.9049253316259,
+        "ceramic_pad_removal_mm3": 4.904925256641911
+      }
     },
     "trackball_bearing_mesh": {
       "pass": true,
       "evidence": {
         "components": 1,
         "degenerate_facets": 0,
-        "minimum_triangle_area_mm2": 2.995645680187749e-09,
+        "minimum_triangle_area_mm2": 1.5010694803573133e-09,
         "closed": true,
         "non_manifold": false,
         "self_intersections": false,
-        "facets": 29764,
-        "volume_mm3": 8877.8994140625
+        "facets": 32706,
+        "volume_mm3": 8818.5458984375
       }
     },
     "fit_coupon_mesh": {
@@ -540,14 +608,14 @@
       "evidence": {
         "valid": true,
         "solids": 1,
-        "volume_delta": -5.0355683924863115e-06
+        "volume_delta": -0.0003987980126112234
       }
     },
     "named_dimension_recompute": {
       "pass": true,
       "evidence": {
-        "volume_before": 8877.504920274268,
-        "volume_after": 8877.306324478686,
+        "volume_before": 8817.919781761297,
+        "volume_after": 8817.527069511287,
         "changed_parameter": "BearingWidth",
         "value_before": 1.5,
         "value_after": 1.55
@@ -556,8 +624,8 @@
     "dependent_hardware_recompute": {
       "pass": true,
       "evidence": {
-        "volume_before": 42.4115008234622,
-        "volume_after": 43.8252175175776
+        "volume_before": 42.411500823462205,
+        "volume_after": 43.825217517577606
       }
     },
     "dimension_restore": {
@@ -569,8 +637,8 @@
     "teardrop_toggle_recompute": {
       "pass": true,
       "evidence": {
-        "volume_teardrop_on": 8877.50492027427,
-        "volume_teardrop_off": 8889.881053961637,
+        "volume_teardrop_on": 8817.919781761299,
+        "volume_teardrop_off": 8833.083625496014,
         "expected": "teardrop removes more material than round holes"
       }
     },
@@ -580,17 +648,17 @@
         "requested_mm": 0.5,
         "groups": {
           "pilot_end": {
-            "edges": 11,
+            "edges": 15,
             "mode": "none",
             "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
           },
           "entrance": {
-            "edges": 86,
+            "edges": 69,
             "mode": "none",
             "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
           },
           "root": {
-            "edges": 63,
+            "edges": 73,
             "mode": "none",
             "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
           }
@@ -602,7 +670,7 @@
     "saved_document_reopen": {
       "pass": true,
       "evidence": {
-        "volume": 8877.50492027427
+        "volume": 8817.919781761302
       }
     },
     "oversize_screw_rejected": {

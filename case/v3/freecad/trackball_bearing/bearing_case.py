@@ -62,11 +62,34 @@ DEFAULTS = {
  # 0.688). 142/262/22 was rejected: its STL export was not one closed component.
  # The set stays off the +X sensor cutout (sensor void starts at X=18.39 mm, 0 deg).
  'Support1Polar':61.00, 'Support1Azimuth':139.00, 'Support1AxisTilt':0.,
- 'Support2Polar':61.00, 'Support2Azimuth':259.00, 'Support2AxisTilt':0.,
+ 'Support2Polar':61.00, 'Support2Azimuth':257.00, 'Support2AxisTilt':-90.,
  'Support3Polar':61.00, 'Support3Azimuth':19.00, 'Support3AxisTilt':0.,
+ # Driver hole through the far wall on the screw-head side. Support 3's head
+ # side crosses the sensor box and its outer wall 16.2-19.5 mm from the
+ # bearing centre, so a straight driver could not reach the screw. The hole
+ # continues the head tunnel from ToolAccessDepth to DriverHoleLength. The
+ # 4.0 mm diameter matches the 4 mm driver envelope used by verify_case.py.
+ 'DriverHoleDiameter':4.00, 'DriverHoleLength':30.,
+ 'Support1DriverHole':False, 'Support2DriverHole':False, 'Support3DriverHole':True,
+ # Fill the three recesses that held the original 2 mm ceramic balls (radius
+ # about 0.68-0.88 mm, flat bottom about 19.05 mm from the ball centre). The
+ # plug runs from CeramicRecessFillInnerRadius to CeramicRecessFillOuterRadius,
+ # inside the 19.49 mm outer shell. It starts 0.17 mm below the faceted pad
+ # surface (17.535 mm): a plug flush with the 17.4 mm ball void grazed the pad
+ # and left STL self-intersections, so a shallow dimple is kept instead.
+ # Recess axes come from inspect/logs/site_feasibility.json.
+ 'FillCeramicRecesses':True, 'CeramicRecessFillDiameter':2.20,
+ 'CeramicRecessFillInnerRadius':17.70, 'CeramicRecessFillOuterRadius':19.25,
+ # Remove the raised pads around those recesses. Each pad rises from the
+ # 17.99 mm cup surface to about 17.53 mm (radius from the fitted cup centre)
+ # over a circle of about 4.8 mm diameter. Cut inside CeramicPadCutRadius,
+ # 0.16 mm beyond the cup surface so no sliver of the faceted cup remains,
+ # within CeramicPadCutDiameter around each recess axis. Features 4 mm and more
+ # off the site-3 axis (sensor side bumps) stay outside the cut.
+ 'RemoveCeramicPads':True, 'CeramicPadCutDiameter':5.40, 'CeramicPadCutRadius':18.15,
 }
 ANGLE_NAMES = {name for name in DEFAULTS if name.endswith(('Polar', 'Azimuth', 'AxisTilt'))}
-BOOL_NAMES = {'TeardropHoles'}
+BOOL_NAMES = {'TeardropHoles','FillCeramicRecesses','RemoveCeramicPads','Support1DriverHole','Support2DriverHole','Support3DriverHole'}
 COUPON_LEVELS = (1, 2, 3)
 
 def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -137,11 +160,44 @@ def boss_face_offset_for_web(p,target):
   else:lo=mid
  return hi
 
+def ceramic_recess_sites():
+ """Measured recess axes of the original 2 mm ceramic-ball seats."""
+ return json.loads((HERE/'inspect/logs/site_feasibility.json').read_text())['sites']
+def recess_fills(p):
+ """Plugs that close the original ceramic-ball recesses, trimmed to the ball void."""
+ v=validate_parameters(p)
+ if not v['FillCeramicRecesses']:return []
+ inner=Part.makeSphere(v['CeramicRecessFillInnerRadius'],CENTER)
+ r=v['CeramicRecessFillDiameter']/2
+ return [cylinder(r,v['CeramicRecessFillInnerRadius']-.5,v['CeramicRecessFillOuterRadius'],CENTER,unit(App.Vector(*s['u']))).cut(inner)
+  for s in ceramic_recess_sites()]
+
+def cup_centre():
+ c=json.loads((HERE/'inspect/logs/cup_fit_trackballcase.json').read_text())['inner']['center']
+ return App.Vector(*c)
+def ceramic_pad_cuts(p):
+ """Cutters that remove the raised ceramic-ball pads down to just below the cup surface."""
+ v=validate_parameters(p)
+ if not v['RemoveCeramicPads']:return []
+ c=cup_centre();sphere=Part.makeSphere(v['CeramicPadCutRadius'],c)
+ r=v['CeramicPadCutDiameter']/2
+ return [cylinder(r,v['CeramicPadCutRadius']-4,v['CeramicPadCutRadius']+.5,c,unit(App.Vector(*st['u']))).common(sphere)
+  for st in ceramic_recess_sites()]
+
 def validate_parameters(p):
  vals={k:value(p,k) for k in DEFAULTS}
  if not all(math.isfinite(v) for v in vals.values()):raise ValueError('dimensions must be finite values')
  if not all(v>0 for k,v in vals.items() if k not in ANGLE_NAMES|BOOL_NAMES):raise ValueError('length dimensions must be positive')
- if vals['TeardropHoles'] not in (0.,1.):raise ValueError('TeardropHoles must be True or False')
+ for k in BOOL_NAMES:
+  if vals[k] not in (0.,1.):raise ValueError(f'{k} must be True or False')
+ if vals['DriverHoleLength']<=vals['ToolAccessDepth']:raise ValueError('driver hole must extend beyond the head tunnel')
+ if vals['DriverHoleDiameter']>vals['ScrewHeadDiameter']+.6:raise ValueError('driver hole wider than the head tunnel')
+ bottoms=[s['hole_bottom_radius_from_center'] for s in ceramic_recess_sites()]
+ if not vals['BallDiameter']/2+vals['BallClearance']<=vals['CeramicRecessFillInnerRadius']<min(bottoms)-.5:raise ValueError('recess fill must start outside the ball void and well before the recess bottom')
+ if not max(bottoms)<vals['CeramicRecessFillOuterRadius']<19.45:raise ValueError('recess fill must pass the recess bottom and stay inside the 19.49 mm shell')
+ if not 18.0<vals['CeramicPadCutRadius']<min(bottoms)-.5:raise ValueError('pad cut must pass the 17.99 mm cup surface and leave the recess plug')
+ if not 4.8<=vals['CeramicPadCutDiameter']<=7.0:raise ValueError('pad cut diameter outside the measured 4.8 mm pad and the 8 mm clear zone')
+ if vals['CeramicRecessFillDiameter']<1.9:raise ValueError('recess fill narrower than the 1.75 mm recess')
  if vals['BearingInnerDiameter']>=vals['BearingOuterDiameter']:raise ValueError('bearing ID must be below OD')
  if not vals['BearingInnerDiameter']<vals['InnerRingContactDiameter']<vals['BearingOuterDiameter']:raise ValueError('inner-ring contact diameter out of range')
  if vals['PilotDiameter']>=vals['ScrewDiameter']:raise ValueError('pilot must be smaller than screw')
@@ -163,7 +219,7 @@ def validate_parameters(p):
   if not vals[f'CouponPilot{k}']<vals['ScrewDiameter']:raise ValueError(f'CouponPilot{k} must be below screw diameter')
  for i in range(1,4):
   if not 0<vals[f'Support{i}Polar']<180:raise ValueError(f'Support{i}Polar must be between 0 and 180 degrees')
-  if not -20<=vals[f'Support{i}AxisTilt']<=20:raise ValueError(f'Support{i}AxisTilt outside examined design range')
+  if not -90<=vals[f'Support{i}AxisTilt']<=90:raise ValueError(f'Support{i}AxisTilt outside -90..90 degrees')
  return vals
 
 def hardware(p):
@@ -193,6 +249,8 @@ def hardware(p):
   # and driver as well as the bearing; the assembly sweep is checked separately.
   headspace=teardrop(v['ScrewHeadDiameter']/2+.30,-v['ToolAccessDepth'],-half-.01,c,ax,tear)
   cuts.extend([pocket,headspace,pilot,cylinder(v['ShellReliefDiameter']/2,half-.01,half+spacer+.01,c,ax)])
+  if v[f'Support{i+1}DriverHole']:
+   cuts.append(teardrop(v['DriverHoleDiameter']/2,-v['DriverHoleLength'],-v['ToolAccessDepth']+.01,c,ax,tear))
   underhead=-half-spacer
   shank=cylinder(v['ScrewDiameter']/2,underhead,underhead+v['ScrewLength'],c,ax)
   head=cylinder(v['ScrewHeadDiameter']/2,underhead-v['ScrewHeadHeight'],underhead,c,ax)
@@ -267,6 +325,11 @@ class CaseProxy:
  def execute(self,obj):
   holders,cuts,_,_,_=hardware(obj.Dimensions)
   shape=obj.Source.Shape.copy()
+  # Fill the old ceramic-ball recesses first so the bearing cuts still win.
+  for i,fill in enumerate(recess_fills(obj.Dimensions)):
+   print('recess_fill',i,flush=True);shape=shape.fuse(fill)
+  for i,pad in enumerate(ceramic_pad_cuts(obj.Dimensions)):
+   print('pad_cut',i,flush=True);shape=shape.cut(pad)
   for i,cut in enumerate(cuts):
    print('cut',i,flush=True);shape=shape.cut(cut)
   for i,holder in enumerate(holders):

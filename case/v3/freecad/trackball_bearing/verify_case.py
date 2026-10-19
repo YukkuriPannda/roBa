@@ -33,6 +33,20 @@ def main():
  original_centres=np.array([np.array(x['hole_bottom_centroid'])-np.array(x['u']) for x in json.loads((H/'inspect/logs/site_feasibility.json').read_text())['sites']])
  seat_distances=np.linalg.norm(original_centres-centre,axis=1)
  check('original_ball_seating_reference',np.max(np.abs(seat_distances-18))<.001,{'ceramic_centre_distances_mm':seat_distances.tolist(),'assumption':'2mm ceramic spheres against measured flat recess bottoms; not physical seating proof'})
+ if v['FillCeramicRecesses']:
+  # Points on each old recess axis, between the ball void and the old flat bottom.
+  radii=(18.3,18.7,19.0) if v['RemoveCeramicPads'] else (17.8,18.2,18.7,19.0)
+  probes={k:[s.isInside(model.CENTER+model.unit(App.Vector(*x['u']))*r,1e-4,True) for r in radii] for k,x in enumerate(model.ceramic_recess_sites())}
+  check('ceramic_recesses_filled',all(all(q) for q in probes.values()),{'radii_mm':radii,'inside_material':probes})
+ if v['RemoveCeramicPads']:
+  # Former pad tops (17.53 mm from the cup centre) must now be empty, at the
+  # axis and 1.5 mm off it, while the cup wall beyond the cut remains.
+  cc=model.cup_centre();pads={}
+  for k,x in enumerate(model.ceramic_recess_sites()):
+   u=model.unit(App.Vector(*x['u']));side=model.unit(u.cross(App.Vector(0,0,1)))
+   pts=[cc+u*17.7,cc+model.unit(u*17.7+side*1.5)*17.7,cc+model.unit(u*17.7-side*1.5)*17.7]
+   pads[k]={'pad_zone_empty':[not s.isInside(q,1e-4,True) for q in pts],'wall_beyond_cut':s.isInside(cc+model.unit(u*17.7+side*1.5)*18.6,1e-4,True)}
+  check('ceramic_pads_removed',all(all(d['pad_zone_empty']) and d['wall_beyond_cut'] for d in pads.values()),pads)
  for i,b in enumerate(bearings):
   print('checking bearing',i,flush=True)
   overlap=b.common(s).Volume; contact=b.distToShape(ball)[0]
@@ -44,6 +58,10 @@ def main():
   # envelope is a minimum driver size, not every screwdriver.
   tool=model.cylinder(2.,-v['ToolAccessDepth'], -half-v['SpacerThickness']-v['ScrewHeadHeight']-.05,c,ax)
   check(f'bearing_{i}_driver_access',tool.common(s).Volume<1e-5,tool.common(s).Volume)
+  if v[f'Support{i+1}DriverHole']:
+   # Straight 4 mm driver from the screw head out through the far wall.
+   through=model.cylinder(2.,-v['DriverHoleLength'],-half-v['SpacerThickness']-v['ScrewHeadHeight']-.05,c,ax)
+   check(f'bearing_{i}_driver_through_wall',through.common(s).Volume<1e-5,{'overlap_mm3':through.common(s).Volume,'length_mm':v['DriverHoleLength'],'driver_diameter_mm':4.})
   screw_ball_gap=screws[i].distToShape(ball)[0]
   check(f'screw_{i}_vs_ball',screws[i].common(ball).Volume<1e-7 and screw_ball_gap>=.1,{'overlap_mm3':screws[i].common(ball).Volume,'gap_mm':screw_ball_gap})
  a=json.loads((H/'inspect/logs/alignment.json').read_text());m=App.Matrix();m.rotateZ(math.radians(a['rotation_z_deg']));m.move(App.Vector(*a['translation_xy'],a['translation_z_assuming_flange_contact']))
@@ -114,8 +132,16 @@ def main():
  # Protected original screw flange and sensor opening zone at low Z.
  protected=Part.makeBox(35,30,4,App.Vector(-10,-15,1.9))
  original_zone=source.common(protected);current_zone=s.common(protected)
- loss=original_zone.cut(current_zone).Volume
- check('mounting_and_lower_sensor_zone_preserved',loss<.01,loss)
+ # The ceramic pad removal is an intended change inside this zone; exclude it.
+ # OCC raises 'Null shape' for an empty Boolean result; count that as zero.
+ def vol(op):
+  try:
+   r=op();return 0. if r.isNull() else r.Volume
+  except ValueError:return 0.
+ lost=original_zone.cut(current_zone);lost_total=vol(lambda:lost)
+ intended=sum(vol(lambda pad=pad:lost.common(pad)) for pad in model.ceramic_pad_cuts(p))
+ loss=lost_total-intended
+ check('mounting_and_lower_sensor_zone_preserved',loss<.01,{'loss_outside_intended_cuts_mm3':loss,'total_removed_mm3':lost_total,'ceramic_pad_removal_mm3':intended})
  for name in ('trackball_bearing','fit_coupon','inner_ring_spacer'):
   mesh=Mesh.Mesh(str(O/f'{name}.stl'))
   mt=triangles(mesh);areas=np.linalg.norm(np.cross(mt[:,1]-mt[:,0],mt[:,2]-mt[:,0]),axis=1)/2
