@@ -5,7 +5,7 @@
       "pass": true,
       "evidence": {
         "solids": 1,
-        "volume_mm3": 8813.522178238376
+        "volume_mm3": 8814.49472202794
       }
     },
     "ball_case_clearance": {
@@ -87,7 +87,7 @@
       "pass": true,
       "evidence": {
         "case_overlap_mm3": 0.0,
-        "ball_contact_gap_mm": 1.9529235504405377e-11
+        "ball_contact_gap_mm": 1.7878260670137353e-11
       }
     },
     "bearing_0_outer_ring_sweep": {
@@ -102,7 +102,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 0.14562626444423205
+        "gap_mm": 0.14562626444423735
       }
     },
     "bearing_1_contact_and_rotation": {
@@ -302,7 +302,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 2.9981215880500898
+        "gap_mm": 3.7141770351808563
       }
     },
     "holder_1_vs_top_R": {
@@ -331,7 +331,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 2.2978060826968325,
+        "gap_mm": 3.378954006299472,
         "contact_allowed_for_original_mount": false
       }
     },
@@ -410,9 +410,9 @@
       "pass": true,
       "evidence": {
         "method": "mesh surface intersection; reference deflection 0.1mm",
-        "intersection_facets": 396,
+        "intersection_facets": 368,
         "flange_contact_only": true,
-        "intersection_bbox": "BoundBox (-10.307, -11.7363, 2, 33.6267, 16.2867, 2)",
+        "intersection_bbox": "BoundBox (-10.9751, -9.8686, 2, 33.6643, 10.6792, 2)",
         "reference_self_intersection_warning": true
       }
     },
@@ -420,7 +420,7 @@
       "pass": true,
       "evidence": {
         "overlap_mm3": 0.0,
-        "gap_mm": 7.772798105097674
+        "gap_mm": 10.305002175636023
       }
     },
     "holder_1_vs_bottom_R": {
@@ -538,11 +538,11 @@
       "pass": true,
       "evidence": {
         "relative_reactions_per_unit_downward_load": [
-          0.697085348937489,
-          0.7546450104281083,
-          0.7693908198406028
+          0.7401132915685932,
+          0.8384809724291574,
+          0.8548649416393019
         ],
-        "condition_number": 1.4269051706269484,
+        "condition_number": 1.6538278459090348,
         "criteria": "all positive; peak coefficient <10; condition <30",
         "not_strength_evidence": true
       }
@@ -551,7 +551,7 @@
       "pass": true,
       "evidence": {
         "analytic_mm": 0.40891995965345274,
-        "mesh_min_mm": 0.4099529307999141,
+        "mesh_min_mm": 0.4099514007140949,
         "rays": 39,
         "method": "radial rays from pilot wall toward ball centre, first hit on final STL"
       }
@@ -569,12 +569,12 @@
       "evidence": {
         "components": 1,
         "degenerate_facets": 0,
-        "minimum_triangle_area_mm2": 1.1443288360415642e-08,
+        "minimum_triangle_area_mm2": 6.217406778183074e-09,
         "closed": true,
         "non_manifold": false,
         "self_intersections": false,
-        "facets": 32106,
-        "volume_mm3": 8814.1943359375
+        "facets": 32194,
+        "volume_mm3": 8815.1337890625
       }
     },
     "fit_coupon_mesh": {
@@ -595,12 +595,12 @@
       "evidence": {
         "components": 1,
         "degenerate_facets": 0,
-        "minimum_triangle_area_mm2": 0.006542153090547645,
+        "minimum_triangle_area_mm2": 0.006542097273849533,
         "closed": true,
         "non_manifold": false,
         "self_intersections": false,
         "facets": 1008,
-        "volume_mm3": 0.92279052734375
+        "volume_mm3": 0.9229329228401184
       }
     },
     "step_round_trip": {
@@ -608,14 +608,14 @@
       "evidence": {
         "valid": true,
         "solids": 1,
-        "volume_delta": -0.00039546899643028155
+        "volume_delta": -0.0003943519295717124
       }
     },
     "named_dimension_recompute": {
       "pass": true,
       "evidence": {
-        "volume_before": 8813.522178238376,
-        "volume_after": 8813.219011724746,
+        "volume_before": 8814.49472202794,
+        "volume_after": 8814.188312682896,
         "changed_parameter": "BearingWidth",
         "value_before": 1.5,
         "value_after": 1.55
@@ -624,21 +624,21 @@
     "dependent_hardware_recompute": {
       "pass": true,
       "evidence": {
-        "volume_before": 42.4115008234622,
-        "volume_after": 43.825217517577606
+        "volume_before": 42.41150082346219,
+        "volume_after": 43.82521751757761
       }
     },
     "dimension_restore": {
       "pass": true,
       "evidence": {
-        "volume_delta": -3.637978807091713e-12
+        "volume_delta": 9.094947017729282e-12
       }
     },
     "teardrop_toggle_recompute": {
       "pass": true,
       "evidence": {
-        "volume_teardrop_on": 8813.522178238372,
-        "volume_teardrop_off": 8829.448813200388,
+        "volume_teardrop_on": 8814.494722027948,
+        "volume_teardrop_off": 8830.67809313205,
         "expected": "teardrop removes more material than round holes"
       }
     },
@@ -653,12 +653,12 @@
             "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
           },
           "entrance": {
-            "edges": 80,
+            "edges": 85,
             "mode": "none",
             "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
           },
           "root": {
-            "edges": 62,
+            "edges": 64,
             "mode": "none",
             "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
           }
@@ -670,7 +670,7 @@
     "saved_document_reopen": {
       "pass": true,
       "evidence": {
-        "volume": 8813.522178238367
+        "volume": 8814.494722027934
       }
     },
     "oversize_screw_rejected": {
@@ -691,7 +691,7 @@
   ],
   "ball_side_web": {
     "analytic_mm": 0.40891995965345274,
-    "mesh_min_mm": 0.4099529307999141,
+    "mesh_min_mm": 0.4099514007140949,
     "target_mm": 1.6,
     "floor_mm": 0.4,
     "status": "MEETS_FLOOR_ONLY",

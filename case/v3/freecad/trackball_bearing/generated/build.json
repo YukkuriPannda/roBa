@@ -1,7 +1,7 @@
 {
   "status": "CAD_CHECKS_PASS_PHYSICAL_UNVERIFIED",
   "source_sha256": "cdaa94d5c244317f9dec7bfc47de96845a091c61c89673050497cd625df796c9",
-  "code_sha256": "f31a879418b41fab49a246cfe4d2e6b7b0334b628a8291e19f974b23157925d5",
+  "code_sha256": "16ed24c367c84b1a9b52a555251ba3f8ae17b204aa0c2e33d30547dfaf72f974",
   "freecad": [
     "1",
     "1",
@@ -46,7 +46,7 @@
     "CouponPilot2": 1.65,
     "CouponClearance3": 0.4,
     "CouponPilot3": 1.75,
-    "Support1Polar": 68.0,
+    "Support1Polar": 76.0,
     "Support1Azimuth": 139.0,
     "Support1AxisTilt": 0.0,
     "Support2Polar": 61.0,
@@ -73,7 +73,7 @@
     0.09661005,
     19.89032338
   ],
-  "case_volume": 8813.522178238378,
+  "case_volume": 8814.494722027948,
   "valid": true,
   "solids": 1,
   "ball_side_web_mm": 0.40891995965345274,
@@ -86,12 +86,12 @@
         "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
       },
       "entrance": {
-        "edges": 80,
+        "edges": 85,
         "mode": "none",
         "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
       },
       "root": {
-        "edges": 62,
+        "edges": 64,
         "mode": "none",
         "reason": "fillet failed (class StdFail_NotDone BRep_API: command not done); chamfer failed (class StdFail_NotDone BRep_API: command not done); "
       }
@@ -100,12 +100,12 @@
     "total_groups": 3
   },
   "outputs": {
-    "trackball_bearing.FCStd": "f74470bf74f005878740b9a5079094bea995a790c23bd372102a2a5014df00da",
-    "trackball_bearing.step": "b4f3c1d27e36cac481d10589f878d25b9c52bae555af64843c15a69d96d7375e",
-    "trackball_bearing.stl": "4601e1244beb71d6533637510f9f159769dfc7008fde7525545ef341e7023f65",
-    "fit_coupon.step": "3af3dc9593e98b3267b32b5730297eb3ff4a22a298f909dd89ca8990e55c3846",
+    "trackball_bearing.FCStd": "806d5d5057b0c328867fdcead37cab7767ca546a85f4208ddc23858ad7969e09",
+    "trackball_bearing.step": "9d72cfed1940f3846f954794ad5888c1eda29517c1ae50cd2c0d246830e66fd0",
+    "trackball_bearing.stl": "5f2e80bb9425ee4d2f9ceb79f3fdc0272418cdad8ee339e9c2f81cbc9b7a741a",
+    "fit_coupon.step": "7d49c8275a4d0426d567b72884574f10966aab76d9c515ee63888cb12e5262f2",
     "fit_coupon.stl": "d79bce7f3a7e71735ed40bfb7600f778e028604ffa1098c9089618cd5c549c36",
-    "inner_ring_spacer.stl": "c02b322d6b9b34d3226a8481f16463aac2f7d13598213a605d189657cb81aa37"
+    "inner_ring_spacer.stl": "3355117cbe9480690605f9197bc98d8f43d6d787a398806478ad882cbb17b241"
   },
   "unverified": [
     "inner race face diameter and screw fit",
@@ -116,12 +116,12 @@
     "complete wall thickness",
     "ball-side web target (see verification.json)"
   ],
-  "generated_at": "2026-10-24T12:17:02.656018+09:00",
+  "generated_at": "2026-10-24T12:47:36.733147+09:00",
   "source_repair_sha256": "eace2c73ccc5e5e77deaeea9cf3f2f7b7beb2ba0acca1ed3949b1ecce217629c",
-  "mesh_export_evidence_sha256": "415f1c6b1b6efcd030f52bfa98437c086e2e2c7a88e27d1bde31f12ba8299756",
-  "verification_evidence_sha256": "37e48bfbc2d69cb244ce3e37e974459ddf569b41042aa71f9e2ced4d770abbcb",
+  "mesh_export_evidence_sha256": "f9ed62159fc7dabb86c20d48885919a594b8ffd86d4625da9911a2258a27b1f2",
+  "verification_evidence_sha256": "3821442b8689edd06bd01b66850e52e1843cada53c3ec4b038e95bf624d00bcc",
   "code_hashes_sha256": {
-    "bearing_case.py": "f31a879418b41fab49a246cfe4d2e6b7b0334b628a8291e19f974b23157925d5",
+    "bearing_case.py": "16ed24c367c84b1a9b52a555251ba3f8ae17b204aa0c2e33d30547dfaf72f974",
     "repair_source.py": "d6e4f56127124c12335de92414ea3660d4c537bf1d0ccec16a4ca7bff267fbea",
     "export_mesh.py": "3798ef0effffdf111cdaad8ac91f9b1faf4a8a2e1dc434a7f8f7c6cbc8630f81",
     "export_case_mesh.py": "f8f0c2ce76da18e43cd22b72707256eb24b08e5745ad488934840f2503ebeca7",
@@ -155,24 +155,24 @@
     "scipy": "1.16.3"
   },
   "outputs_sha256": {
-    "trackball_bearing.FCStd": "f74470bf74f005878740b9a5079094bea995a790c23bd372102a2a5014df00da",
-    "trackball_bearing.step": "b4f3c1d27e36cac481d10589f878d25b9c52bae555af64843c15a69d96d7375e",
-    "trackball_bearing.stl": "4601e1244beb71d6533637510f9f159769dfc7008fde7525545ef341e7023f65",
-    "fit_coupon.step": "3af3dc9593e98b3267b32b5730297eb3ff4a22a298f909dd89ca8990e55c3846",
+    "trackball_bearing.FCStd": "806d5d5057b0c328867fdcead37cab7767ca546a85f4208ddc23858ad7969e09",
+    "trackball_bearing.step": "9d72cfed1940f3846f954794ad5888c1eda29517c1ae50cd2c0d246830e66fd0",
+    "trackball_bearing.stl": "5f2e80bb9425ee4d2f9ceb79f3fdc0272418cdad8ee339e9c2f81cbc9b7a741a",
+    "fit_coupon.step": "7d49c8275a4d0426d567b72884574f10966aab76d9c515ee63888cb12e5262f2",
     "fit_coupon.stl": "d79bce7f3a7e71735ed40bfb7600f778e028604ffa1098c9089618cd5c549c36",
-    "inner_ring_spacer.stl": "c02b322d6b9b34d3226a8481f16463aac2f7d13598213a605d189657cb81aa37",
-    "assembly_preview.png": "5fa15b3c28ab012be1dbadf143bc8b2a8d69a2695c754cbbafdd884044f3634d",
-    "body_clearance_section.png": "05a054dced5d6e0724d43613462c2b44a508f34c8446b54f1f2cfc064611e95f",
-    "support_sections.png": "2ffa33f45a3d871c1c8c6441022d248504fc4db747167ef165b8cbac7a16128a",
-    "six_view.png": "d63dd8f6bf50cffe0e28c3fc711c6443111b0e31df3cbfa6a899c4fd26c17bc5",
-    "six_view.pdf": "04a4f9a240fb69477523b3e6ff2389ddf6d51718aa2f706eb00470cd6bf4b254",
+    "inner_ring_spacer.stl": "3355117cbe9480690605f9197bc98d8f43d6d787a398806478ad882cbb17b241",
+    "assembly_preview.png": "525d9b68f9e603b71ed2a1fda7172576c935572688b635a5b6b49b7a15862403",
+    "body_clearance_section.png": "81054bf60c0c6cd63cf5d7061d286297df9895ec4693af16a6302a2a377e6b54",
+    "support_sections.png": "bcbeada5dc299684e4b717416c620fe549d31f1964b09525ad476081f7c1ecd2",
+    "six_view.png": "fb6b813590cf23a7428b507456303279b928c7f7b4683ff82923348184575d93",
+    "six_view.pdf": "1cf38bf7fe2846374efe36a1f575d41d5be7e731c635d9b8aa54eaeb7169b1a3",
     "repair.json": "eace2c73ccc5e5e77deaeea9cf3f2f7b7beb2ba0acca1ed3949b1ecce217629c",
     "repaired_source.bms": "8c9830671bba3d022250b8948520d2c4e895e24d8f7a6bf92a0bcac94dbee309",
     "source.brep": "25af5f03754bf847d4feb57683e826fcf3232589c4bfabb16abbe28e77f509f3",
     "source.sha256": "c28555e70bcdfbcf99fc29267a7844af65043b066b35e1fa4542a182f99dc6f7",
-    "print_evidence.json": "a47cd8d8599fc633c74bb4fc74bcd6540186c25e9b9d170b53279363bbe3ae83",
-    "print/trackball_bearing_case_print.stl": "565f252c8369a0b8a681a6a7da7faca52a2191db2867b6d66e81e9d53fed9ddd",
+    "print_evidence.json": "4bbaa739f9c0a1a8591ae5a2b12a3e0a86c86e80c74e184f0ae67d1377c9e637",
+    "print/trackball_bearing_case_print.stl": "6801ec39062a63e2ee27e1bbedd88c2a1d8b8b39cf92f8be00824b0f3853701b",
     "print/fit_coupon_print.stl": "2ae9903c12c5ab49ca21bd84987673e1ffb7fc771a234bdb174cc12aee2eee6b",
-    "print/PRINT.md": "e308d98d1f05995bd4ea98b7f69dd8ddc3ec61c1ba5e45cd30c6c3a70c2de531"
+    "print/PRINT.md": "b233cfdd9981c67b560ae76d4925d63dbeb9f4140aee69326ae3256175017d7c"
   }
 }

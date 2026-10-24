@@ -28,7 +28,7 @@
 | 本体配置 | 2つの固定穴とセンサー開口を底面の穴に合わせたXY変換。最大残差0.0409mm。Zはフランジ下面と底面上面の接触から設定 |
 | 維持するもの | 元の固定耳・M1.7固定穴、下側センサー開口、ボール中心の復元基準、センサー側覆いの大部分 |
 | 荷重計算 | 単位下向き荷重あたりの支持反力係数と条件数は [`verification.json`](generated/verification.json) を参照。実荷重、衝撃、樹脂の耐久性は別途実機・試験片で確認 |
-| 支持点 | 2026-10-24の印刷フィードバックで変更。支持点1（方位139度）の極角を61→68度へ上げた（70度ではtop_Rと干渉、68度ではドライバー経路もtop_Rに当たらない）。支持点2（方位257度）のベアリング軸の傾きを-90→-60度へ30度回転（ボスとtop_Rのすき間0.34mm）。支持点3は極角61度・方位19度・軸傾き0度のまま。単位下向き荷重あたりの反力は0.697/0.755/0.769、条件数1.43。これは幾何上の釣り合いで、実荷重・強度の証明ではない。旧配置の経緯（極角55/60度の不採用）はgit履歴を参照。ベアリング位置の印付き6面図: [six_view_bearings.png](generated/six_view_bearings.png) |
+| 支持点 | 2026-10-24の印刷フィードバックで変更。支持点1（方位139度）の極角を61→76度へ上げた（ボス先端を削った形では80度までtop_Rに当たらないが、78〜80度は印刷用STLの修復で表面偏差が上限0.08mmを超えて不合格。76度ではドライバー経路もtop_Rに当たらず、ボスとtop_Rのすき間3.7mm）。支持点2（方位257度）のベアリング軸の傾きを-90→-60度へ30度回転（ボスとtop_Rのすき間0.34mm）。支持点3は極角61度・方位19度・軸傾き0度のまま。単位下向き荷重あたりの反力は0.740/0.838/0.855、条件数1.65。これは幾何上の釣り合いで、実荷重・強度の証明ではない。旧配置の経緯（極角55/60度の不採用）はgit履歴を参照。ベアリング位置の印付き6面図: [six_view_bearings.png](generated/six_view_bearings.png) |
 | ドライバー穴 | 支持点3（方位角19度、センサー箱側）はビス頭側の延長線がセンサー箱の外壁（ベアリング中心から16.2〜19.5mm）に当たり、ドライバーが届かなかった。ビス頭の通路を `ToolAccessDepth` 12mmから `DriverHoleLength` 30mmまで延長し、直径 `DriverHoleDiameter` 4.0mm（`TeardropHoles` 有効時は天井45度）の穴で外壁を貫通する。支持点ごとに `Support{1..3}DriverHole` で切り替える（2026-10-19）。センサー箱の内側を通るため、センサー基板の取り付け前にビスを締める |
 | 元のセラミック球の凹部 | 元STLにあった2mmセラミック球の受け穴3か所（半径約0.7〜0.9mm、平底はボール中心から約19.05mm）を、直径 `CeramicRecessFillDiameter` 2.2mmの円柱で、ボール中心から `CeramicRecessFillInnerRadius` 17.7mm〜`CeramicRecessFillOuterRadius` 19.25mmの範囲を埋める。凹部の縁の面（約17.535mm）とそろえると、STL化で自己交差が残ったため、深さ約0.17mmのくぼみを残す。凹部の周りの盛り上がり（直径約4.8mm、カップ面17.99mmから約0.46mm高い台座）も、`RemoveCeramicPads` で直径 `CeramicPadCutDiameter` 5.4mmの範囲を、カップ中心から `CeramicPadCutRadius` 18.15mmまで削る。カップ面より0.16mm深く削るため、台座の跡は浅い円形のくぼみになる。`FillCeramicRecesses` で切り替え（2026-10-19）。ボール中心の基準値は凹部から復元した値をそのまま使う |
 | 荷重・印刷条件 | 未確定。PLAの最終強度合格は保留 |
@@ -103,19 +103,19 @@ STLの数値丸めで検査結果が変わるため、修復した基準メッ�
 |---|---|
 | 単位 | mm（角度は度） |
 | FreeCAD | 1.1.4（Git shallow 20260928、commit 4fd3bf320）。Python 3.11.14、NumPy 1.26.4、SciPy 1.16.3 |
-| 実行 | `runs/20261024-115928`（CAD検査 61項目すべて合格。形状・印刷用STLは合格、物理的な合格ではない） |
+| 実行 | `runs/20261024-123142`（CAD検査 61項目すべて合格。形状・印刷用STLは合格、物理的な合格ではない） |
 | 元STL SHA-256 | `cdaa94d5c244317f9dec7bfc47de96845a091c61c89673050497cd625df796c9` |
-| 生成コード `bearing_case.py` SHA-256 | `f31a879418b41fab49a246cfe4d2e6b7b0334b628a8291e19f974b23157925d5`（`build.json` の `code_hashes_sha256` に全コードのハッシュ） |
-| `trackball_bearing.FCStd` | `f74470bf74f005878740b9a5079094bea995a790c23bd372102a2a5014df00da` |
-| `trackball_bearing.stl` | `4601e1244beb71d6533637510f9f159769dfc7008fde7525545ef341e7023f65` |
+| 生成コード `bearing_case.py` SHA-256 | `16ed24c367c84b1a9b52a555251ba3f8ae17b204aa0c2e33d30547dfaf72f974`（`build.json` の `code_hashes_sha256` に全コードのハッシュ） |
+| `trackball_bearing.FCStd` | `806d5d5057b0c328867fdcead37cab7767ca546a85f4208ddc23858ad7969e09` |
+| `trackball_bearing.stl` | `5f2e80bb9425ee4d2f9ceb79f3fdc0272418cdad8ee339e9c2f81cbc9b7a741a` |
 | `fit_coupon.stl` | `d79bce7f3a7e71735ed40bfb7600f778e028604ffa1098c9089618cd5c549c36` |
-| `print/trackball_bearing_case_print.stl` | `565f252c8369a0b8a681a6a7da7faca52a2191db2867b6d66e81e9d53fed9ddd` |
+| `print/trackball_bearing_case_print.stl` | `6801ec39062a63e2ee27e1bbedd88c2a1d8b8b39cf92f8be00824b0f3853701b` |
 | `print/fit_coupon_print.stl` | `2ae9903c12c5ab49ca21bd84987673e1ffb7fc771a234bdb174cc12aee2eee6b` |
-| `print/PRINT.md` | `e308d98d1f05995bd4ea98b7f69dd8ddc3ec61c1ba5e45cd30c6c3a70c2de531` |
+| `print/PRINT.md` | `b233cfdd9981c67b560ae76d4925d63dbeb9f4140aee69326ae3256175017d7c` |
 
 各ハッシュ、寸法、検査結果の詳細は [`build.json`](generated/build.json)、[`verification.json`](generated/verification.json)、[`print_evidence.json`](generated/print_evidence.json) にあります。
 
-主な検査結果: ボール側ウェブの解析値0.409mm、メッシュ実測0.410mm（run 20261024-115928）（下限0.4mmのみ満たす）。ティアドロップ切り替えでの再計算、BearingWidth 1.50→1.55での再計算と復元（体積値は `verification.json`）。保存・再読み込み後の再計算。縁の面取りは0/3群適用。
+主な検査結果: ボール側ウェブの解析値0.409mm、メッシュ実測0.410mm（run 20261024-123142）（下限0.4mmのみ満たす）。ティアドロップ切り替えでの再計算、BearingWidth 1.50→1.55での再計算と復元（体積値は `verification.json`）。保存・再読み込み後の再計算。縁の面取りは0/3群適用。
 
 ## 削除済みファイル（2026-10-13）
 

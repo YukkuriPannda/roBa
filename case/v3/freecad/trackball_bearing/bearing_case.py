@@ -67,9 +67,9 @@ DEFAULTS = {
  # grazes top_R (0.0085 mm3) at polar 60, so polar is raised to 61 deg (load share
  # 0.688). 142/262/22 was rejected: its STL export was not one closed component.
  # The set stays off the +X sensor cutout (sensor void starts at X=18.39 mm, 0 deg).
- # 2026-10-24 print feedback: support 1 raised 61 -> 68 deg (70 deg hits top_R),
+ # 2026-10-24 print feedback: support 1 raised 61 -> 76 deg (clear of top_R after the boss-tip trim),
  # support 2 bearing axis rotated 30 deg (tilt -90 -> -60).
- 'Support1Polar':68.00, 'Support1Azimuth':139.00, 'Support1AxisTilt':0.,
+ 'Support1Polar':76.00, 'Support1Azimuth':139.00, 'Support1AxisTilt':0.,
  'Support2Polar':61.00, 'Support2Azimuth':257.00, 'Support2AxisTilt':-60.,
  'Support3Polar':61.00, 'Support3Azimuth':19.00, 'Support3AxisTilt':0.,
  # Driver hole through the far wall on the screw-head side. Support 3's head
