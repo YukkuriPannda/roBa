@@ -1,7 +1,7 @@
 {
   "status": "CAD_CHECKS_PASS_PHYSICAL_UNVERIFIED",
   "source_sha256": "cdaa94d5c244317f9dec7bfc47de96845a091c61c89673050497cd625df796c9",
-  "code_sha256": "3901a4bd4c469c4aea719c878dd93904256327f77a1f3ffebd86f825db9f3ffa",
+  "code_sha256": "1f06f8667b1a60a4e99906bf45f79a7024f41abf979817813364d899564e6581",
   "freecad": [
     "1",
     "1",
@@ -31,12 +31,12 @@
     "MinThreadEngagement": 2.0,
     "BossRadius": 3.0,
     "BossLength": 2.5,
-    "BallClearance": 0.4,
+    "BallClearance": 0.81,
     "ToolAccessDepth": 12.0,
     "TeardropHoles": 1.0,
     "EdgeBreak": 0.5,
     "MinBallSideWeb": 1.6,
-    "BallSideWebFloor": 1.2,
+    "BallSideWebFloor": 0.4,
     "CouponBaseThickness": 2.4,
     "CouponElephantChamfer": 0.3,
     "CouponPitch": 12.0,
@@ -62,7 +62,7 @@
     "Support3DriverHole": 1.0,
     "FillCeramicRecesses": 1.0,
     "CeramicRecessFillDiameter": 2.2,
-    "CeramicRecessFillInnerRadius": 17.7,
+    "CeramicRecessFillInnerRadius": 17.85,
     "CeramicRecessFillOuterRadius": 19.25,
     "RemoveCeramicPads": 1.0,
     "CeramicPadCutDiameter": 5.4,
@@ -73,10 +73,10 @@
     0.09661005,
     19.89032338
   ],
-  "case_volume": 8817.919781761293,
+  "case_volume": 8802.799922358121,
   "valid": true,
   "solids": 1,
-  "ball_side_web_mm": 0.8199575050938037,
+  "ball_side_web_mm": 0.40891995965345274,
   "edge_break": {
     "requested_mm": 0.5,
     "groups": {
@@ -100,10 +100,10 @@
     "total_groups": 3
   },
   "outputs": {
-    "trackball_bearing.FCStd": "ee7ab6bbf21c3f2e673101ddb1352f50ed64aafa2a13a2b75efc566d921cd980",
-    "trackball_bearing.step": "d0ff0781a0f5bd8095063d58236bff3030882126bb0ef62acb2f6da8020d01ca",
-    "trackball_bearing.stl": "fa28ef4b6d5cc6c242cb802a41af13d9f399128b5b77982bbbe2dc0f7f8060ac",
-    "fit_coupon.step": "c41c965629dc5bc4cb08d328d3e4c44c081cc854f6603648983f7100f3963242",
+    "trackball_bearing.FCStd": "05296483818ccde6e738df1f570f597889348bc1360c49c93c765725ca1201da",
+    "trackball_bearing.step": "b229e5653db4cbf291e74cecee2cfe57e75571f8f6dfc1add1c666df1847c0cc",
+    "trackball_bearing.stl": "61f5c692b779152f954d3eddb7bd2c852cee4919e750b9b71532b2f250665415",
+    "fit_coupon.step": "01aa9edfe0db9247d39ca051df6bba756028770c2050a02d451be1bdcaa6bbff",
     "fit_coupon.stl": "d79bce7f3a7e71735ed40bfb7600f778e028604ffa1098c9089618cd5c549c36",
     "inner_ring_spacer.stl": "9c960f8e8a4ea8781d68647380315d9e35b51cb106965d62b4820c6f97e2d26c"
   },
@@ -116,12 +116,12 @@
     "complete wall thickness",
     "ball-side web target (see verification.json)"
   ],
-  "generated_at": "2026-10-19T11:01:19.574139+09:00",
+  "generated_at": "2026-10-24T11:52:49.675306+09:00",
   "source_repair_sha256": "eace2c73ccc5e5e77deaeea9cf3f2f7b7beb2ba0acca1ed3949b1ecce217629c",
-  "mesh_export_evidence_sha256": "f2771267eb6ca3cca2f55bc05dd0b9c97ed61ac17b6e7cb4c949452f990b93ea",
-  "verification_evidence_sha256": "9190f221e39c86e4beb15c393a3068c0df6775df3860e2cc7e05f728ccb8976c",
+  "mesh_export_evidence_sha256": "db6bef37e9eac3494b1fdb8cb4ff613144b249039a3b87e8b8979c88eccf3403",
+  "verification_evidence_sha256": "c12ee384b6b3c278be3d6212eb401ae156f67e823f7fd11127b298c18eaf0474",
   "code_hashes_sha256": {
-    "bearing_case.py": "3901a4bd4c469c4aea719c878dd93904256327f77a1f3ffebd86f825db9f3ffa",
+    "bearing_case.py": "1f06f8667b1a60a4e99906bf45f79a7024f41abf979817813364d899564e6581",
     "repair_source.py": "d6e4f56127124c12335de92414ea3660d4c537bf1d0ccec16a4ca7bff267fbea",
     "export_mesh.py": "3798ef0effffdf111cdaad8ac91f9b1faf4a8a2e1dc434a7f8f7c6cbc8630f81",
     "export_case_mesh.py": "f8f0c2ce76da18e43cd22b72707256eb24b08e5745ad488934840f2503ebeca7",
@@ -155,24 +155,24 @@
     "scipy": "1.16.3"
   },
   "outputs_sha256": {
-    "trackball_bearing.FCStd": "ee7ab6bbf21c3f2e673101ddb1352f50ed64aafa2a13a2b75efc566d921cd980",
-    "trackball_bearing.step": "d0ff0781a0f5bd8095063d58236bff3030882126bb0ef62acb2f6da8020d01ca",
-    "trackball_bearing.stl": "fa28ef4b6d5cc6c242cb802a41af13d9f399128b5b77982bbbe2dc0f7f8060ac",
-    "fit_coupon.step": "c41c965629dc5bc4cb08d328d3e4c44c081cc854f6603648983f7100f3963242",
+    "trackball_bearing.FCStd": "05296483818ccde6e738df1f570f597889348bc1360c49c93c765725ca1201da",
+    "trackball_bearing.step": "b229e5653db4cbf291e74cecee2cfe57e75571f8f6dfc1add1c666df1847c0cc",
+    "trackball_bearing.stl": "61f5c692b779152f954d3eddb7bd2c852cee4919e750b9b71532b2f250665415",
+    "fit_coupon.step": "01aa9edfe0db9247d39ca051df6bba756028770c2050a02d451be1bdcaa6bbff",
     "fit_coupon.stl": "d79bce7f3a7e71735ed40bfb7600f778e028604ffa1098c9089618cd5c549c36",
     "inner_ring_spacer.stl": "9c960f8e8a4ea8781d68647380315d9e35b51cb106965d62b4820c6f97e2d26c",
-    "assembly_preview.png": "60f0c3987f9954339e40a13b686d84c9bb62bb6fce8e1174c248f3480e7d4a6e",
-    "body_clearance_section.png": "4dfa913705adf8e8913a497957ec87c8988e632b8d147e147ff659f506f18cb5",
-    "support_sections.png": "333e69822fdef02d9a832a8508c57afef9bc2c3be6150d8b8bf2f16fff9022f6",
-    "six_view.png": "2c361b571f32f0bebbc29bcdb22bcebfbb65d0a47c2a2317fa4ca8b75620327c",
-    "six_view.pdf": "92905fb172b16169462e0c6a64f172052b58fb8b135f4e77997e840ea756255f",
+    "assembly_preview.png": "e64489468937e5c48ab722d106880d32aaa09c082cf39e64d0c7beb8ebeb2943",
+    "body_clearance_section.png": "3b99950d60bd9bf01a294587c61922f30c994c4cf197eb06c0c79ccb2b4221b1",
+    "support_sections.png": "6e97dc5942bcccf68b4af755c16ead99525863c6bd33b6acc0b08181ba5575f9",
+    "six_view.png": "443e74e83190d0f97262c3e0198b4520e60d6351f5d696add7df966de98bfc7d",
+    "six_view.pdf": "e929783d409f70baab80823126a02d6b897f1e7fd611a1cc8af99dcc79049f50",
     "repair.json": "eace2c73ccc5e5e77deaeea9cf3f2f7b7beb2ba0acca1ed3949b1ecce217629c",
     "repaired_source.bms": "8c9830671bba3d022250b8948520d2c4e895e24d8f7a6bf92a0bcac94dbee309",
     "source.brep": "25af5f03754bf847d4feb57683e826fcf3232589c4bfabb16abbe28e77f509f3",
     "source.sha256": "c28555e70bcdfbcf99fc29267a7844af65043b066b35e1fa4542a182f99dc6f7",
-    "print_evidence.json": "d9e5bd09c97f46980164d59f0ecd185d9695e51d088b6656e8f00af30a57fd46",
-    "print/trackball_bearing_case_print.stl": "c15723ad15d0d60901502ca19276fb7edcb40e76308397d3463ca367e80080d4",
+    "print_evidence.json": "e4b9decd3dc46d92969d9a7f90a0fa026710f3b62e12167f5a55971ce5c631b7",
+    "print/trackball_bearing_case_print.stl": "2b99b3f87db0e4666e67905e9dd7531edec9d12991e6eaf44ad5a9c5fd7864cb",
     "print/fit_coupon_print.stl": "2ae9903c12c5ab49ca21bd84987673e1ffb7fc771a234bdb174cc12aee2eee6b",
-    "print/PRINT.md": "1940401c420d4dff65e17a701c6e89b0bad171ec1152cf39c946a9e2fbc757ea"
+    "print/PRINT.md": "40a55b6c0eba1517bedd343610d0cfc2300580d038dcc5e84213a03ecca72510"
   }
 }

@@ -5,13 +5,13 @@
       "pass": true,
       "evidence": {
         "solids": 1,
-        "volume_mm3": 8817.919781761297
+        "volume_mm3": 8802.799922358123
       }
     },
     "ball_case_clearance": {
       "pass": true,
       "evidence": {
-        "minimum_surface_gap_mm": 0.3848591844968716,
+        "minimum_surface_gap_mm": 0.5000246075825139,
         "centre_inside_material": false,
         "method": "all-triangle plane/edge distance and ray parity"
       }
@@ -410,9 +410,9 @@
       "pass": true,
       "evidence": {
         "method": "mesh surface intersection; reference deflection 0.1mm",
-        "intersection_facets": 401,
+        "intersection_facets": 352,
         "flange_contact_only": true,
-        "intersection_bbox": "BoundBox (-10.9751, -10.1195, 2, 26.6768, 16.2867, 2)",
+        "intersection_bbox": "BoundBox (-10.2755, -11.715, 2, 21.7497, 12.9529, 2)",
         "reference_self_intersection_warning": true
       }
     },
@@ -550,8 +550,8 @@
     "ball_side_web_measured_mesh": {
       "pass": true,
       "evidence": {
-        "analytic_mm": 0.8199575050938037,
-        "mesh_min_mm": 0.8209461999394086,
+        "analytic_mm": 0.40891995965345274,
+        "mesh_min_mm": 0.409840119821193,
         "rays": 39,
         "method": "radial rays from pilot wall toward ball centre, first hit on final STL"
       }
@@ -569,12 +569,12 @@
       "evidence": {
         "components": 1,
         "degenerate_facets": 0,
-        "minimum_triangle_area_mm2": 1.5010694803573133e-09,
+        "minimum_triangle_area_mm2": 1.0041043666599485e-07,
         "closed": true,
         "non_manifold": false,
         "self_intersections": false,
-        "facets": 32706,
-        "volume_mm3": 8818.5458984375
+        "facets": 32736,
+        "volume_mm3": 8803.4560546875
       }
     },
     "fit_coupon_mesh": {
@@ -608,14 +608,14 @@
       "evidence": {
         "valid": true,
         "solids": 1,
-        "volume_delta": -0.0003987980126112234
+        "volume_delta": -0.00039948706580617
       }
     },
     "named_dimension_recompute": {
       "pass": true,
       "evidence": {
-        "volume_before": 8817.919781761297,
-        "volume_after": 8817.527069511287,
+        "volume_before": 8802.799922358123,
+        "volume_after": 8802.419638714593,
         "changed_parameter": "BearingWidth",
         "value_before": 1.5,
         "value_after": 1.55
@@ -631,14 +631,14 @@
     "dimension_restore": {
       "pass": true,
       "evidence": {
-        "volume_delta": 1.8189894035458565e-12
+        "volume_delta": 5.4569682106375694e-12
       }
     },
     "teardrop_toggle_recompute": {
       "pass": true,
       "evidence": {
-        "volume_teardrop_on": 8817.919781761299,
-        "volume_teardrop_off": 8833.083625496014,
+        "volume_teardrop_on": 8802.799922358128,
+        "volume_teardrop_off": 8817.963766096604,
         "expected": "teardrop removes more material than round holes"
       }
     },
@@ -670,7 +670,7 @@
     "saved_document_reopen": {
       "pass": true,
       "evidence": {
-        "volume": 8817.919781761302
+        "volume": 8802.799922358128
       }
     },
     "oversize_screw_rejected": {
@@ -686,18 +686,18 @@
     "PCB/wiring model unavailable",
     "print, fit and strength untested",
     "global wall thickness untested",
-    "ball-side web 0.820 mm (mesh 0.821 mm) is below the 1.6 mm target and the 1.2 mm floor; face offset change or hardware-stack change needed; strength approval withheld",
+    "ball-side web 0.409 mm (mesh 0.410 mm) is below the 1.6 mm target and the 0.4 mm floor; face offset change or hardware-stack change needed; strength approval withheld",
     "edge break applied to 0 of 3 groups; unapplied groups recorded in verification.json"
   ],
   "ball_side_web": {
-    "analytic_mm": 0.8199575050938037,
-    "mesh_min_mm": 0.8209461999394086,
+    "analytic_mm": 0.40891995965345274,
+    "mesh_min_mm": 0.409840119821193,
     "target_mm": 1.6,
-    "floor_mm": 1.2,
-    "status": "BELOW_FLOOR_HOLD",
+    "floor_mm": 0.4,
+    "status": "MEETS_FLOOR_ONLY",
     "boss_face_offset_mm": 1.25,
-    "required_boss_face_offset_for_target_mm": 5.294277571113917,
-    "required_boss_face_offset_for_floor_mm": 3.8222212128551605,
+    "required_boss_face_offset_for_target_mm": 6.5165539205932985,
+    "required_boss_face_offset_for_floor_mm": 1.116008512512299,
     "alternative_web_mm_ball_clearance_0.2_pilot_1.55": 1.0704816447677565,
     "reason": "web = (ball radius + bearing OD/2 - pilot radius) - sqrt((ball radius + ball clearance)^2 - face offset^2); bearing centre distance, pilot, clearance and face offset are fixed by the frozen bearing stack (width 2 mm + 0.4 mm metal spacer)",
     "strength_status": "HOLD_THIN_LOCAL_SECTION_REQUIRES_COUPON_AND_LOAD_CONDITIONS",

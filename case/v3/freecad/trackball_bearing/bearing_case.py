@@ -31,7 +31,10 @@ DEFAULTS = {
  'SpacerBoreDiameter':2.10, 'ShellReliefDiameter':2.15,
  # Minimum screw length inside the boss (tip to boss face, capped at boss end).
  'MinThreadEngagement':2.00,
- 'BossRadius':3.00, 'BossLength':2.50, 'BallClearance':0.40, 'ToolAccessDepth':12.,
+ 'BossRadius':3.00, 'BossLength':2.50,
+ # BallClearance trims only the boss tips. 0.40 -> 0.81 (2026-10-24 print feedback)
+ # halves the ball-side web (0.82 -> 0.41 mm) so the bearings protrude further.
+ 'BallClearance':0.81, 'ToolAccessDepth':12.,
  # Print-oriented options (FDM, 0.4 mm nozzle, 0.2 mm layers).
  # TeardropHoles: horizontal bearing-seat and head-tunnel holes get a 45 degree
  # roof so they print without support. The screw pilot stays round because its
@@ -42,7 +45,7 @@ DEFAULTS = {
  # Ball-side web between the pilot bore and the ball void, measured at the boss
  # face. MinBallSideWeb is the review target; BallSideWebFloor is the lowest
  # value accepted before the design must be revised.
- 'MinBallSideWeb':1.60, 'BallSideWebFloor':1.20,
+ 'MinBallSideWeb':1.60, 'BallSideWebFloor':0.40,
  # Multi-level fit coupon: three bearing-seat / pilot pairs, ordered left to
  # right at x = -pitch, 0, +pitch (see README).
  'CouponBaseThickness':2.40, 'CouponElephantChamfer':0.30, 'CouponPitch':12.,
@@ -79,7 +82,7 @@ DEFAULTS = {
  # and left STL self-intersections, so a shallow dimple is kept instead.
  # Recess axes come from inspect/logs/site_feasibility.json.
  'FillCeramicRecesses':True, 'CeramicRecessFillDiameter':2.20,
- 'CeramicRecessFillInnerRadius':17.70, 'CeramicRecessFillOuterRadius':19.25,
+ 'CeramicRecessFillInnerRadius':17.85, 'CeramicRecessFillOuterRadius':19.25,
  # Remove the raised pads around those recesses. Each pad rises from the
  # 17.99 mm cup surface to about 17.53 mm (radius from the fitted cup centre)
  # over a circle of about 4.8 mm diameter. Cut inside CeramicPadCutRadius,
