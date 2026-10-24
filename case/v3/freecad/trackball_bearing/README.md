@@ -15,7 +15,7 @@
 | 項目 | 設定・根拠 |
 |---|---|
 | ボール | 直径34mm |
-| 支持 | 非分離型のラジアル玉軸受3個。MR42。内径2.0、外径4.0、幅1.5mm。ボール中心からの距離はボール半径＋外径/2＝19mm |
+| 支持 | 非分離型のラジアル玉軸受3個。MR42。内径2.0、外径4.0、幅1.5mm。ボール中心からの距離はボール半径＋外径/2＝19mm。ベアリング座の逃げ `PocketClearance` は0.30→0.20mm（2026-10-24、ボールのガタを減らすため。試験片の最小段と同じ） |
 | ボス | 3点とも半径3.0mm（3.5mmでは付け根で印刷用STLの自己交差が修復できなかった）。局所肉厚は支持断面図と検査記録を確認 |
 | 軸 | M2、首下長6mm（Mini 4WDの6mm）。小頭ビス、頭径3.8、高さ1.3mm。**頭径・頭高さは仮定値で、購入するビスの寸法表で確認する。** ボス内のネジ食い込みは2.5mm（ボス長で制限。先端がボス端より0.5mm外に出るが、検査で干渉なし）。5mmではボス内2.0mmちょうどで余裕がないため6mmを採用 |
 | 内輪保持 | 両側の金属スペーサー（Mini 4WD品）。外径2.6mm（MR42の内輪外径は非公開のため仮定値。外輪に触れず内輪端面だけに接触する寸法を想定）、内径（ネジ逃げ）2.1mm、厚さ0.5mm（`SpacerThickness`。0.1mmでは実在品がなく外輪とボス面のすきまも不足するため0.5mmに変更）、合計6個。厚さは可変パラメーター |
@@ -28,7 +28,7 @@
 | 本体配置 | 2つの固定穴とセンサー開口を底面の穴に合わせたXY変換。最大残差0.0409mm。Zはフランジ下面と底面上面の接触から設定 |
 | 維持するもの | 元の固定耳・M1.7固定穴、下側センサー開口、ボール中心の復元基準、センサー側覆いの大部分 |
 | 荷重計算 | 単位下向き荷重あたりの支持反力係数と条件数は [`verification.json`](generated/verification.json) を参照。実荷重、衝撃、樹脂の耐久性は別途実機・試験片で確認 |
-| 支持点 | 中間配置（強度レビュー前）。3点とも極角61度（球の真下から測る。赤道より29度下）、方位角139/259/19度、軸傾き0度。単位下向き荷重あたりの反力は0.688/0.688/0.688、条件数1.28。旧配置91/60/100度は2点が赤道付近以上にあり、反力が最大2.71に偏っていた。極角55度は上部ケース(top_R)と干渉して120度間隔が取れず、60度・方位137度はビスがtop_Rに0.0085mm³食い込んだため61度・139度に変更（ビスとtop_Rのすきま0.16mm）。これは幾何上の釣り合いで、実荷重・強度の証明ではない。ベアリング位置の印付き6面図: [six_view_bearings.png](generated/six_view_bearings.png) |
+| 支持点 | 2026-10-24の印刷フィードバックで変更。支持点1（方位139度）の極角を61→68度へ上げた（70度ではtop_Rと干渉、68度ではドライバー経路もtop_Rに当たらない）。支持点2（方位257度）のベアリング軸の傾きを-90→-60度へ30度回転（ボスとtop_Rのすき間0.34mm）。支持点3は極角61度・方位19度・軸傾き0度のまま。単位下向き荷重あたりの反力は0.697/0.755/0.769、条件数1.43。これは幾何上の釣り合いで、実荷重・強度の証明ではない。旧配置の経緯（極角55/60度の不採用）はgit履歴を参照。ベアリング位置の印付き6面図: [six_view_bearings.png](generated/six_view_bearings.png) |
 | ドライバー穴 | 支持点3（方位角19度、センサー箱側）はビス頭側の延長線がセンサー箱の外壁（ベアリング中心から16.2〜19.5mm）に当たり、ドライバーが届かなかった。ビス頭の通路を `ToolAccessDepth` 12mmから `DriverHoleLength` 30mmまで延長し、直径 `DriverHoleDiameter` 4.0mm（`TeardropHoles` 有効時は天井45度）の穴で外壁を貫通する。支持点ごとに `Support{1..3}DriverHole` で切り替える（2026-10-19）。センサー箱の内側を通るため、センサー基板の取り付け前にビスを締める |
 | 元のセラミック球の凹部 | 元STLにあった2mmセラミック球の受け穴3か所（半径約0.7〜0.9mm、平底はボール中心から約19.05mm）を、直径 `CeramicRecessFillDiameter` 2.2mmの円柱で、ボール中心から `CeramicRecessFillInnerRadius` 17.7mm〜`CeramicRecessFillOuterRadius` 19.25mmの範囲を埋める。凹部の縁の面（約17.535mm）とそろえると、STL化で自己交差が残ったため、深さ約0.17mmのくぼみを残す。凹部の周りの盛り上がり（直径約4.8mm、カップ面17.99mmから約0.46mm高い台座）も、`RemoveCeramicPads` で直径 `CeramicPadCutDiameter` 5.4mmの範囲を、カップ中心から `CeramicPadCutRadius` 18.15mmまで削る。カップ面より0.16mm深く削るため、台座の跡は浅い円形のくぼみになる。`FillCeramicRecesses` で切り替え（2026-10-19）。ボール中心の基準値は凹部から復元した値をそのまま使う |
 | 荷重・印刷条件 | 未確定。PLAの最終強度合格は保留 |
@@ -103,19 +103,19 @@ STLの数値丸めで検査結果が変わるため、修復した基準メッ�
 |---|---|
 | 単位 | mm（角度は度） |
 | FreeCAD | 1.1.4（Git shallow 20260928、commit 4fd3bf320）。Python 3.11.14、NumPy 1.26.4、SciPy 1.16.3 |
-| 実行 | `runs/20261024-113232`（CAD検査 61項目すべて合格。形状・印刷用STLは合格、物理的な合格ではない） |
+| 実行 | `runs/20261024-115928`（CAD検査 61項目すべて合格。形状・印刷用STLは合格、物理的な合格ではない） |
 | 元STL SHA-256 | `cdaa94d5c244317f9dec7bfc47de96845a091c61c89673050497cd625df796c9` |
-| 生成コード `bearing_case.py` SHA-256 | `1f06f8667b1a60a4e99906bf45f79a7024f41abf979817813364d899564e6581`（`build.json` の `code_hashes_sha256` に全コードのハッシュ） |
-| `trackball_bearing.FCStd` | `05296483818ccde6e738df1f570f597889348bc1360c49c93c765725ca1201da` |
-| `trackball_bearing.stl` | `61f5c692b779152f954d3eddb7bd2c852cee4919e750b9b71532b2f250665415` |
+| 生成コード `bearing_case.py` SHA-256 | `f31a879418b41fab49a246cfe4d2e6b7b0334b628a8291e19f974b23157925d5`（`build.json` の `code_hashes_sha256` に全コードのハッシュ） |
+| `trackball_bearing.FCStd` | `f74470bf74f005878740b9a5079094bea995a790c23bd372102a2a5014df00da` |
+| `trackball_bearing.stl` | `4601e1244beb71d6533637510f9f159769dfc7008fde7525545ef341e7023f65` |
 | `fit_coupon.stl` | `d79bce7f3a7e71735ed40bfb7600f778e028604ffa1098c9089618cd5c549c36` |
-| `print/trackball_bearing_case_print.stl` | `2b99b3f87db0e4666e67905e9dd7531edec9d12991e6eaf44ad5a9c5fd7864cb` |
+| `print/trackball_bearing_case_print.stl` | `565f252c8369a0b8a681a6a7da7faca52a2191db2867b6d66e81e9d53fed9ddd` |
 | `print/fit_coupon_print.stl` | `2ae9903c12c5ab49ca21bd84987673e1ffb7fc771a234bdb174cc12aee2eee6b` |
-| `print/PRINT.md` | `40a55b6c0eba1517bedd343610d0cfc2300580d038dcc5e84213a03ecca72510` |
+| `print/PRINT.md` | `e308d98d1f05995bd4ea98b7f69dd8ddc3ec61c1ba5e45cd30c6c3a70c2de531` |
 
 各ハッシュ、寸法、検査結果の詳細は [`build.json`](generated/build.json)、[`verification.json`](generated/verification.json)、[`print_evidence.json`](generated/print_evidence.json) にあります。
 
-主な検査結果: ボール側ウェブの解析値0.409mm、メッシュ実測0.410mm（run 20261024-113232）（下限0.4mmのみ満たす）。ティアドロップ切り替えでの再計算、BearingWidth 1.50→1.55での再計算と復元（体積値は `verification.json`）。保存・再読み込み後の再計算。縁の面取りは0/3群適用。
+主な検査結果: ボール側ウェブの解析値0.409mm、メッシュ実測0.410mm（run 20261024-115928）（下限0.4mmのみ満たす）。ティアドロップ切り替えでの再計算、BearingWidth 1.50→1.55での再計算と復元（体積値は `verification.json`）。保存・再読み込み後の再計算。縁の面取りは0/3群適用。
 
 ## 削除済みファイル（2026-10-13）
 

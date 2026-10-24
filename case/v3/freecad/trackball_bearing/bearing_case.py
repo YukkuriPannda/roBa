@@ -23,7 +23,10 @@ DEFAULTS = {
  # value); confirm against the purchased screw before printing.
  'ScrewHeadDiameter':3.8, 'ScrewHeadHeight':1.3,
  # Self-tapping pilot for M2 into PLA; the coupon pilots bracket this value.
- 'PilotDiameter':1.65, 'PocketClearance':0.30,
+ 'PilotDiameter':1.65,
+ # Bearing-seat radial clearance. 0.30 -> 0.20 (2026-10-24 print feedback) to
+ # reduce ball play; matches CouponClearance1.
+ 'PocketClearance':0.20,
  # Inner-ring spacer (metal, Mini 4WD). OD must stay below the outer-ring bore so
  # it touches only the inner ring. SpacerBore is the screw clearance through it.
  # MR42 inner-ring OD is not published; 2.60 is an ASSUMPTION to check on the part.
@@ -64,8 +67,10 @@ DEFAULTS = {
  # grazes top_R (0.0085 mm3) at polar 60, so polar is raised to 61 deg (load share
  # 0.688). 142/262/22 was rejected: its STL export was not one closed component.
  # The set stays off the +X sensor cutout (sensor void starts at X=18.39 mm, 0 deg).
- 'Support1Polar':61.00, 'Support1Azimuth':139.00, 'Support1AxisTilt':0.,
- 'Support2Polar':61.00, 'Support2Azimuth':257.00, 'Support2AxisTilt':-90.,
+ # 2026-10-24 print feedback: support 1 raised 61 -> 68 deg (70 deg hits top_R),
+ # support 2 bearing axis rotated 30 deg (tilt -90 -> -60).
+ 'Support1Polar':68.00, 'Support1Azimuth':139.00, 'Support1AxisTilt':0.,
+ 'Support2Polar':61.00, 'Support2Azimuth':257.00, 'Support2AxisTilt':-60.,
  'Support3Polar':61.00, 'Support3Azimuth':19.00, 'Support3AxisTilt':0.,
  # Driver hole through the far wall on the screw-head side. Support 3's head
  # side crosses the sensor box and its outer wall 16.2-19.5 mm from the
